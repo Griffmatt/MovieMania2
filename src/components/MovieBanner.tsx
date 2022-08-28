@@ -5,13 +5,15 @@ import instance from '../axios'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel'
 
+import {Imovie} from "../ts/interfaces/movie"
+
 function MovieBanner() {
-    const [movies, setMovies] =useState([])
+    const [movies, setMovies] =useState<Imovie[]>([])
     const base_url = "https://image.tmdb.org/t/p/original"
     useEffect(() =>{
         async function fetchData(){
             const response = await instance.get(requests.fetchPopular);
-            const filteredResponse = response.data.results.filter(movie => movie.title && movie.backdrop_path)
+            const filteredResponse = response.data.results.filter((movie: Imovie) => movie.title && movie.backdrop_path)
             setMovies(filteredResponse.slice(0, 5))
             return response
         }
@@ -29,7 +31,7 @@ function MovieBanner() {
         showThumbs={false}
         key={movies}
     >
-        {movies.map((movie, index)=>{
+        {movies.map((movie: Imovie, index)=>{
             return(
                 <div className="movieBanner" key={index}>
                     <div>

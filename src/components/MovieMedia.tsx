@@ -2,7 +2,24 @@ import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
-function MovieMedia({images, movie, videos}) {
+import {Imovie} from "../ts/interfaces/movie"
+
+interface Video{
+  name: string;
+  key: string;
+}
+
+interface Image{
+  file_path: string;
+}
+
+interface Props{
+  images: Image[];
+  movie: Imovie;
+  videos: Video[];
+}
+
+function MovieMedia({images, movie, videos}: Props) {
 
   const trailer = videos.find((video) => video.name.includes("Trailer"));
   
@@ -12,7 +29,7 @@ function MovieMedia({images, movie, videos}) {
         <h4>Images</h4>
         <hr/>
         <Carousel showThumbs={false} infiniteLoop={true} key={movie.title}>
-          {images.map((image: string, index: number) =>{
+          {images.map((image: Image, index: number) =>{
             return(
               <img key={index} src={`https://image.tmdb.org/t/p/w500${image.file_path}`} alt={movie.title} className="movieImages"/>
             )
