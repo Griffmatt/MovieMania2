@@ -1,0 +1,101 @@
+.movieRowContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.movieRowGrid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1800px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.moviePoster {
+  margin: 7px;
+  height: 450px;
+  width: 300px;
+  border: 2px solid #505050;
+  border-radius: 5px;
+  background-color: #454545;
+  position: relative;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  -webkit-transition: -webkit-transform 200ms;
+  transition: -webkit-transform 200ms;
+  transition: transform 200ms;
+  transition: transform 200ms, -webkit-transform 200ms;
+}
+
+.moviePoster img {
+  height: 450px;
+  width: 300px;
+  vertical-align: middle;
+}
+
+.moviePoster .movieRating {
+  background-color: rgba(0, 0, 0, 0.404);
+  position: absolute;
+  padding: 0px 10px;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.moviePoster:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.shownMovies {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.shownMoviesRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 1600px;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 25px;
+}
+
+.shownMoviesRow select, .shownMoviesRow select:focus {
+  outline: none;
+}
+
+.shownMoviesRow select {
+  border: none;
+  border-radius: 4px;
+  padding: 3px 3px 5px 3px;
+  background-color: #7a7a7a;
+  color: white;
+  font-size: 18px;
+}
+/*# sourceMappingURL=MovieRow.css.map */

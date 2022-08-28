@@ -1,0 +1,79 @@
+@import './variables/Variables.scss';
+
+.movieRowContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.movieRowGrid {
+    display: flex;
+    max-width: 1800px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .moviePoster{
+    margin: 7px;
+    height: 450px;
+    width: 300px;
+    border: 2px solid rgb(80, 80, 80);
+    border-radius: 5px;
+    background-color: $mainGreyColor;
+    position: relative;
+    box-shadow: 5px 5px 5px rgba($blackColor, .5);
+    transition: transform 200ms;
+    img{
+        height: 450px;
+        width: 300px;
+        vertical-align: middle;
+    }
+
+  .movieRating{
+    background-color: rgba(0, 0, 0, 0.404);
+    position: absolute;
+    padding: 0px 10px;
+    font-size: 1.8rem;
+    font-weight: 600;
+    
+  }
+}
+
+.moviePoster:hover{
+  transform: scale(1.05);
+}
+
+.shownMovies{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shownMoviesRow{
+  display: flex;
+  justify-content: space-between;
+  max-width: 1600px;
+  width: 100%;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom:25px;
+  select, select:focus {
+    outline: none;
+  }
+
+  select {
+    border: none;
+    border-radius: 4px;
+    padding: 3px 3px 5px 3px;
+    background-color: $secondaryGreyColor;
+    color: $whiteColor;
+    font-size: 18px;
+  }
+}
+
+
+
+
+ 
+

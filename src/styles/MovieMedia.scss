@@ -1,0 +1,33 @@
+@import './variables/Variables.scss';
+
+.movieImageContainer{
+    max-width: 600px;
+    width:90vw;
+}
+
+.movieImages{
+    width: 90vw;
+    max-width: 600px;
+    height: auto;
+}
+
+
+@media only screen and (max-width: 650px) {
+    .movieTrailer {
+      width: 90vw;
+      height: (90vw * .562);
+    }
+  }
+
+
+.movieMediaContainer{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    h4{
+       
+        margin-bottom: 5px;
+      
+    }
+    
+}

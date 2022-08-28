@@ -1,0 +1,172 @@
+.yourReview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 700px;
+  width: 93vw;
+}
+
+.yourReview h4 {
+  margin: 0;
+}
+
+.yourReview form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.yourReview label {
+  font-size: 18px;
+}
+
+.yourReview textArea {
+  background-color: #282c34;
+  width: 95%;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
+  resize: none;
+  padding: 10px;
+}
+
+.yourReview button {
+  width: 25%;
+  min-width: 150px;
+  height: 30px;
+  margin-top: 10px;
+  border-radius: 10px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #399dcc;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.yourReview button:hover {
+  opacity: .9;
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper p {
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.wrapper p:hover {
+  opacity: .9;
+}
+
+.checkmarkCircle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #5dc7da;
+  fill: none;
+  -webkit-animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+          animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #454545;
+  stroke-miterlimit: 10;
+  margin: 10% auto;
+  -webkit-box-shadow: inset 0px 0px 0px #5dc7da;
+          box-shadow: inset 0px 0px 0px #5dc7da;
+  -webkit-animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+          animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmarkCheck {
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  -webkit-animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+          animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@-webkit-keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes scale {
+  0%,
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  50% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+            transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    -webkit-transform: none;
+            transform: none;
+  }
+  50% {
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+            transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@-webkit-keyframes fill {
+  100% {
+    -webkit-box-shadow: inset 0px 0px 0px 30px #5dc7da;
+            box-shadow: inset 0px 0px 0px 30px #5dc7da;
+  }
+}
+
+@keyframes fill {
+  100% {
+    -webkit-box-shadow: inset 0px 0px 0px 30px #5dc7da;
+            box-shadow: inset 0px 0px 0px 30px #5dc7da;
+  }
+}
+/*# sourceMappingURL=YourReview.css.map */

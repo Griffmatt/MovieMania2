@@ -1,0 +1,27 @@
+@import './variables/Variables.scss';
+
+.movieBanner{
+    display: flex;
+    justify-content: center;
+    
+    div{
+        max-width: 1800px;
+        position: relative;
+    }
+    h1{
+        margin: 0;
+        position: absolute;
+        max-width: 400px;
+        color: white;
+        left: 25px;
+        bottom: 50px;
+        font-weight: 800;
+        z-index: 1000;
+    }
+    img{
+        width:100%;
+        max-width: 1800px;
+        height:auto;
+        mask-image: linear-gradient(to top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+    }
+}

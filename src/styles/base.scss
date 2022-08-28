@@ -1,0 +1,104 @@
+@import './variables/Variables.scss';
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $bodyColor;
+    color: $whiteColor;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.greatMovie{
+    color: $greatMovieColor;
+  }
+  .goodMovie{
+    color: $goodMovieColor;
+  }
+  .averageMovie{
+    color: $averageMovieColor;
+  }
+  .badMovie{
+    color: $badMovieColor;
+  }
+
+  .movieSelectionTitle{
+    color: $mainGoldColor
+  }
+
+  h1{
+    font-size: 2rem;
+  }
+
+  @media only screen and (max-width: 425px) {
+
+    h1 { 
+       font-size: 1.1rem;
+    }
+ 
+ }
+
+ h4{
+  color: $mainBlueColor;
+  font-size: 25px;
+  font-weight: 700;
+ }
+ 
+
+ .star {
+  font-size:45px;
+  position: absolute;
+  visibility: hidden;
+  right: 25px;
+  bottom: 45px;
+  cursor:pointer;
+}
+
+.star:before {
+ content: "\2606";
+ visibility:visible;
+ color: $mainGoldColor;
+}
+.star:checked:before {
+ content: "\2605";
+}
+
+.titleMovie{
+  color:$mainGoldColor;
+}
+
+.titleMania{
+  color:$mainBlueColor;
+}
+
+::-webkit-scrollbar {
+  background-color: $mainGreyColor;
+  height: 8px;
+  margin:2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba($mainBlueColor, 0.8);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba($mainBlueColor, 1);
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $whiteColor;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $whiteColor;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: $whiteColor;
+}

@@ -1,0 +1,141 @@
+@import './variables/Variables.scss';
+
+.navBar{
+    width: 100vw;
+    height: 75px;
+    background-color: $blackColor;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    align-items: center;
+    top:0;
+    z-index: 1001;
+    h1{
+        font-size: 2.2rem;
+        color: $whiteColor;
+        font-weight: 700;
+        margin-left: 10px;
+        display:flex;
+    }
+    a{
+        text-decoration: none;
+    }
+    .navItems{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1800px;
+    }
+    nav{
+        align-items: center;
+    }
+   
+}
+
+.navLinks{
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 15px;
+    a{
+        margin-right: 10px;
+        font-weight: 600;
+        font-size: 1.8rem;
+        color: $whiteColor;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    a:hover{
+        opacity: .9;
+    }
+    a.active{
+        color: $mainGoldColor;
+    }
+    :focus{
+        outline: none;
+        opacity: .9;
+    }
+}
+
+.hamburger{
+    display: none;
+}
+
+.bar{
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    -webkit-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    background-color: $whiteColor;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .navBar h1{
+        font-size: 1.8rem;
+    }
+
+    .navLinks{
+        position: fixed;
+        right: -150%;
+        top: 58px;
+        flex-direction: column;
+        background-color: $blackColor;
+        width: 100%;
+        text-align: center;
+        transition: .3s;
+        margin-right: 0;
+        padding-bottom: 10px;
+    }
+
+    .navLinks.active{
+        right:0;
+    }
+
+    .hamburger{
+        display: block;
+        cursor: pointer;
+    }
+
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+ 
+ }
+
+.searchBar{
+    height: 40px;
+    width: 95%;
+    max-width: 800px;
+    border-radius: 10px;
+    border: none;
+    margin:10px;
+    font-size: 18px;
+    font-weight: 600;
+    text-indent: 10px;
+    color: $whiteColor;
+    background-color: $mainGreyColor;
+}
+.searchBar:focus{
+    outline: none;
+    opacity: .9;
+}
+
+.searchIcon:after{
+   color: white;
+   height: 25px;
+   width: auto; 
+   content: "\5A9";
+}
