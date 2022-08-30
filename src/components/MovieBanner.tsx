@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import requests from '../shared/requests'
 import instance from '../axios'
@@ -29,9 +29,8 @@ function MovieBanner() {
         showArrows={false}
         transitionTime={500}
         showThumbs={false}
-        key={movies}
     >
-        {movies.map((movie: Imovie, index)=>{
+        {movies.map((movie: Imovie, index: number)=>{
             return(
                 <div className="movieBanner" key={index}>
                     <div>

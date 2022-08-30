@@ -1,4 +1,3 @@
-import React from 'react'
 import profileImage from "/Images/profileImage.png"
 import {reviews} from "../shared/reviewsArray"
 import { Ireview } from '../ts/interfaces/review'

@@ -1,4 +1,3 @@
-import React from 'react'
 import {Icrew} from "../ts/interfaces/crew"
 
 interface Props{

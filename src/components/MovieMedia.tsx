@@ -1,4 +1,3 @@
-import React from 'react'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
@@ -16,12 +15,12 @@ interface Image{
 interface Props{
   images: Image[];
   movie: Imovie;
-  videos: Video[];
+  videos?: Video[];
 }
 
 function MovieMedia({images, movie, videos}: Props) {
 
-  const trailer = videos.find((video) => video.name.includes("Trailer"));
+  const trailer = videos?.find((video) => video.name.includes("Trailer"));
   
   const movieImages = () =>{
     return(

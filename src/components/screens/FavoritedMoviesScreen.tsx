@@ -1,4 +1,3 @@
-import React from 'react'
 import MovieRow from '../MovieRow'
 
 function FavoritedMovies() {

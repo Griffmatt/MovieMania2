@@ -1,11 +1,22 @@
-import React from 'react'
-import Crew from './Crew';
-import MovieMedia from './MovieMedia';
+import Crew from './Crew'
+import MovieMedia from './MovieMedia'
 
-function MovieCard({movie, images, crew, genre, movieYear}) {
+import {Imovie} from "../ts/interfaces/movie"
+import {Icrew} from "../ts/interfaces/crew"
+
+interface Props {
+  movie: Imovie;
+  images: {file_path: string}[];
+  crew: Icrew[];
+  genre: {name: string}[];
+  movieYear: string;
+}
+
+
+function MovieCard({movie, images, crew, genre, movieYear}: Props) {
   const base_url = "https://image.tmdb.org/t/p/w500"
 
-  let runTime = `${parseInt(movie.runtime/60)}h ${movie.runtime-parseInt(movie.runtime/60)*60}m`
+  let runTime = `${movie.runtime/60}h ${movie.runtime-(movie.runtime/60)*60}m`
 
   const getGenre = ()=> {
     
@@ -15,8 +26,8 @@ function MovieCard({movie, images, crew, genre, movieYear}) {
 
     return (
       <div className="genre">
-        {genre.map((genre, i) => (
-        <p key={i} >
+        {genre.map((genre: {name: string}, index: number) => (
+        <p key={index} >
           {genre.name}
         </p>))}
       </div>

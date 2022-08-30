@@ -11,4 +11,5 @@ export interface Imovie{
 	popularity: number;
 	vote_count: number;
 	vote_average: number;
+	runtime: number;
 }

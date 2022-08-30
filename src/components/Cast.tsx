@@ -1,5 +1,3 @@
-import React from 'react'
-
 import {Iactor} from "../ts/interfaces/actor"
 
 interface Props{
