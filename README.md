@@ -25,10 +25,10 @@ Things to Improve
   - [ ] Create a context and util folder to seperate out repeated functions and state being used in multiple components
   - [ ] Look over code to look for possible extra blocks being used in multiple components
   - [ ] better seperate state to make code easier to follow
-  - [ ] add css modules
+  - [ ] add css modules, and update css 
 
 Future Features
-* Profile page- hwere you can see your rated, favorited, and need to see movies
+* Profile page- where you can see your rated, favorited, and need to see movies
 * Login and registration forms
 * Allow users to follow each other to view eachothers movie reviews
 
