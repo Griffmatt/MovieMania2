@@ -36,7 +36,7 @@ To run this project, download Zip file, extract it and open the Terminal to loca
 
 ```
 $ npm install
-$ npm start
+$ npm run dev
 ```
 
 ## Author
