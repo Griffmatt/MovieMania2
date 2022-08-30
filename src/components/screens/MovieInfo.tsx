@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import instance from '../../axios'
 import MovieMedia from '../MovieMedia';
 import requests from '../../shared/requests'
@@ -6,8 +6,6 @@ import Crew from '../Crew';
 import Cast from '../Cast';
 import Reviews from '../Reviews';
 import YourReview from '../YourReview';
-
-import {Link} from 'react-router-dom'
 
 import{ useDispatch, useSelector} from 'react-redux'
 import { addFavorite, removeFavorite, selectFavorite } from '../../redux/favoriteSlice'
@@ -24,21 +22,9 @@ function MovieInfo({id}) {
   const [movieYear, setMovieYear] = useState([])
   const [loading, setLoading] = useState(true)
   const [videos, setVideos] = useState([])
-  const [similar, setSimilar] = useState([])
 
   const favorites = useSelector(selectFavorite)
   const dispatch = useDispatch()
-
-  useEffect(()=>{
-    
-    async function fetchSimilar(){
-      const response = await instance.get(`/movie/${id}${requests.fetchSimilar}`)
-            setSimilar(response.data.results)
-           
-        return response
-    }
-    fetchSimilar()
-  }, [id])
 
   useEffect(()=> {
     window.scrollTo(0, 0);
@@ -150,19 +136,6 @@ function MovieInfo({id}) {
           <Reviews />
           <div className="similarMovies">
             <h4>Similar Movies</h4>
-            <div className="similarMoviesRow">
-              {similar.map(similarMovie=>{
-                return(
-                  <Link to={`/${similarMovie.id}`}>
-                    <img 
-                      key={similarMovie.id}
-                      src={`${base_url}${similarMovie.poster_path}`} 
-                      alt={similarMovie.title}
-                    /> 
-                  </Link>
-                )
-              })}
-            </div>
           </div>
         </div>
     </div>
