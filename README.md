@@ -1,5 +1,5 @@
-# MovieMania
-A dynamic web app for users to browse, search, favorite, and rate movies.
+# MovieMania 2
+Refactor an older web app i made, that can be seen [here](https://github.com/Griffmatt/MovieMania)
 
 [Live Site](https://darling-truffle-b03a99.netlify.app/)
 
