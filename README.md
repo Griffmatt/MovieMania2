@@ -7,7 +7,6 @@ Refactoring some of my earlier work, that can be seen [here](https://github.com/
 * [Overview](#overview)
 * [Technologies](#technologies)
 * [Features](#features)
-* [Working On](#Next)
 * [Setup](#setup)
 * [Author](#author)
 
@@ -19,8 +18,19 @@ I have learned a lot since complting the original application, so i am going bac
 Things to Improve
 * Performance
   - [x] Add a debounce to the movie search to limit the amount of fetch requests, and rerenders
-* Readability
-* Reusability 
+  - [ ] look for places to limit rerenders, mainly with useState and useEffect
+* Readability and Reusability
+  - [x] Add typescript and eslint to improve development
+  - [ ] Update the folder and file structure to better seperate components and css to where they are being used
+  - [ ] Create a context and util folder to seperate out repeated functions and state being used in multiple components
+  - [ ] Look over code to look for possible extra blocks being used in multiple components
+  - [ ] better seperate state to make code easier to follow
+  - [ ] add css modules
+
+Future Features
+* Profile page- hwere you can see your rated, favorited, and need to see movies
+* Login and registration forms
+* Allow users to follow each other to view eachothers movie reviews
 
 ## Technologies
 Project is created with:
@@ -34,9 +44,6 @@ Project is created with:
 - Multiple Pages
 - Add to Favourites
 - Movie Search
-
-## Next
-- Connecting to firesbase to allow users to login and save their favorite movies, and reviews
 
 ## Setup
 To run this project, download Zip file, extract it and open the Terminal to locate the folder...
