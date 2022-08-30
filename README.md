@@ -16,6 +16,11 @@ I have learned a lot since complting the original application, so i am going bac
 
 
 ## Plan
+Things to Improve
+* Performance
+  - [x] Add a debounce to the movie search to limit the amount of fetch requests, and rerenders
+* Readability
+* Reusability 
 
 ## Technologies
 Project is created with:
