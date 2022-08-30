@@ -1,5 +1,5 @@
 # MovieMania 2
-Refactor an older web app i made, that can be seen [here](https://github.com/Griffmatt/MovieMania)
+Refactoring some of my earlier work, that can be seen [here](https://github.com/Griffmatt/MovieMania)
 
 [Live Site](https://darling-truffle-b03a99.netlify.app/)
 
@@ -12,8 +12,10 @@ Refactor an older web app i made, that can be seen [here](https://github.com/Gri
 * [Author](#author)
 
 ## Overview
-MovieMania is a single-page web app built with React that allows users to browse for movies. It is an online movie database where you can find relevant movie information for all the movies you love. This application uses the TMDb API to fetch movie data and show the content dynamically. It also allows users to post reviews of any movie they wish. Users are also be able to search for and add movies they are interested in to their list so they can remember to watch that movie.
+I have learned a lot since complting the original application, so i am going back to see how and hwere i can make improvments. Some of the main things i am focusing on are making the code more maintanable, readable, reusable, and accessible. You can view the [Plan](#plan) below to see how i plan to do these certain things, aswell as features i will be workign on in the future and different ways i have already improved the application.
 
+
+## Plan
 
 ## Technologies
 Project is created with:
