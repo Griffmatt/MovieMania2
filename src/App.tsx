@@ -8,10 +8,10 @@ import './styles/YourReview.css'
 import './styles/MovieMedia.css'
 
 import NavBar from './components/NavBar';
-import HomePage from './components/pages/HomePage/HomePage';
-import MovieInfoPage from './components/pages/MovieInfoPage/MovieInfoPage';
-import ProfilePage from './components/pages/ProfilePage/ProfilePage';
-import MovieSearchPage from './components/pages/MovieSearchPage/MovieSearchPage';
+import HomePage from './pages/HomePage/HomePage';
+import MovieInfoPage from './pages/MovieInfoPage/MovieInfoPage';
+import ProfilePage from './pages/ProfilePage/ProfilePage';
+import MovieSearchPage from './pages/MovieSearchPage/MovieSearchPage';
 
 import {Routes, Route} from 'react-router-dom'
 import { useParams } from 'react-router-dom'

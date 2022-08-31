@@ -1,4 +1,4 @@
-import {Icrew} from "../../../typescript/interfaces/crew"
+import {Icrew} from "../../typescript/interfaces/crew"
 
 interface Props{
   crew: Icrew[]

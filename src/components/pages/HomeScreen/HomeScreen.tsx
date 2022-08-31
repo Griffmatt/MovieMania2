@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import requests from "../../../shared/requests";
+import requests from "../../shared/requests";
 import MovieBanner from "./MovieBanner";
-import MovieRow from "../../MovieRow";
+import MovieRow from "../../components/MovieRow";
 
-import { fetchMovies } from "../../../apiCalls/fetchMovies";
+import { fetchMovies } from "../../apiCalls/fetchMovies";
 
-import { Imovie } from "../../../typescript/interfaces/movie";
+import { Imovie } from "../../typescript/interfaces/movie";
 
-function HomePage() {
+function HomeScreen() {
   const [selected, setSelected] = useState("Upcoming");
   const [request, setRequest] = useState("upcoming");
   const [movies, setMovies] = useState<Imovie[] | null>(null);
@@ -81,4 +81,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
+export default HomeScreen;

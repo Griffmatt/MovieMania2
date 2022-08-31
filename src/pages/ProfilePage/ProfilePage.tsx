@@ -1,7 +1,7 @@
-import MovieRow from '../../MovieRow'
+import MovieRow from '../../components/MovieRow'
 
 import {useSelector } from "react-redux";
-import { selectFavorite } from "../../../redux/favoriteSlice";
+import { selectFavorite } from "../../redux/favoriteSlice";
 
 function ProfilePage() {
 

@@ -1,9 +1,9 @@
 import {useState, useEffect} from 'react'
-import MovieRow from '../../MovieRow'
-import requests from '../../../shared/requests'
-import { fetchMovies } from "../../../apiCalls/fetchMovies";
+import MovieRow from '../../components/MovieRow'
+import requests from '../../shared/requests'
+import { fetchMovies } from "../../apiCalls/fetchMovies";
 
-import { Imovie } from "../../../typescript/interfaces/movie"
+import { Imovie } from "../../typescript/interfaces/movie"
 
 function MovieSearchPage() {
 

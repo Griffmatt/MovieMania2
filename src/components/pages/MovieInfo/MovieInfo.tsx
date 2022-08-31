@@ -1,28 +1,28 @@
 import { useState, useEffect } from "react";
-import instance from "../../../axios";
+import instance from "../../axios";
 import MovieMedia from "./MovieMedia";
-import requests from "../../../shared/requests";
+import requests from "../../shared/requests";
 import Crew from "./Crew";
 import Cast from "./Cast";
 import Reviews from "./Reviews";
 import YourReview from "./YourReview";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectFavorite } from "../../../redux/favoriteSlice";
+import { selectFavorite } from "../../redux/favoriteSlice";
 
-import { handleFavoritesCheck } from "../../../utils/handleFavoritesCheck";
-import { handleFavoritesClick } from "../../../utils/handleFavoritesClick";
-import { fetchMovies } from "../../../apiCalls/fetchMovies";
+import { handleFavoritesCheck } from "../../utils/handleFavoritesCheck";
+import { handleFavoritesClick } from "../../utils/handleFavoritesClick";
+import { fetchMovies } from "../../apiCalls/fetchMovies";
 
-import { Imovie } from "../../../typescript/interfaces/movie";
-import { Icrew } from "../../../typescript/interfaces/crew";
-import { Iactor } from "../../../typescript/interfaces/actor";
+import { Imovie } from "../../typescript/interfaces/movie";
+import { Icrew } from "../../typescript/interfaces/crew";
+import { Iactor } from "../../typescript/interfaces/actor";
 
 interface Props {
   id?: string;
 }
 
-function MovieInfoPage({ id }: Props) {
+function MovieInfo({ id }: Props) {
   const base_url = "https://image.tmdb.org/t/p/w500";
 
   const [movie, setMovie] = useState<Imovie | null>(null);
@@ -151,4 +151,4 @@ function MovieInfoPage({ id }: Props) {
   );
 }
 
-export default MovieInfoPage
+export default MovieInfo;
