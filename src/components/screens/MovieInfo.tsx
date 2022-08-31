@@ -10,9 +10,9 @@ import YourReview from '../YourReview';
 import{ useDispatch, useSelector} from 'react-redux'
 import { addFavorite, removeFavorite, selectFavorite } from '../../redux/favoriteSlice'
 
-import {Imovie} from "../../ts/interfaces/movie"
-import {Icrew} from "../../ts/interfaces/crew"
-import {Iactor} from "../../ts/interfaces/actor"
+import {Imovie} from "../../typescript/interfaces/movie"
+import {Icrew} from "../../typescript/interfaces/crew"
+import {Iactor} from "../../typescript/interfaces/actor"
 
 interface Props{
   id?: string;

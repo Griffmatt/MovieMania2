@@ -3,8 +3,8 @@ import { Rating } from 'react-simple-star-rating'
 import{ useDispatch, useSelector } from 'react-redux'
 import { addReview, removeReview, selectReview} from '../redux/reviewSlice'
 
-import {Ireview} from "../ts/interfaces/review"
-import {Imovie} from "../ts/interfaces/movie"
+import {Ireview} from "../typescript/interfaces/review"
+import {Imovie} from "../typescript/interfaces/movie"
 
 interface Props{
   movie: Imovie;

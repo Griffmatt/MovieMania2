@@ -5,7 +5,7 @@ import instance from '../axios'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel'
 
-import {Imovie} from "../ts/interfaces/movie"
+import {Imovie} from "../typescript/interfaces/movie"
 
 function MovieBanner() {
     const [movies, setMovies] =useState<Imovie[]>([])

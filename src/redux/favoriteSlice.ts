@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import {Imovie} from "../ts/interfaces/movie"
+import {Imovie} from "../typescript/interfaces/movie"
 
 
 interface State{

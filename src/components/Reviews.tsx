@@ -1,6 +1,6 @@
 import profileImage from "/Images/profileImage.png"
 import {reviews} from "../shared/reviewsArray"
-import { Ireview } from '../ts/interfaces/review'
+import { Ireview } from '../typescript/interfaces/review'
 
 function Reviews() {
   return (

@@ -1,8 +1,8 @@
 import Crew from './Crew'
 import MovieMedia from './MovieMedia'
 
-import {Imovie} from "../ts/interfaces/movie"
-import {Icrew} from "../ts/interfaces/crew"
+import {Imovie} from "../typescript/interfaces/movie"
+import {Icrew} from "../typescript/interfaces/crew"
 
 interface Props {
   movie: Imovie;

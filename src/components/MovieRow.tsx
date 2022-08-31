@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import{ useDispatch, useSelector} from 'react-redux'
 import { addFavorite, removeFavorite, selectFavorite } from '../redux/favoriteSlice'
 
-import {Imovie} from "../ts/interfaces/movie"
+import {Imovie} from "../typescript/interfaces/movie"
 
 function MovieRow({request}: {request: string}) {
 

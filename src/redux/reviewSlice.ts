@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import {Ireview} from "../ts/interfaces/review"
+import {Ireview} from "../typescript/interfaces/review"
 
 
 interface State{

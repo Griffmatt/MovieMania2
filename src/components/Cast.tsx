@@ -1,4 +1,4 @@
-import {Iactor} from "../ts/interfaces/actor"
+import {Iactor} from "../typescript/interfaces/actor"
 
 interface Props{
     cast: Iactor[]
