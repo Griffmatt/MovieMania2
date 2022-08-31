@@ -7,12 +7,12 @@ import './styles/Reviews.css'
 import './styles/YourReview.css'
 import './styles/MovieMedia.css'
 
-import HomeScreen from './components/screens/HomeScreen';
-import MovieInfo from './components/screens/MovieInfo';
+import HomeScreen from './components/screens/HomeScreen/HomeScreen';
+import MovieInfo from './components/screens/MovieInfo/MovieInfo';
 
 import {Routes, Route} from 'react-router-dom'
-import FavoritedMovies from './components/screens/FavoritedMoviesScreen';
-import MovieSearch from './components/screens/MovieSearchScreen';
+import FavoritedMovies from './components/screens/ProfilePage/ProfilePage';
+import MovieSearch from './components/screens/MovieSearch/MovieSearchScreen';
 
 import { useParams } from 'react-router-dom'
 import NavBar from './components/NavBar';

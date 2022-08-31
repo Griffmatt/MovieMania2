@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import requests from '../../shared/requests'
-import MovieBanner from '../MovieBanner'
-import MovieRow from '../MovieRow'
+import requests from '../../../shared/requests'
+import MovieBanner from './MovieBanner'
+import MovieRow from '../../MovieRow'
 
 
 

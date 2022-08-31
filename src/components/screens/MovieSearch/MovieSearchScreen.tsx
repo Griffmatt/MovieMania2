@@ -1,19 +1,19 @@
 import React, {useState} from 'react'
-import MovieRow from '../MovieRow'
-import requests from '../../shared/requests'
+import MovieRow from '../../MovieRow'
+import requests from '../../../shared/requests'
 
 function MovieSearch() {
 
   const [searchMovie, setSearchMovie]= useState('a')
-  let timer
+  let timer: number
 
-  const updateMovieSearch = (event:React.ChangeEvent<HTMLInputElement>) => {
+  const updateMovieSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     return searchTerm(event.target.value)
   }
 
   const searchTerm = (value: string) => {
     clearTimeout(timer)
-    timer = setTimeout(() => {
+    timer = window.setTimeout(() => {
       setSearchMovie(value?value:"a")
       console.log(value)
     }, 700);

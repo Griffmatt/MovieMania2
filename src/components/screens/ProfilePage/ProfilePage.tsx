@@ -1,4 +1,4 @@
-import MovieRow from '../MovieRow'
+import MovieRow from '../../MovieRow'
 
 function FavoritedMovies() {
   return (

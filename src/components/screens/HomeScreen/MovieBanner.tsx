@@ -1,11 +1,11 @@
 import {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
-import requests from '../shared/requests'
-import instance from '../axios'
+import requests from '../../../shared/requests'
+import instance from '../../../axios'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel'
 
-import {Imovie} from "../typescript/interfaces/movie"
+import {Imovie} from "../../../typescript/interfaces/movie"
 
 function MovieBanner() {
     const [movies, setMovies] =useState<Imovie[]>([])
