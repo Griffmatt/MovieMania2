@@ -1,10 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import {Ireview} from "../ts/interfaces/review"
+
+
+interface State{
+    reviews: Ireview[]
+}
+
+const initialState: State = {
+    reviews: []
+}
+
 export const reviewSlice = createSlice({
     name: "reviews",
-    initialState: {
-        reviews: []
-    },
+    initialState,
     reducers: {
         addReview: (state, action) => {
             state.reviews = [...state.reviews, action.payload]
@@ -17,6 +26,6 @@ export const reviewSlice = createSlice({
 
 export const { addReview, removeReview } = reviewSlice.actions;
 
-export const selectReview = state => state.reviews.reviews;
+export const selectReview = (state: {reviews: State}) => state.reviews.reviews;
 
 export default reviewSlice.reducer;

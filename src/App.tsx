@@ -14,8 +14,6 @@ import {Routes, Route} from 'react-router-dom'
 import FavoritedMovies from './components/screens/FavoritedMoviesScreen';
 import MovieSearch from './components/screens/MovieSearchScreen';
 
-
-import React from 'react'
 import { useParams } from 'react-router-dom'
 import NavBar from './components/NavBar';
 

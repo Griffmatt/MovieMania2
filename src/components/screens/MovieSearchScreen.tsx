@@ -7,11 +7,11 @@ function MovieSearch() {
   const [searchMovie, setSearchMovie]= useState('a')
   let timer
 
-  const updateMovieSearch = (event) => {
+  const updateMovieSearch = (event:React.ChangeEvent<HTMLInputElement>) => {
     return searchTerm(event.target.value)
   }
 
-  const searchTerm = (value) => {
+  const searchTerm = (value: string) => {
     clearTimeout(timer)
     timer = setTimeout(() => {
       setSearchMovie(value?value:"a")
@@ -22,7 +22,7 @@ function MovieSearch() {
   return (
     <>
       <input type="search" placeholder="Search For a Movie..." className="searchBar" onChange={event=> updateMovieSearch(event)}/>
-      <MovieRow request={`${requests.fetchSearch}${searchMovie}`} search={true}/>
+      <MovieRow request={`${requests.fetchSearch}${searchMovie}`}/>
     </>
   )
 }

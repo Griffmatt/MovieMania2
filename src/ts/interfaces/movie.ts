@@ -12,4 +12,6 @@ export interface Imovie{
 	vote_count: number;
 	vote_average: number;
 	runtime: number;
+	revenue: number;
+	budget: number;
 }

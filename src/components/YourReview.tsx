@@ -1,13 +1,18 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import { Rating } from 'react-simple-star-rating'
 import{ useDispatch, useSelector } from 'react-redux'
 import { addReview, removeReview, selectReview} from '../redux/reviewSlice'
 
 import {Ireview} from "../ts/interfaces/review"
+import {Imovie} from "../ts/interfaces/movie"
+
+interface Props{
+  movie: Imovie;
+}
 
 
 
-function YourReview({movie}) {
+function YourReview({movie}: Props) {
 
     const [rating, setRating] = useState(0)
     const [review, setReview] = useState("")
@@ -27,7 +32,7 @@ function YourReview({movie}) {
     }
   },[] );
 
-  const handleAddReview = (movie) =>{
+  const handleAddReview = (movie: Imovie) =>{
     setSubmitted(true)
       let filteredReviews = reviews.filter((review: Ireview) => review.title === movie.title)
       if(filteredReviews.length > 0){
@@ -59,9 +64,9 @@ function YourReview({movie}) {
       <>
         <h4>Write A Review</h4>
         <form>
-            <Rating initialValue={rating} allowHalfIcon={true} allowHover={false} fillColor={"rgb(206, 174, 34)"} emptyColor={"rgb(122, 122, 122)"} iconsCount={10} onClick={handleRating} size={30} transition={true} r/>
+            <Rating initialValue={rating} ratingValue={rating} allowHalfIcon={true} allowHover={false} fillColor={"rgb(206, 174, 34)"} emptyColor={"rgb(122, 122, 122)"} iconsCount={10} onClick={handleRating} size={30} transition={true}/>
             <textarea rows={4} placeholder="What did you think of this movie?(optional)" onChange={(event)=>setReview(event.target.value)} defaultValue={review}/>
-            <button onClick={()=> handleAddReview(movie)} type="button">Submit</button>:<button type="button">Login to Submit</button>
+            <button onClick={()=> handleAddReview(movie)} type="button">Submit</button><button type="button">Login to Submit</button>
         </form>
       </>}
     </div>
