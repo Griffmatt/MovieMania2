@@ -11,7 +11,7 @@ function NavBar() {
         <ul className={`navLinks ${active?"active":""}`} onClick={()=>setActive(!active)}>
           <li><NavLink to="/">Home</NavLink></li>
           <li><NavLink to="/search-movies">Search</NavLink></li>
-          <li><NavLink to="/favorite-movies">Profile</NavLink></li>
+          <li><NavLink to="/profile-page">Profile</NavLink></li>
         </ul>
         <div className={`hamburger ${active?"active":""}`} onClick={()=>setActive(!active)}>
           <span className="bar"/>

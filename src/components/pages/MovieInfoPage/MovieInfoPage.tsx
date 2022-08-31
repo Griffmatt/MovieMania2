@@ -12,6 +12,7 @@ import { selectFavorite } from "../../../redux/favoriteSlice";
 
 import { handleFavoritesCheck } from "../../../utils/handleFavoritesCheck";
 import { handleFavoritesClick } from "../../../utils/handleFavoritesClick";
+import { fetchMovies } from "../../../apiCalls/fetchMovies";
 
 import { Imovie } from "../../../typescript/interfaces/movie";
 import { Icrew } from "../../../typescript/interfaces/crew";
@@ -21,7 +22,7 @@ interface Props {
   id?: string;
 }
 
-function MovieInfo({ id }: Props) {
+function MovieInfoPage({ id }: Props) {
   const base_url = "https://image.tmdb.org/t/p/w500";
 
   const [movie, setMovie] = useState<Imovie | null>(null);
@@ -54,6 +55,11 @@ function MovieInfo({ id }: Props) {
     fetchData();
   }, [id]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    fetchMovies(`/movie/${id}${requests.fetchMovieInfo}`, setMovie);
+  }, [id]);
+
   const getGenre = () => {
     if (genre.length === 0) {
       return <p>Genres coming soon...</p>;
@@ -75,16 +81,7 @@ function MovieInfo({ id }: Props) {
           runtime - Math.trunc(runtime / 60) * 60
         }m`;
 
-  const budget = (budget: number) => {
-    if (budget === 0) return "N/A";
-    return budget.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    });
-  };
-
-  const revenue = (revenue: number) => {
+  const formatMoney = (revenue: number) => {
     if (revenue === 0) return "N/A";
     return revenue.toLocaleString("en-US", {
       style: "currency",
@@ -132,11 +129,11 @@ function MovieInfo({ id }: Props) {
                     <div className="budgetInfo">
                       <div>
                         <h4>Budget</h4>
-                        <p>{budget(movie.budget)}</p>
+                        <p>{formatMoney(movie.budget)}</p>
                       </div>
                       <div>
                         <h4>Revenue</h4>
-                        <p>{revenue(movie.revenue)}</p>
+                        <p>{formatMoney(movie.revenue)}</p>
                       </div>
                     </div>
                   </div>
@@ -154,4 +151,4 @@ function MovieInfo({ id }: Props) {
   );
 }
 
-export default MovieInfo;
+export default MovieInfoPage

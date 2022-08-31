@@ -7,22 +7,22 @@ import './styles/Reviews.css'
 import './styles/YourReview.css'
 import './styles/MovieMedia.css'
 
-import HomeScreen from './components/screens/HomeScreen/HomeScreen';
-import MovieInfo from './components/screens/MovieInfo/MovieInfo';
+import NavBar from './components/NavBar';
+import HomePage from './components/pages/HomePage/HomePage';
+import MovieInfoPage from './components/pages/MovieInfoPage/MovieInfoPage';
+import ProfilePage from './components/pages/ProfilePage/ProfilePage';
+import MovieSearchPage from './components/pages/MovieSearchPage/MovieSearchPage';
 
 import {Routes, Route} from 'react-router-dom'
-import FavoritedMovies from './components/screens/ProfilePage/ProfilePage';
-import MovieSearch from './components/screens/MovieSearch/MovieSearchScreen';
-
 import { useParams } from 'react-router-dom'
-import NavBar from './components/NavBar';
+
 
 function App() {
 
   const FilterMovie = () => {
     const {id} = useParams()
       return(
-        <MovieInfo id={id}/>
+        <MovieInfoPage id={id}/>
       )
   }
 
@@ -31,10 +31,10 @@ function App() {
       <header className="App-header">
         <NavBar/>
         <Routes>
-          <Route path="/" element={<HomeScreen/>}/>
+          <Route path="/" element={<HomePage/>}/>
           <Route path={`/:id`} element={<FilterMovie/>}/>
-          <Route path="/favorite-movies" element={<FavoritedMovies/>}/>
-          <Route path="/search-movies" element={<MovieSearch/>}/>
+          <Route path="/profile-page" element={<ProfilePage/>}/>
+          <Route path="/search-movies" element={<MovieSearchPage/>}/>
         </Routes>
       </header>
     </div>

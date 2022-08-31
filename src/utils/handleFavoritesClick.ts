@@ -5,7 +5,6 @@ import {Imovie} from "../typescript/interfaces/movie"
 
 export const handleFavoritesClick = (movie: Imovie, favorites: Imovie[], dispatch: Dispatch<AnyAction>) => {
     let filtered = favorites.find((favorite: Imovie) => movie.title=== favorite.title)
-    console.log(filtered)
     if(filtered){
       dispatch(removeFavorite(movie))
     }else{
