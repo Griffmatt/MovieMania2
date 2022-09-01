@@ -30,7 +30,7 @@ function MovieInfoPage({ id }: {id?: string}) {
     window.scrollTo(0, 0);
     async function fetchData() {
       const response = await axios.get(
-        `"https://api.themoviedb.org/3"/movie/${id}${requests.fetchMovieInfo}`
+        `https://api.themoviedb.org/3/movie/${id}${requests.fetchMovieInfo}`
       );
       setMovie(response.data)
       setCast(response.data.credits.cast)
