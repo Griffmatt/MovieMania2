@@ -1,14 +1,15 @@
-import {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import requests from '../../shared/requests'
 import instance from '../../axios'
+
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel'
 
 import {Imovie} from "../../typescript/interfaces/movie"
 
 function MovieBanner() {
-    const [movies, setMovies] =useState<Imovie[]>([])
+    const [movies, setMovies] =useState<Imovie[] | null>(null)
     const base_url = "https://image.tmdb.org/t/p/original"
     useEffect(() =>{
         async function fetchData(){
@@ -29,8 +30,9 @@ function MovieBanner() {
         showArrows={false}
         transitionTime={500}
         showThumbs={false}
+        key={movies as unknown as React.Key}
     >
-        {movies.map((movie: Imovie, index: number)=>{
+        {movies?.map((movie: Imovie, index: number)=>{
             return(
                 <div className="movieBanner" key={index}>
                     <div>

@@ -6,13 +6,9 @@ import Crew from "./Crew";
 import Cast from "./Cast";
 import Reviews from "./Reviews";
 import YourReview from "./YourReview";
+import FavoritedIcon from "../../components/ui/FavoritedIcon";
 
-import { useDispatch, useSelector } from "react-redux";
-import { selectFavorite } from "../../redux/favoriteSlice";
-
-import { handleFavoritesCheck } from "../../utils/handleFavoritesCheck";
-import { handleFavoritesClick } from "../../utils/handleFavoritesClick";
-import { fetchMovies } from "../../apiCalls/fetchMovies";
+import { formatMoney } from "../../utils/formatMoney";
 
 import { Imovie } from "../../typescript/interfaces/movie";
 import { Icrew } from "../../typescript/interfaces/crew";
@@ -33,9 +29,6 @@ function MovieInfoPage({ id }: Props) {
   const [movieYear, setMovieYear] = useState("");
   const [videos, setVideos] = useState([]);
 
-  const favorites = useSelector(selectFavorite);
-  const dispatch = useDispatch();
-
   useEffect(() => {
     window.scrollTo(0, 0);
     async function fetchData() {
@@ -49,15 +42,11 @@ function MovieInfoPage({ id }: Props) {
       setGenre(response.data.genres);
       setMovieYear(response.data.release_date.slice(0, 4));
       setVideos(response.data.videos.results);
+      console.log(response.data);
 
       return response;
     }
     fetchData();
-  }, [id]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    fetchMovies(`/movie/${id}${requests.fetchMovieInfo}`, setMovie);
   }, [id]);
 
   const getGenre = () => {
@@ -81,15 +70,6 @@ function MovieInfoPage({ id }: Props) {
           runtime - Math.trunc(runtime / 60) * 60
         }m`;
 
-  const formatMoney = (revenue: number) => {
-    if (revenue === 0) return "N/A";
-    return revenue.toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    });
-  };
-
   return (
     <>
       {movie && (
@@ -98,27 +78,20 @@ function MovieInfoPage({ id }: Props) {
             <div className="movieCard">
               <div key={movie.title} className="movieCardPoster">
                 <div className="movieImage">
-                  <input
-                    className="star"
-                    type="checkbox"
-                    onClick={() =>
-                      handleFavoritesClick(movie, favorites, dispatch)
-                    }
-                    defaultChecked={handleFavoritesCheck(movie, favorites)}
-                  />
+                  <FavoritedIcon movie={movie}/>
                   <img
-                    src={`${base_url}${movie.poster_path}`}
-                    alt={movie?.title}
-                  />
+                      src={`${base_url}${movie.poster_path}`}
+                      alt={movie?.title}
+                    />
                 </div>
               </div>
               <div className="movieInfo">
                 <h2>{movie.title}</h2>
-                {genre && getGenre()}
+                {getGenre()}
                 <h4>OverView</h4>
                 <p>{movie.overview}</p>
                 <h5>
-                  {movieYear} {runTime(movie.runtime)}{" "}
+                  {movieYear} - {runTime(movie.runtime)} -
                   <span className="infoRating">
                     {Math.trunc(movie.vote_average * 10) / 10}/10
                   </span>
@@ -151,4 +124,4 @@ function MovieInfoPage({ id }: Props) {
   );
 }
 
-export default MovieInfoPage
+export default MovieInfoPage;

@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useRef} from "react";
 import requests from "../../shared/requests";
 import MovieBanner from "./MovieBanner";
 import MovieRow from "../../components/MovieRow";
 
 import { fetchMovies } from "../../apiCalls/fetchMovies";
+import { movieOptions } from "../../shared/movieOptions"
 
 import { Imovie } from "../../typescript/interfaces/movie";
 
@@ -12,47 +13,21 @@ function HomePage() {
   const [request, setRequest] = useState("upcoming");
   const [movies, setMovies] = useState<Imovie[] | null>(null);
 
+  let optionMap = useRef(new Map())
+
   useEffect(() => {
     fetchMovies(`/movie/${request}${requests.fetchMovies}`, setMovies);
   }, [request]);
 
-  const options = [
-    {
-      name: "Upcoming",
-      value: "upcoming",
-    },
-    {
-      name: "Popular",
-      value: "popular",
-    },
-    {
-      name: "Top Rated",
-      value: "top_rated",
-    },
-    {
-      name: "Now Playing",
-      value: "now_playing",
-    },
-  ];
+  useEffect(() => {
+    movieOptions.forEach((option: {name: string, value: string})=>{
+      optionMap.current.set(option.value, option.name)
+    } )
+  }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setRequest(e.target.value);
-    switch (e.target.value) {
-      case "popular":
-        setSelected("Popular");
-        break;
-      case "top_rated":
-        setSelected("Top Rated");
-        break;
-      case "now_playing":
-        setSelected("Now Playing");
-        break;
-      case "upcoming":
-        setSelected("Upcoming");
-        break;
-      default:
-        setSelected("Default");
-    }
+  const handleChange = (value: string) => {
+    setRequest(value);
+    setSelected(optionMap.current.get(value))
   };
 
   return (
@@ -64,10 +39,10 @@ function HomePage() {
             <span className="movieSelectionTitle">{selected}</span> Movies
           </h1>
           <form>
-            <select name="selectSort" id="selectSort" onChange={handleChange}>
-              {options.map((option, i) => {
+            <select name="selectSort" id="selectSort" onChange={event => handleChange(event.target.value)}>
+              {movieOptions.map((option, index) => {
                 return (
-                  <option value={option.value} key={i}>
+                  <option value={option.value} key={index}>
                     {option.name}
                   </option>
                 );

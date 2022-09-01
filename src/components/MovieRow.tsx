@@ -1,18 +1,11 @@
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { selectFavorite } from "../redux/favoriteSlice";
-
-import { handleFavoritesCheck } from "../utils/handleFavoritesCheck";
-import { handleFavoritesClick } from "../utils/handleFavoritesClick";
-
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 import { Imovie } from "../typescript/interfaces/movie";
+import FavoritedIcon from "./ui/FavoritedIcon";
 
 function MovieRow({ movies }: { movies: Imovie[]}) {
   const base_url = "https://image.tmdb.org/t/p/w300";
-  const favorites = useSelector(selectFavorite);
-  const dispatch = useDispatch();
 
   const [moviesRef] = useAutoAnimate<HTMLDivElement>()
 
@@ -29,13 +22,7 @@ function MovieRow({ movies }: { movies: Imovie[]}) {
         {movies.map((movie: Imovie, index) => {
           return (
             <div key={index} className="moviePoster">
-              <input
-                className="star"
-                type="checkbox"
-                onClick={() => handleFavoritesClick(movie, favorites, dispatch)}
-                checked={handleFavoritesCheck(movie, favorites)}
-                readOnly
-              />
+              <FavoritedIcon movie={movie}/>
               <Link to={`/${movie.id}`}>
                 <div
                   className={`movieRating ${movieQuality(movie.vote_average)}`}
