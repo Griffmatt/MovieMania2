@@ -1,48 +1,44 @@
-import { useState, useEffect } from "react";
-import instance from "../../axios";
-import MovieMedia from "./MovieMedia";
-import requests from "../../shared/requests";
-import Crew from "./Crew";
-import Cast from "./Cast";
-import Reviews from "./Reviews";
-import YourReview from "./YourReview";
-import FavoritedIcon from "../../components/ui/FavoritedIcon";
+import { useState, useEffect } from "react"
+import axios from "axios"
 
-import { formatMoney } from "../../utils/formatMoney";
+import MovieMedia from "./MovieMedia"
+import requests from "../../shared/requests"
+import Crew from "./Crew"
+import Cast from "./Cast"
+import Reviews from "./Reviews"
+import YourReview from "./YourReview"
+import FavoritedIcon from "../../components/ui/FavoritedIcon"
 
-import { Imovie } from "../../typescript/interfaces/movie";
-import { Icrew } from "../../typescript/interfaces/crew";
-import { Iactor } from "../../typescript/interfaces/actor";
+import { formatMoney } from "../../utils/formatMoney"
 
-interface Props {
-  id?: string;
-}
+import { Imovie } from "../../typescript/interfaces/movie"
+import { Icrew } from "../../typescript/interfaces/crew"
+import { Iactor } from "../../typescript/interfaces/actor"
 
-function MovieInfoPage({ id }: Props) {
-  const base_url = "https://image.tmdb.org/t/p/w500";
+function MovieInfoPage({ id }: {id?: string}) {
+  const base_url = "https://image.tmdb.org/t/p/w500"
 
-  const [movie, setMovie] = useState<Imovie | null>(null);
-  const [cast, setCast] = useState<Iactor[]>([]);
-  const [images, setImages] = useState([]);
-  const [crew, setCrew] = useState<Icrew[]>([]);
-  const [genre, setGenre] = useState<{ name: string }[]>([]);
-  const [movieYear, setMovieYear] = useState("");
-  const [videos, setVideos] = useState([]);
+  const [movie, setMovie] = useState<Imovie | null>(null)
+  const [cast, setCast] = useState<Iactor[]>([])
+  const [images, setImages] = useState([])
+  const [crew, setCrew] = useState<Icrew[]>([])
+  const [genre, setGenre] = useState<{ name: string }[]>([])
+  const [movieYear, setMovieYear] = useState("")
+  const [videos, setVideos] = useState([])
 
   useEffect(() => {
     window.scrollTo(0, 0);
     async function fetchData() {
-      const response = await instance.get(
-        `/movie/${id}${requests.fetchMovieInfo}`
+      const response = await axios.get(
+        `"https://api.themoviedb.org/3"/movie/${id}${requests.fetchMovieInfo}`
       );
-      setMovie(response.data);
-      setCast(response.data.credits.cast);
-      setCrew(response.data.credits.crew);
-      setImages(response.data.images.backdrops);
-      setGenre(response.data.genres);
-      setMovieYear(response.data.release_date.slice(0, 4));
-      setVideos(response.data.videos.results);
-      console.log(response.data);
+      setMovie(response.data)
+      setCast(response.data.credits.cast)
+      setCrew(response.data.credits.crew)
+      setImages(response.data.images.backdrops)
+      setGenre(response.data.genres)
+      setMovieYear(response.data.release_date.slice(0, 4))
+      setVideos(response.data.videos.results)
 
       return response;
     }
@@ -51,7 +47,7 @@ function MovieInfoPage({ id }: Props) {
 
   const getGenre = () => {
     if (genre.length === 0) {
-      return <p>Genres coming soon...</p>;
+      return <p>Genres coming soon...</p>
     }
 
     return (
@@ -68,7 +64,7 @@ function MovieInfoPage({ id }: Props) {
       ? `${runtime}m`
       : `${Math.trunc(runtime / 60)}h ${
           runtime - Math.trunc(runtime / 60) * 60
-        }m`;
+        }m`
 
   return (
     <>
@@ -121,7 +117,7 @@ function MovieInfoPage({ id }: Props) {
         </div>
       )}
     </>
-  );
+  )
 }
 
-export default MovieInfoPage;
+export default MovieInfoPage
