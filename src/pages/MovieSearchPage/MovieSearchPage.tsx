@@ -1,14 +1,12 @@
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 import MovieRow from '../../components/MovieRow'
 import requests from '../../shared/requests'
-import { fetchMovies } from "../../apiCalls/fetchMovies";
-
-import { Imovie } from "../../typescript/interfaces/movie"
+import { useFetchMovies } from "../../hooks/fetchMovies";
 
 function MovieSearchPage() {
-
   const [searchFor, setSearchFor]= useState('a')
-  const [movies, setMovies] = useState<Imovie[] | null>(null)
+
+  const movies = useFetchMovies(`${requests.fetchSearch}${searchFor}`)
 
   let timer: number
 
@@ -18,10 +16,6 @@ function MovieSearchPage() {
       setSearchFor(value?value:"a")
     }, 700);
   }
-
-  useEffect(() => {
-    fetchMovies(`${requests.fetchSearch}${searchFor}`, setMovies);
-  }, [searchFor]);
 
   return (
     <>

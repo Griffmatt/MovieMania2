@@ -3,21 +3,16 @@ import requests from "../../shared/requests";
 import MovieBanner from "./MovieBanner";
 import MovieRow from "../../components/MovieRow";
 
-import { fetchMovies } from "../../apiCalls/fetchMovies";
-import { movieOptions } from "../../shared/movieOptions"
-
-import { Imovie } from "../../typescript/interfaces/movie";
+import { useFetchMovies } from "../../hooks/fetchMovies";
+import { movieOptions } from "../../shared/movieOptions";
 
 function HomePage() {
   const [selected, setSelected] = useState("Upcoming");
   const [request, setRequest] = useState("upcoming");
-  const [movies, setMovies] = useState<Imovie[] | null>(null);
+
+  const movies = useFetchMovies(`/movie/${request}${requests.fetchMovies}`)
 
   let optionMap = useRef(new Map())
-
-  useEffect(() => {
-    fetchMovies(`/movie/${request}${requests.fetchMovies}`, setMovies);
-  }, [request]);
 
   useEffect(() => {
     movieOptions.forEach((option: {name: string, value: string})=>{
@@ -51,7 +46,7 @@ function HomePage() {
           </form>
         </div>
       </div>
-      {movies && <MovieRow movies={movies} />}
+       {movies && <MovieRow movies={movies} />}
     </>
   );
 }
