@@ -2,16 +2,16 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import requests from '../../shared/requests'
 
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 import { Carousel } from 'react-responsive-carousel'
 
 import {Imovie} from "../../typescript/interfaces/movie"
-import { useFetchMovies } from '../../hooks/fetchMovies';
+import { useFetchMovies } from '../../hooks/fetchMovies'
 
 function MovieBanner() {
      const base_url = "https://image.tmdb.org/t/p/original"
 
-    const movies = useFetchMovies(requests.fetchPopular)?.slice(0, 5)
+    const movies = useFetchMovies<Imovie[]>(requests.fetchPopular)?.slice(0, 5)
 
   return (
     <Carousel

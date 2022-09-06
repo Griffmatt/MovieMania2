@@ -6,11 +6,13 @@ import MovieRow from "../../components/MovieRow";
 import { useFetchMovies } from "../../hooks/fetchMovies";
 import { movieOptions } from "../../shared/movieOptions";
 
+import {Imovie} from "../../typescript/interfaces/movie"
+
 function HomePage() {
   const [selected, setSelected] = useState("Upcoming");
   const [request, setRequest] = useState("upcoming");
 
-  const movies = useFetchMovies(`/movie/${request}${requests.fetchMovies}`)
+  const movies = useFetchMovies<Imovie[]>(`/movie/${request}${requests.fetchMovies}`)
 
   let optionMap = useRef(new Map())
 

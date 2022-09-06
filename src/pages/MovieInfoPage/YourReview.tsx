@@ -43,7 +43,7 @@ function YourReview({movie}: Props) {
   }
 
   const handleRating = (rate: number) => {
-    setRating(rate/10)
+    setRating(rate)
   }
 
   return (
@@ -64,7 +64,7 @@ function YourReview({movie}: Props) {
       <>
         <h4>Write A Review</h4>
         <form>
-            <Rating initialValue={rating} ratingValue={rating} allowHalfIcon={true} allowHover={false} fillColor={"rgb(206, 174, 34)"} emptyColor={"rgb(122, 122, 122)"} iconsCount={10} onClick={handleRating} size={30} transition={true}/>
+            <Rating initialValue={0} ratingValue={rating} allowHalfIcon={true} allowHover={false} fillColor={"rgb(206, 174, 34)"} emptyColor={"rgb(122, 122, 122)"} iconsCount={10} onClick={handleRating} size={30} transition={true}/>
             <textarea rows={4} placeholder="What did you think of this movie?(optional)" onChange={(event)=>setReview(event.target.value)} defaultValue={review}/>
             <button onClick={()=> handleAddReview(movie)} type="button">Submit</button><button type="button">Login to Submit</button>
         </form>

@@ -9,40 +9,30 @@ import Reviews from "./Reviews"
 import YourReview from "./YourReview"
 import FavoritedIcon from "../../components/ui/FavoritedIcon"
 
+import { useFetchMovies } from "../../hooks/fetchMovies"
 import { formatMoney } from "../../utils/formatMoney"
 
 import { Imovie } from "../../typescript/interfaces/movie"
-import { Icrew } from "../../typescript/interfaces/crew"
-import { Iactor } from "../../typescript/interfaces/actor"
+import { Icredits } from "../../typescript/interfaces/castAndCrew"
 
 function MovieInfoPage({ id }: {id?: string}) {
   const base_url = "https://image.tmdb.org/t/p/w500"
 
-  const [movie, setMovie] = useState<Imovie | null>(null)
-  const [cast, setCast] = useState<Iactor[]>([])
+  const [credits, setCredits] = useState<Icredits>()
   const [images, setImages] = useState([])
-  const [crew, setCrew] = useState<Icrew[]>([])
-  const [genre, setGenre] = useState<{ name: string }[]>([])
-  const [movieYear, setMovieYear] = useState("")
+  const [genre, setGenre] = useState<{ name: string }[]>()
+  const [movieYear, setMovieYear] = useState<string>()
   const [videos, setVideos] = useState([])
+
+  const movie = useFetchMovies<Imovie | null>(`https://api.themoviedb.org/3/movie/${id}${requests.fetchMovieInfo}`)
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    async function fetchData() {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${id}${requests.fetchMovieInfo}`
-      );
-      setMovie(response.data)
-      setCast(response.data.credits.cast)
-      setCrew(response.data.credits.crew)
-      setImages(response.data.images.backdrops)
-      setGenre(response.data.genres)
-      setMovieYear(response.data.release_date.slice(0, 4))
-      setVideos(response.data.videos.results)
-
-      return response;
-    }
-    fetchData();
+      setCredits(movie?.credits)
+      setImages(movie?.images.backdrops.slice(0, 5))
+      setGenre(movie?.genres)
+      setMovieYear(movie?.release_date)
+      setVideos(movie?.videos.results)
   }, [id]);
 
   const getGenre = () => {
@@ -94,7 +84,7 @@ function MovieInfoPage({ id }: {id?: string}) {
                 </h5>
                 <div className="crewAndReviewContainer">
                   <div className="crewAndBudgetInfo">
-                    <Crew crew={crew} />
+                    {credits && <Crew crew={credits.crew} />}
                     <div className="budgetInfo">
                       <div>
                         <h4>Budget</h4>
@@ -108,7 +98,7 @@ function MovieInfoPage({ id }: {id?: string}) {
                   </div>
                   <YourReview movie={movie} />
                 </div>
-                <Cast cast={cast} />
+                {credits && <Cast cast={credits.cast} />}
               </div>
             </div>
             <MovieMedia images={images} movie={movie} videos={videos} />
