@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import axios from "axios"
 
 import MovieMedia from "./MovieMedia"
 import requests from "../../shared/requests"
@@ -12,17 +11,17 @@ import FavoritedIcon from "../../components/ui/FavoritedIcon"
 import { useFetchMovies } from "../../hooks/fetchMovies"
 import { formatMoney } from "../../utils/formatMoney"
 
-import { Imovie } from "../../typescript/interfaces/movie"
+import { Imovie, Iresults, Iimage } from "../../typescript/interfaces/movie"
 import { Icredits } from "../../typescript/interfaces/castAndCrew"
 
 function MovieInfoPage({ id }: {id?: string}) {
   const base_url = "https://image.tmdb.org/t/p/w500"
 
   const [credits, setCredits] = useState<Icredits>()
-  const [images, setImages] = useState([])
+  const [images, setImages] = useState<Iimage[]>()
   const [genre, setGenre] = useState<{ name: string }[]>()
   const [movieYear, setMovieYear] = useState<string>()
-  const [videos, setVideos] = useState([])
+  const [videos, setVideos] = useState<Iresults[]>()
 
   const movie = useFetchMovies<Imovie | null>(`https://api.themoviedb.org/3/movie/${id}${requests.fetchMovieInfo}`)
 
@@ -36,13 +35,13 @@ function MovieInfoPage({ id }: {id?: string}) {
   }, [id]);
 
   const getGenre = () => {
-    if (genre.length === 0) {
+    if (genre?.length === 0) {
       return <p>Genres coming soon...</p>
     }
 
     return (
       <div className="genre">
-        {genre.map((genre, i) => (
+        {genre?.map((genre, i) => (
           <p key={i}>{genre.name}</p>
         ))}
       </div>

@@ -18,6 +18,22 @@ export interface Imovie{
 	budget: number;
 	credits: Icredits;
 	genres: { name: string }[];
-	videos: {name: string; key: string;};
-	images: {file_path: string; backdrops: string[]};
+	videos: Ivideos;
+	images: Iimages;
+}
+
+export interface Ivideos{
+	results: Iresults[]
+}
+export interface Iresults{
+	name: string;
+	key: string;
+}
+
+export interface Iimages{
+	backdrops: Iimage[]
+}
+
+export interface Iimage{
+	file_path: string;
 }
