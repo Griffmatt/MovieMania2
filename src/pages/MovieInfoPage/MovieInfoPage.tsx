@@ -1,21 +1,21 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 
-import MovieMedia from "./MovieMedia"
-import requests from "../../shared/requests"
-import Crew from "./Crew"
-import Cast from "./Cast"
-import Reviews from "./Reviews"
-import YourReview from "./YourReview"
-import FavoritedIcon from "../../components/ui/FavoritedIcon"
+import MovieMedia from './MovieMedia'
+import requests from '../../shared/requests'
+import Crew from './Crew'
+import Cast from './Cast'
+import Reviews from './Reviews'
+import YourReview from './YourReview'
+import FavoritedIcon from '../../components/ui/FavoritedIcon'
 
-import { useFetchMovies } from "../../hooks/fetchMovies"
-import { formatMoney } from "../../utils/formatMoney"
+import { useFetchMovies } from '../../hooks/fetchMovies'
+import { formatMoney } from '../../utils/formatMoney'
 
-import { Imovie, Iresults, Iimage } from "../../typescript/interfaces/movie"
-import { Icredits } from "../../typescript/interfaces/castAndCrew"
+import { Imovie, Iresults, Iimage } from '../../typescript/interfaces/movie'
+import { Icredits } from '../../typescript/interfaces/castAndCrew'
 
-function MovieInfoPage({ id }: {id?: string}) {
-  const base_url = "https://image.tmdb.org/t/p/w500"
+function MovieInfoPage({ id }: { id?: string }) {
+  const base_url = 'https://image.tmdb.org/t/p/w500'
 
   const [credits, setCredits] = useState<Icredits>()
   const [images, setImages] = useState<Iimage[]>()
@@ -23,16 +23,18 @@ function MovieInfoPage({ id }: {id?: string}) {
   const [movieYear, setMovieYear] = useState<string>()
   const [videos, setVideos] = useState<Iresults[]>()
 
-  const movie = useFetchMovies<Imovie | null>(`https://api.themoviedb.org/3/movie/${id}${requests.fetchMovieInfo}`)
+  const movie = useFetchMovies<Imovie | null>(
+    `https://api.themoviedb.org/3/movie/${id}${requests.fetchMovieInfo}`
+  )
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-      setCredits(movie?.credits)
-      setImages(movie?.images.backdrops.slice(0, 5))
-      setGenre(movie?.genres)
-      setMovieYear(movie?.release_date)
-      setVideos(movie?.videos.results)
-  }, [id]);
+    window.scrollTo(0, 0)
+    setCredits(movie?.credits)
+    setImages(movie?.images.backdrops.slice(0, 5))
+    setGenre(movie?.genres)
+    setMovieYear(movie?.release_date)
+    setVideos(movie?.videos.results)
+  }, [id])
 
   const getGenre = () => {
     if (genre?.length === 0) {
@@ -45,8 +47,8 @@ function MovieInfoPage({ id }: {id?: string}) {
           <p key={i}>{genre.name}</p>
         ))}
       </div>
-    );
-  };
+    )
+  }
 
   const runTime = (runtime: number) =>
     runtime < 60
@@ -63,11 +65,11 @@ function MovieInfoPage({ id }: {id?: string}) {
             <div className="movieCard">
               <div key={movie.title} className="movieCardPoster">
                 <div className="movieImage">
-                  <FavoritedIcon movie={movie}/>
+                  <FavoritedIcon movie={movie} />
                   <img
-                      src={`${base_url}${movie.poster_path}`}
-                      alt={movie?.title}
-                    />
+                    src={`${base_url}${movie.poster_path}`}
+                    alt={movie?.title}
+                  />
                 </div>
               </div>
               <div className="movieInfo">

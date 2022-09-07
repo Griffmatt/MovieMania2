@@ -1,32 +1,33 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit'
 
-import {Imovie} from "../typescript/interfaces/movie"
+import { Imovie } from '../typescript/interfaces/movie'
 
-
-interface State{
-    favorites: Imovie[]
+interface State {
+  favorites: Imovie[]
 }
 
-
 const initialState: State = {
-    favorites: []
+  favorites: [],
 }
 
 export const favoriteSlice = createSlice({
-    name: "favorite",
-    initialState,
-    reducers: {
-        addFavorite: (state, action) => {
-            state.favorites = [...state.favorites, action.payload]
-        },
-        removeFavorite: (state, action) => {
-            state.favorites = state.favorites.filter((movie: Imovie) => movie.title !== action.payload.title)
-        }
+  name: 'favorite',
+  initialState,
+  reducers: {
+    addFavorite: (state, action) => {
+      state.favorites = [...state.favorites, action.payload]
     },
-});
+    removeFavorite: (state, action) => {
+      state.favorites = state.favorites.filter(
+        (movie: Imovie) => movie.title !== action.payload.title
+      )
+    },
+  },
+})
 
-export const { addFavorite, removeFavorite } = favoriteSlice.actions;
+export const { addFavorite, removeFavorite } = favoriteSlice.actions
 
-export const selectFavorite = (state: {favorites: State})  => state.favorites.favorites;
+export const selectFavorite = (state: { favorites: State }) =>
+  state.favorites.favorites
 
-export default favoriteSlice.reducer;
+export default favoriteSlice.reducer
