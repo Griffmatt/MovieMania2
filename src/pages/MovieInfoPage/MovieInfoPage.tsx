@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 
 import MovieMedia from './MovieMedia'
 import requests from '../../shared/requests'
@@ -8,42 +8,29 @@ import Reviews from './Reviews'
 import YourReview from './YourReview'
 import FavoritedIcon from '../../components/ui/FavoritedIcon'
 
-import { useFetchMovies } from '../../hooks/fetchMovies'
+import useFetchMovies from '../../hooks/useFetchMovies'
 import { formatMoney } from '../../utils/formatMoney'
 
-import { Imovie, Iresults, Iimage } from '../../typescript/interfaces/movie'
-import { Icredits } from '../../typescript/interfaces/castAndCrew'
+import { Imovie } from '../../typescript/interfaces/movie'
 
 function MovieInfoPage({ id }: { id?: string }) {
   const base_url = 'https://image.tmdb.org/t/p/w500'
 
-  const [credits, setCredits] = useState<Icredits>()
-  const [images, setImages] = useState<Iimage[]>()
-  const [genre, setGenre] = useState<{ name: string }[]>()
-  const [movieYear, setMovieYear] = useState<string>()
-  const [videos, setVideos] = useState<Iresults[]>()
+  const movie = useFetchMovies<Imovie>(`/movie/${id}${requests.fetchMovieInfo}`)
 
-  const movie = useFetchMovies<Imovie | null>(
-    `https://api.themoviedb.org/3/movie/${id}${requests.fetchMovieInfo}`
-  )
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    setCredits(movie?.credits)
-    setImages(movie?.images.backdrops.slice(0, 5))
-    setGenre(movie?.genres)
-    setMovieYear(movie?.release_date)
-    setVideos(movie?.videos.results)
   }, [id])
 
   const getGenre = () => {
-    if (genre?.length === 0) {
+    if (movie?.genres.length === 0) {
       return <p>Genres coming soon...</p>
     }
 
     return (
       <div className="genre">
-        {genre?.map((genre, i) => (
+        {movie?.genres.map((genre, i) => (
           <p key={i}>{genre.name}</p>
         ))}
       </div>
@@ -68,7 +55,7 @@ function MovieInfoPage({ id }: { id?: string }) {
                   <FavoritedIcon movie={movie} />
                   <img
                     src={`${base_url}${movie.poster_path}`}
-                    alt={movie?.title}
+                    alt={movie.title}
                   />
                 </div>
               </div>
@@ -78,14 +65,14 @@ function MovieInfoPage({ id }: { id?: string }) {
                 <h4>OverView</h4>
                 <p>{movie.overview}</p>
                 <h5>
-                  {movieYear} - {runTime(movie.runtime)} -
+                  {movie.release_date.slice(0,4)} - {runTime(movie.runtime)} -
                   <span className="infoRating">
                     {Math.trunc(movie.vote_average * 10) / 10}/10
                   </span>
                 </h5>
                 <div className="crewAndReviewContainer">
                   <div className="crewAndBudgetInfo">
-                    {credits && <Crew crew={credits.crew} />}
+                    {movie.credits && <Crew crew={movie.credits.crew} />}
                     <div className="budgetInfo">
                       <div>
                         <h4>Budget</h4>
@@ -99,10 +86,10 @@ function MovieInfoPage({ id }: { id?: string }) {
                   </div>
                   <YourReview movie={movie} />
                 </div>
-                {credits && <Cast cast={credits.cast} />}
+                {movie.credits && <Cast cast={movie.credits.cast} />}
               </div>
             </div>
-            <MovieMedia images={images} movie={movie} videos={videos} />
+            <MovieMedia images={movie.images.backdrops} movie={movie} videos={movie.videos.results} />
             <Reviews />
           </div>
         </div>

@@ -3,7 +3,7 @@ import requests from '../../shared/requests'
 import MovieBanner from './MovieBanner'
 import MovieRow from '../../components/MovieRow'
 
-import { useFetchMovies } from '../../hooks/fetchMovies'
+import useFetchMovies  from '../../hooks/useFetchMovies'
 import { movieOptions } from '../../shared/movieOptions'
 
 import { Imovie } from '../../typescript/interfaces/movie'
