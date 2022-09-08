@@ -1,12 +1,13 @@
 import { useRef, useEffect } from "react"
 
-function useDebounce<T>(callback: () => T, delay: number, dependencies: any[]): T | void {
+function useDebounce<Return, Dependencies>(callback: () => Return, delay: number, dependencies: Dependencies[]){
+
     let timerRef = useRef<string | number | NodeJS.Timeout | undefined>()
 
     useEffect(()=>{
         clearTimeout(timerRef.current)
         timerRef.current = setTimeout(() => {
-            return callback()
+            callback()
           }, delay)
 
     }, [...dependencies, delay])

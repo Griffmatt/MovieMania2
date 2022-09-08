@@ -10,7 +10,7 @@ import useFetchMovies from '../../hooks/useFetchMovies'
 
 function MovieSearchPage() {
   const [searchFor, setSearchFor] = useState('a')
-  const [searchValue, setSearchValue] = useState('a')
+  const [searchValue, setSearchValue] = useState('')
 
   useDebounce(() => setSearchFor(searchValue === ''? 'a': searchValue ), 700, [searchValue])
 
