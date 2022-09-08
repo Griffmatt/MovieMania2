@@ -1,4 +1,4 @@
-import { Iactor } from '../../typescript/interfaces/castAndCrew'
+import { Iactor } from '../../../typescript/interfaces/castAndCrew'
 
 interface Props {
   cast: Iactor[]

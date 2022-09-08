@@ -9,7 +9,7 @@ import './styles/MovieMedia.css'
 
 import NavBar from './components/NavBar'
 import HomePage from './pages/HomePage/HomePage'
-import MovieInfoPage from './pages/MovieInfoPage/MovieInfoPage'
+import MovieInfoPage from './pages/MovieInfoPage/SingleMoviePage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
 import MovieSearchPage from './pages/MovieSearchPage/MovieSearchPage'
 

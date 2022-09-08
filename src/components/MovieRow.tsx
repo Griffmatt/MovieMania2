@@ -11,9 +11,9 @@ function MovieRow({ movies }: { movies: Imovie[] }) {
   return (
     <div className="movieRowContainer">
       <div className="movieRowGrid" ref={moviesRef}>
-        {movies.map((movie: Imovie, index) => {
+        {movies.map((movie: Imovie) => {
           return (
-            <MoviePoster movie={movie} index={index}/>
+              <MoviePoster movie={movie} posterSize="300" />
           )
         })}
       </div>

@@ -21,36 +21,6 @@
       flex-wrap: wrap;
 }
 
-.moviePoster {
-  margin: 7px;
-  height: 450px;
-  width: 300px;
-  border: 2px solid #505050;
-  border-radius: 5px;
-  background-color: #454545;
-  position: relative;
-  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-          box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
-  -webkit-transition: -webkit-transform 200ms;
-  transition: -webkit-transform 200ms;
-  transition: transform 200ms;
-  transition: transform 200ms, -webkit-transform 200ms;
-}
-
-.moviePoster img {
-  height: 450px;
-  width: 300px;
-  vertical-align: middle;
-}
-
-.moviePoster .movieRating {
-  background-color: rgba(0, 0, 0, 0.404);
-  position: absolute;
-  padding: 0px 10px;
-  font-size: 1.8rem;
-  font-weight: 600;
-}
-
 .shownMovies {
   display: -webkit-box;
   display: -ms-flexbox;
