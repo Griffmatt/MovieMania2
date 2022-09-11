@@ -8,11 +8,8 @@ import useFetchMovies from '../../hooks/useFetchMovies'
 
 import { Imovie } from '../../typescript/interfaces/movie'
 
-
-function MovieInfoPage({ id }: { id?: string }) {
-
+function MovieInfoPage({ id }: { id: string }) {
   const movie = useFetchMovies<Imovie>(`/movie/${id}${requests.fetchMovieInfo}`)
-
 
   return (
     <>
@@ -20,10 +17,14 @@ function MovieInfoPage({ id }: { id?: string }) {
         <div className="movieCardContainer">
           <div className="movieCardRow">
             <div className="movieCard">
-                <MoviePoster movie={movie} posterSize="500"/>
-                <MovieInfo movie={movie}/>
+              <MoviePoster movie={movie} posterSize="500" />
+              <MovieInfo movie={movie} />
             </div>
-            <MovieMedia images={movie.images.backdrops} movie={movie} videos={movie.videos.results} />
+            <MovieMedia
+              images={movie.images.backdrops}
+              movie={movie}
+              videos={movie.videos.results}
+            />
             <Reviews />
           </div>
         </div>

@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Rating } from 'react-simple-star-rating'
 import { useDispatch, useSelector } from 'react-redux'
-import { addReview, removeReview, selectReview } from '../../../redux/reviewSlice'
+import {
+  addReview,
+  removeReview,
+  selectReview,
+} from '../../../redux/reviewSlice'
 
 import { Ireview } from '../../../typescript/interfaces/review'
 import { Imovie } from '../../../typescript/interfaces/movie'
@@ -20,7 +24,7 @@ function YourReview({ movie }: Props) {
   const reviews = useSelector(selectReview)
 
   useEffect(() => {
-    let filteredReview = reviews.filter(
+    const filteredReview = reviews.filter(
       (review: Ireview) => review.title === movie.title
     )
     if (filteredReview.length === 1) {
@@ -28,11 +32,11 @@ function YourReview({ movie }: Props) {
       setReview(filteredReview[0].review)
       setSubmitted(true)
     }
-  }, [])
+  }, [reviews, movie.title])
 
   const handleAddReview = (movie: Imovie) => {
     setSubmitted(true)
-    let filteredReviews = reviews.filter(
+    const filteredReviews = reviews.filter(
       (review: Ireview) => review.title === movie.title
     )
     if (filteredReviews.length > 0) {
@@ -77,7 +81,9 @@ function YourReview({ movie }: Props) {
                   d="M14.1 27.2l7.1 7.2 16.7-16.8"
                 />
               </svg>
-              <p onClick={() => setSubmitted(false)}>Edit Your Review</p>
+              <button onClick={() => setSubmitted(false)}>
+                Edit Your Review
+              </button>
             </div>
           </div>
         </>

@@ -12,20 +12,21 @@ function NavBar() {
             <span className="titleMania">M</span>ania
           </h1>
         </a>
-        <ul
-          className={`navLinks ${active ? 'active' : ''}`}
+        <div
           onClick={() => setActive(!active)}
         >
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/search-movies">Search</NavLink>
-          </li>
-          <li>
-            <NavLink to="/profile-page">Profile</NavLink>
-          </li>
-        </ul>
+          <ul className={`navLinks ${active ? 'active' : ''}`}>
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/search-movies">Search</NavLink>
+            </li>
+            <li>
+              <NavLink to="/profile-page">Profile</NavLink>
+            </li>
+          </ul>
+        </div>
         <div
           className={`hamburger ${active ? 'active' : ''}`}
           onClick={() => setActive(!active)}

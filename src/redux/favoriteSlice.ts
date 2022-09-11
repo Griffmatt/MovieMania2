@@ -14,10 +14,10 @@ export const favoriteSlice = createSlice({
   name: 'favorite',
   initialState,
   reducers: {
-    addFavorite: (state, action) => {
+    addFavorite: (state, action: { payload: Imovie }) => {
       state.favorites = [...state.favorites, action.payload]
     },
-    removeFavorite: (state, action) => {
+    removeFavorite: (state, action: { payload: Imovie }) => {
       state.favorites = state.favorites.filter(
         (movie: Imovie) => movie.title !== action.payload.title
       )

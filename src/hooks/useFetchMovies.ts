@@ -6,6 +6,7 @@ export default function useFetchMovies<T>(request: string) {
 
   const CancelToken = axios.CancelToken
   const source = CancelToken.source()
+  console.log(request)
 
   useEffect(() => {
     async function fetchMovies() {
@@ -13,15 +14,13 @@ export default function useFetchMovies<T>(request: string) {
         const response = await axios.get(
           `https://api.themoviedb.org/3${request}`
         )
-        setMovies(
-          response.data.results ?? response.data
-        )
+        setMovies(response.data.results ?? response.data)
         return response
       } catch {
         console.log('error')
       }
     }
-    fetchMovies()
+    void fetchMovies()
     return () => {
       source.cancel()
     }

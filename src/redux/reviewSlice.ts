@@ -14,7 +14,7 @@ export const reviewSlice = createSlice({
   name: 'reviews',
   initialState,
   reducers: {
-    addReview: (state, action) => {
+    addReview: (state, action: { payload: Ireview }) => {
       state.reviews = [...state.reviews, action.payload]
     },
     removeReview: (state, action) => {

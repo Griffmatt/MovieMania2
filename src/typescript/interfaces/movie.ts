@@ -1,6 +1,7 @@
 import { Icredits } from './castAndCrew'
 
 export interface Imovie {
+  results: Imovie
   id: number
   title: string
   original_title: string

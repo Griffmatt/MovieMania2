@@ -3,7 +3,7 @@ import requests from '../../shared/requests'
 import MovieBanner from './MovieBanner'
 import MovieRow from '../../components/MovieRow'
 
-import useFetchMovies  from '../../hooks/useFetchMovies'
+import useFetchMovies from '../../hooks/useFetchMovies'
 import { movieOptions } from '../../shared/movieOptions'
 
 import { Imovie } from '../../typescript/interfaces/movie'
@@ -16,7 +16,7 @@ function HomePage() {
     `/movie/${request}${requests.fetchMovies}`
   )
 
-  let optionMap = useRef(new Map())
+  const optionMap = useRef(new Map())
 
   useEffect(() => {
     movieOptions.forEach((option: { name: string; value: string }) => {
@@ -38,6 +38,7 @@ function HomePage() {
             <span className="movieSelectionTitle">{selected}</span> Movies
           </h1>
           <form>
+            {/* eslint-disable-next-line jsx-a11y/no-onchange */}
             <select
               name="selectSort"
               id="selectSort"

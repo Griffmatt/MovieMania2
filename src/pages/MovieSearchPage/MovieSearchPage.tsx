@@ -3,16 +3,16 @@ import MovieRow from '../../components/MovieRow'
 import requests from '../../shared/requests'
 import { Imovie } from '../../typescript/interfaces/movie'
 
-
 import useDebounce from '../../hooks/useDebounce'
 import useFetchMovies from '../../hooks/useFetchMovies'
-
 
 function MovieSearchPage() {
   const [searchFor, setSearchFor] = useState('a')
   const [searchValue, setSearchValue] = useState('')
 
-  useDebounce(() => setSearchFor(searchValue === ''? 'a': searchValue ), 700, [searchValue])
+  useDebounce(() => setSearchFor(searchValue === '' ? 'a' : searchValue), 700, [
+    searchValue,
+  ])
 
   const movies = useFetchMovies<Imovie[]>(`${requests.fetchSearch}${searchFor}`)
 
