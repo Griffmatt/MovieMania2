@@ -48,6 +48,8 @@ function YourReview({ movie }: Props) {
         rating: rating,
         review: review,
         id: movie.id,
+        name: 'user',
+        date: new Date().toLocaleDateString(),
       })
     )
   }

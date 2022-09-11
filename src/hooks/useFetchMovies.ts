@@ -3,18 +3,19 @@ import { useEffect, useState } from 'react'
 
 export default function useFetchMovies<T>(request: string) {
   const [movies, setMovies] = useState<T>()
-
-  const CancelToken = axios.CancelToken
-  const source = CancelToken.source()
-  console.log(request)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    const CancelToken = axios.CancelToken
+    const source = CancelToken.source()
     async function fetchMovies() {
+      setLoading(true)
       try {
-        const response = await axios.get(
+        const response = await axios.get<T>(
           `https://api.themoviedb.org/3${request}`
         )
         setMovies(response.data.results ?? response.data)
+        setLoading(false)
         return response
       } catch {
         console.log('error')
@@ -25,5 +26,5 @@ export default function useFetchMovies<T>(request: string) {
       source.cancel()
     }
   }, [request])
-  return movies
+  return { movies, loading }
 }

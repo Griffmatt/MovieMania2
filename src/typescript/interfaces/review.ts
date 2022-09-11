@@ -3,5 +3,6 @@ export interface Ireview {
   rating: number
   date: string
   review: string
-  title?: string
+  title: string
+  id: number
 }

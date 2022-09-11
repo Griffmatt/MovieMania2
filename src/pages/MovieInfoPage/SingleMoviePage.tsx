@@ -9,25 +9,31 @@ import useFetchMovies from '../../hooks/useFetchMovies'
 import { Imovie } from '../../typescript/interfaces/movie'
 
 function MovieInfoPage({ id }: { id: string }) {
-  const movie = useFetchMovies<Imovie>(`/movie/${id}${requests.fetchMovieInfo}`)
+  const { movies, loading } = useFetchMovies<Imovie>(
+    `/movie/${id}${requests.fetchMovieInfo}`
+  )
 
   return (
     <>
-      {movie && (
-        <div className="movieCardContainer">
-          <div className="movieCardRow">
-            <div className="movieCard">
-              <MoviePoster movie={movie} posterSize="500" />
-              <MovieInfo movie={movie} />
+      {loading ? (
+        <div></div>
+      ) : (
+        movies && (
+          <div className="movieCardContainer">
+            <div className="movieCardRow">
+              <div className="movieCard">
+                <MoviePoster movie={movies} posterSize="500" />
+                <MovieInfo movie={movies} />
+              </div>
+              <MovieMedia
+                images={movies.images.backdrops}
+                movie={movies}
+                videos={movies.videos.results}
+              />
+              <Reviews />
             </div>
-            <MovieMedia
-              images={movie.images.backdrops}
-              movie={movie}
-              videos={movie.videos.results}
-            />
-            <Reviews />
           </div>
-        </div>
+        )
       )}
     </>
   )

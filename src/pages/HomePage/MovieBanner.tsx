@@ -11,7 +11,7 @@ import useFetchMovies from '../../hooks/useFetchMovies'
 function MovieBanner() {
   const base_url = 'https://image.tmdb.org/t/p/original'
 
-  const movies = useFetchMovies<Imovie[]>(requests.fetchPopular)?.slice(0, 5)
+  const { movies } = useFetchMovies<Imovie[]>(requests.fetchPopular)
 
   return (
     <Carousel
@@ -24,7 +24,7 @@ function MovieBanner() {
       showThumbs={false}
       key={movies as unknown as React.Key}
     >
-      {movies?.map((movie: Imovie, index: number) => {
+      {movies?.slice(0, 5).map((movie: Imovie, index: number) => {
         return (
           <div className="movieBanner" key={index}>
             <div>

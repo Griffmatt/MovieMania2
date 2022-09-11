@@ -3,18 +3,21 @@ import MovieRow from '../../components/MovieRow'
 import requests from '../../shared/requests'
 import { Imovie } from '../../typescript/interfaces/movie'
 
-import useDebounce from '../../hooks/useDebounce'
 import useFetchMovies from '../../hooks/useFetchMovies'
 
 function MovieSearchPage() {
   const [searchFor, setSearchFor] = useState('a')
-  const [searchValue, setSearchValue] = useState('')
 
-  useDebounce(() => setSearchFor(searchValue === '' ? 'a' : searchValue), 700, [
-    searchValue,
-  ])
+  let timer: string | number | NodeJS.Timeout | undefined
 
-  const movies = useFetchMovies<Imovie[]>(`${requests.fetchSearch}${searchFor}`)
+  const debounce = (value: string) => {
+    clearTimeout(timer)
+    timer = setTimeout(() => setSearchFor(value === '' ? 'a' : value), 1000)
+  }
+
+  const { movies, loading } = useFetchMovies<Imovie[]>(
+    `${requests.fetchSearch}${searchFor}`
+  )
 
   return (
     <>
@@ -22,9 +25,9 @@ function MovieSearchPage() {
         type="search"
         placeholder="Search For a Movie..."
         className="searchBar"
-        onChange={(event) => setSearchValue(event.target.value)}
+        onChange={(event) => debounce(event.target.value)}
       />
-      {movies && <MovieRow movies={movies} />}
+      {loading ? <div>Loading</div> : movies && <MovieRow movies={movies} />}
     </>
   )
 }
