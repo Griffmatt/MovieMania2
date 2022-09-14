@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Rating } from 'react-simple-star-rating'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   addReview,
@@ -54,10 +53,6 @@ function YourReview({ movie }: Props) {
     )
   }
 
-  const handleRating = (rate: number) => {
-    setRating(rate)
-  }
-
   return (
     <div className="yourReview">
       {submitted ? (
@@ -93,18 +88,6 @@ function YourReview({ movie }: Props) {
         <>
           <h4>Write A Review</h4>
           <form>
-            <Rating
-              initialValue={0}
-              ratingValue={rating}
-              allowHalfIcon={true}
-              allowHover={false}
-              fillColor={'rgb(206, 174, 34)'}
-              emptyColor={'rgb(122, 122, 122)'}
-              iconsCount={10}
-              onClick={handleRating}
-              size={30}
-              transition={true}
-            />
             <textarea
               rows={4}
               placeholder="What did you think of this movie?(optional)"
