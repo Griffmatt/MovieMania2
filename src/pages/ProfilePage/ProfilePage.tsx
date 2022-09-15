@@ -1,4 +1,4 @@
-import MovieRow from '../../components/MovieRow'
+import MovieRow from '../../components/MovieGrid'
 
 import { useSelector } from 'react-redux'
 import { selectFavorite } from '../../redux/favoriteSlice'

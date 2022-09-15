@@ -5,11 +5,14 @@ import MoviePoster from '../../components/MoviePoster'
 import MovieInfo from './MovieInfo/MovieInfo'
 
 import useFetchMovies from '../../hooks/useFetchMovies'
+import { useParams } from 'react-router-dom'
 
 import { Imovie } from '../../typescript/interfaces/movie'
 
-function MovieInfoPage({ id }: { id: string }) {
+function MovieInfoPage() {
+  const { id } = useParams()
   const { movies, loading } = useFetchMovies<Imovie>(
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     `/movie/${id}${requests.fetchMovieInfo}`
   )
 

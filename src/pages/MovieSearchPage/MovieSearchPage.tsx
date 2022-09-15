@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import MovieRow from '../../components/MovieRow'
+import MovieRow from '../../components/MovieGrid'
 import requests from '../../shared/requests'
 import { Imovie } from '../../typescript/interfaces/movie'
 
