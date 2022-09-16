@@ -1,34 +1,21 @@
-import { useState } from 'react'
 import MovieRow from '../../components/MovieGrid'
 import requests from '../../shared/requests'
 import { Imovie } from '../../typescript/interfaces/movie'
 
 import useFetchMovies from '../../hooks/useFetchMovies'
+import { useSearchContext } from '../../context/searchForContext'
+
+import { useParams } from 'react-router-dom'
 
 function MovieSearchPage() {
-  const [searchFor, setSearchFor] = useState('a')
-
-  let timer: string | number | NodeJS.Timeout | undefined
-
-  const debounce = (value: string) => {
-    clearTimeout(timer)
-    timer = setTimeout(() => setSearchFor(value === '' ? 'a' : value), 1000)
-  }
-
+  const { value } = useParams()
+  const { searchFor } = useSearchContext()
   const { movies, loading } = useFetchMovies<Imovie[]>(
-    `${requests.fetchSearch}${searchFor}`
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    `${requests.fetchSearch}${value ?? searchFor}`
   )
-
   return (
-    <>
-      <input
-        type="search"
-        placeholder="Search For a Movie..."
-        className="searchBar"
-        onChange={(event) => debounce(event.target.value)}
-      />
-      {loading ? <div>Loading</div> : movies && <MovieRow movies={movies} />}
-    </>
+    <>{loading ? <div>Loading</div> : movies && <MovieRow movies={movies} />}</>
   )
 }
 
