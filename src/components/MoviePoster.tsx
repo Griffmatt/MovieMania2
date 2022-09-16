@@ -12,7 +12,7 @@ function MoviePoster({ movie, posterSize }: Props) {
     <img
       src={`${base_url}${movie.poster_path}`}
       alt={movie.title}
-      className="rounded-lg"
+      className="rounded-xl"
     />
   )
 }

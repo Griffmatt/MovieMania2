@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
 import requests from '../../shared/requests'
-import MovieBanner from './MovieBanner'
 import MovieRow from '../../components/MovieGrid'
 
 import useFetchMovies from '../../hooks/useFetchMovies'
@@ -9,8 +8,7 @@ import { movieOptions } from '../../shared/movieOptions'
 import { Imovie } from '../../typescript/interfaces/movie'
 
 function HomePage() {
-  const [selected, setSelected] = useState<string | undefined>('Upcoming')
-  const [request, setRequest] = useState('upcoming')
+  const [request] = useState('upcoming')
 
   const { movies } = useFetchMovies<Imovie[]>(
     `/movie/${request}${requests.fetchMovies}`
@@ -23,11 +21,6 @@ function HomePage() {
       optionMap.current.set(option.value, option.name)
     })
   }, [])
-
-  const handleChange = (value: string) => {
-    setRequest(value)
-    setSelected(optionMap.current.get(value))
-  }
 
   return <>{movies && <MovieRow movies={movies} />}</>
 }

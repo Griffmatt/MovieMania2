@@ -9,11 +9,11 @@ export default function useFetchMovies<T>(request: string) {
     const CancelToken = axios.CancelToken
     const source = CancelToken.source()
     async function fetchMovies() {
-      setLoading(true)
       try {
-        const response = await axios.get<T>(
+        const response = await axios.get(
           `https://api.themoviedb.org/3${request}`
         )
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
         setMovies(response.data.results ?? response.data)
         setLoading(false)
         return response
