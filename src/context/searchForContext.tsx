@@ -23,7 +23,7 @@ export function useSearchContext() {
 }
 
 export function SearchContextProvider({ children }: ProviderProps) {
-  const [searchFor, setSearchFor] = useState('a')
+  const [searchFor, setSearchFor] = useState('')
 
   return (
     <SearchContext.Provider value={{ setSearchFor, searchFor }}>

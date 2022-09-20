@@ -14,7 +14,7 @@ function MovieMedia({ images, movie, videos }: Props) {
 
   const movieImages = () => {
     return (
-      <div className="movieImageContainer">
+      <div className="w-[18rem]  md:w-[28rem] xl:w-[30rem]">
         <h4>Images</h4>
         <hr />
         <Carousel showThumbs={false} infiniteLoop={true} key={movie.title}>
@@ -24,7 +24,7 @@ function MovieMedia({ images, movie, videos }: Props) {
                 key={index}
                 src={`https://image.tmdb.org/t/p/w500${image.file_path}`}
                 alt={movie.title}
-                className="movieImages"
+                className="w-full aspect-video"
               />
             )
           })}
@@ -35,18 +35,16 @@ function MovieMedia({ images, movie, videos }: Props) {
 
   const movieTrailer = () => {
     return trailer ? (
-      <div className="movieImageContainer">
+      <div className=" w-[18rem] md:w-[28rem] xl:w-[30rem]">
         <h4>Trailer</h4>
         <hr />
         <iframe
-          width="600"
-          height="337.19"
           src={`https://www.youtube.com/embed/${trailer.key}?rel=0`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
-          className="movieTrailer"
+          className="w-full aspect-video"
         ></iframe>
       </div>
     ) : (
@@ -55,9 +53,9 @@ function MovieMedia({ images, movie, videos }: Props) {
   }
 
   return (
-    <div className="movieMediaContainer">
+    <div className="flex items-center flex-col lg:flex-row lg:justify-between ">
       {images?.length === 0 ? '' : movieImages()}
-      {movie.backdrop_path ? movieTrailer() : ''}
+      {movieTrailer()}
     </div>
   )
 }

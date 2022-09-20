@@ -1,22 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { useContext } from 'react'
-import { ThemeContext } from '../App'
-import { useSearchContext } from '../context/searchForContext'
+import { useThemeContext } from '../context/themeContext'
 
 function SideBar() {
-  const { darkMode, setDarkMode } = useContext(ThemeContext)
-  const { searchFor } = useSearchContext()
+  const { darkMode, setDarkMode } = useThemeContext()
 
   const options = [
     {
       name: 'Home',
       value: '',
-    },
-    {
-      name: 'Search',
-      value: `search/value=${searchFor}`,
     },
     {
       name: 'Profile',

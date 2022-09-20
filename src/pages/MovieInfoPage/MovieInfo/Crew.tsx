@@ -20,9 +20,9 @@ function Crew({ crew }: Props) {
     return (
       <>
         <h4>{position}</h4>
-        <div className="crew">
-          {results.map((result, i) => (
-            <p key={i} className="crewMember">
+        <div className="flex gap-2 flex-wrap">
+          {results.map((result) => (
+            <p key={result.name} className="">
               {result.name}
             </p>
           ))}
@@ -31,13 +31,11 @@ function Crew({ crew }: Props) {
     )
   }
   return (
-    <div className="crewAndBudgetInfo">
-      <div className="crewInfo">
-        <div>{crew && getCrewInfo('Director')}</div>
-        <div>{crew && getCrewInfo('Producer')}</div>
-        <div>{crew && getCrewInfo('Screenplay')}</div>
-      </div>
-    </div>
+    <>
+      <div>{getCrewInfo('Director')}</div>
+      <div>{getCrewInfo('Producer')}</div>
+      <div>{getCrewInfo('Screenplay')}</div>
+    </>
   )
 }
 

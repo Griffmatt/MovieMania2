@@ -9,6 +9,9 @@ import store from './redux/store'
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 
+import { SearchContextProvider } from './context/searchForContext'
+import { ThemeContextProvider } from './context/themeContext'
+
 const persistor = persistStore(store)
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -17,7 +20,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <App />
+          <SearchContextProvider>
+            <ThemeContextProvider>
+              <App />
+            </ThemeContextProvider>
+          </SearchContextProvider>
         </PersistGate>
       </Provider>
     </BrowserRouter>
