@@ -6,18 +6,24 @@ body{
     @apply bg-gray-100 dark:bg-gray-800 dark:text-white;
 }
 
+h1{
+    @apply  text-xl md:text-2xl font-extrabold
+}
+
 h2{
-    @apply text-2xl font-bold
+    @apply text-lg md:text-xl font-bold
 }
-
+h3{
+    @apply  md:text-lg font-semibold
+}
 h4{
-    @apply text-lg font-semibold
-}
-
-h5{
-    @apply text-base font-medium
+    @apply  text-base font-medium
 }
 
 p{
     @apply text-sm
+}
+
+.movie-info__button{
+    @apply w-[8rem] py-2 px-4 rounded bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-500
 }

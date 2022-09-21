@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { selectFavorite } from '../../redux/favoriteSlice'
+import { selectFavorite } from '../../redux/watchListSlice'
 import { Imovie } from '../../typescript/interfaces/movie'
 
 import { handleFavoritesCheck } from '../../utils/handleFavoritesCheck'

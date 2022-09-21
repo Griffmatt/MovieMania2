@@ -15,7 +15,7 @@ function MovieMedia({ images, movie, videos }: Props) {
   const movieImages = () => {
     return (
       <div className="w-[18rem]  md:w-[28rem] xl:w-[30rem]">
-        <h4>Images</h4>
+        <h2>Images</h2>
         <hr />
         <Carousel showThumbs={false} infiniteLoop={true} key={movie.title}>
           {images?.map((image: Iimage, index: number) => {
@@ -36,7 +36,7 @@ function MovieMedia({ images, movie, videos }: Props) {
   const movieTrailer = () => {
     return trailer ? (
       <div className=" w-[18rem] md:w-[28rem] xl:w-[30rem]">
-        <h4>Trailer</h4>
+        <h2>Trailer</h2>
         <hr />
         <iframe
           src={`https://www.youtube.com/embed/${trailer.key}?rel=0`}

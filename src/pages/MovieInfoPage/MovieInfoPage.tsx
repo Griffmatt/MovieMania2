@@ -1,5 +1,5 @@
 import MovieMedia from './MovieMedia'
-import Review from './Review'
+import Review from '../../components/Review'
 import { reviews } from '../../shared/reviewsArray'
 import requests from '../../shared/requests'
 import MoviePoster from '../../components/MoviePoster'
@@ -11,6 +11,7 @@ import { useParams } from 'react-router-dom'
 import { Imovie } from '../../typescript/interfaces/movie'
 import { Ireview } from '../../typescript/interfaces/review'
 import React from 'react'
+import BackButton from '../../components/ui/BackButton'
 
 function MovieInfoPage() {
   const { id } = useParams()
@@ -25,7 +26,10 @@ function MovieInfoPage() {
         <div></div>
       ) : (
         movies && (
-          <div className="p-8 grid gap-3">
+          <div className="p-8 grid gap-3 ">
+            <div className="items-start">
+              <BackButton />
+            </div>
             <div className="flex justify-center">
               <MoviePoster movie={movies} posterSize="500" />
             </div>
@@ -36,7 +40,7 @@ function MovieInfoPage() {
               videos={movies.videos.results}
             />
             <div className="border-t-2 dark:border-gray-700">
-              <h4>Recent Reviews</h4>
+              <h2>Recent Reviews</h2>
               <div className="grid gap-5 xl:grid-cols-2 py-4">
                 {reviews.map((review: Ireview) => {
                   return (

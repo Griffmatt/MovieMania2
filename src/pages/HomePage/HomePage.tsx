@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import requests from '../../shared/requests'
-import MovieRow from '../../components/MovieGrid'
+import MovieGrid from '../../components/MovieGrid'
 
 import useFetchMovies from '../../hooks/useFetchMovies'
 import { movieOptions } from '../../shared/movieOptions'
@@ -22,7 +22,7 @@ function HomePage() {
     })
   }, [])
 
-  return <>{movies && <MovieRow movies={movies} />}</>
+  return <>{movies && <MovieGrid movies={movies} />}</>
 }
 
 export default HomePage

@@ -4,11 +4,11 @@ import { combineReducers } from 'redux'
 import { persistReducer } from 'redux-persist'
 import thunk from 'redux-thunk'
 
-import favoriteSlice from './favoriteSlice'
+import watchListSlice from './watchListSlice'
 import reviewSlice from './reviewSlice'
 
 const reducers = combineReducers({
-  favorites: favoriteSlice,
+  watchLists: watchListSlice,
   reviews: reviewSlice,
 })
 

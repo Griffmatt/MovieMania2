@@ -3,7 +3,6 @@ import requests from '../../shared/requests'
 import { Imovie } from '../../typescript/interfaces/movie'
 
 import useFetchMovies from '../../hooks/useFetchMovies'
-import { useSearchContext } from '../../context/searchForContext'
 import { useNavigate } from 'react-router-dom'
 
 import { useParams } from 'react-router-dom'
@@ -11,15 +10,15 @@ import BackButton from '../../components/ui/BackButton'
 
 function MovieSearchPage() {
   const { value } = useParams()
-  console.log(value)
-  const { setSearchFor } = useSearchContext()
-  let timer: string | number | NodeJS.Timeout | undefined
   const navigate = useNavigate()
+  console.log(value)
 
-  const { movies, loading } = useFetchMovies<Imovie[]>(
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    `${requests.fetchSearch}${value}`
-  )
+  let timer: string | number | NodeJS.Timeout | undefined
+  const request = value
+    ? `${requests.fetchSearch}${value}`
+    : `${requests.fetchPopular}`
+
+  const { movies, loading } = useFetchMovies<Imovie[]>(request)
 
   const debounce = (value: string) => {
     clearTimeout(timer)
@@ -28,20 +27,19 @@ function MovieSearchPage() {
 
   const handleChange = (value: string) => {
     if (!value) return
-    setSearchFor(value)
-    navigate(`/search/value=${value}`)
+    navigate(`/search/q=${value}`)
   }
 
   return (
     <>
-      <div className="p-5 flex gap-5 relative items-center">
+      <div className="p-3 flex gap-5 relative items-center">
         <BackButton />
         <input
           key={value}
           type="search"
-          placeholder="Search For a Movie..."
+          placeholder="Search"
           defaultValue={value}
-          className="bg-gray-200 border-gray-300 text-sm rounded-lg w-2/5 focus:outline-none focus:border-blue-500 p-2.5 dark:bg-gray-900 lg:w-1/3"
+          className="bg-gray-200 border-gray-300 text-sm rounded-lg md:w-2/5 focus:outline-none focus:border-blue-500 p-2.5 dark:bg-gray-900 lg:w-1/3"
           onChange={(event) => debounce(event.target.value)}
         />
       </div>

@@ -1,4 +1,4 @@
-import { addFavorite, removeFavorite } from '../redux/favoriteSlice'
+import { addFavorite, removeFavorite } from '../redux/watchListSlice'
 import { Dispatch, AnyAction } from 'redux'
 
 import { Imovie } from '../typescript/interfaces/movie'

@@ -37,7 +37,7 @@ function Cast({ cast }: Props) {
     <div>
       {starringCast.length > 0 && (
         <>
-          <h4>Starring</h4>
+          <h2>Starring</h2>
           <StarringCast />
         </>
       )}
