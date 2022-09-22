@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import MovieRow from '../../components/MovieGrid'
+import MovieGrid from '../../components/MovieGrid'
 
 import { useSelector } from 'react-redux'
 import { selectWatchList } from '../../redux/watchListSlice'
@@ -40,7 +40,7 @@ function ProfilePage() {
 
   return (
     <div className="flex">
-      <div className="p-4 md:p-8 md:w-3/4 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark md:min-h-screen">
+      <div className="p-4 w-full md:p-8 md:w-3/4 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark md:min-h-screen">
         <ProfileHeader reviews={reviews.length} />
         <nav className="px-8 py-2 flex justify-around gap-5 border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
           {MENU_OPTIONS.map((option: Option) => {
@@ -65,7 +65,7 @@ function ProfilePage() {
           })}
         </nav>
         {openMenu === '' && <ProfileReviews reviews={reviews} />}
-        {openMenu === 'watch-list' && <MovieRow movies={watchListMovies} />}
+        {openMenu === 'watch-list' && <MovieGrid movies={watchListMovies} />}
       </div>
       <div className="w-1/4 m-auto text-center sm:hidden">Hi</div>
     </div>
