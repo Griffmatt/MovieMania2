@@ -13,7 +13,7 @@ function SearchBar({ searchFocus, setSearchFocus }: Props) {
   const handleSubmit = (event: React.FormEvent<HTMLElement>) => {
     event.preventDefault()
     if (value) {
-      navigate(`/search/q=${value}}`)
+      navigate(`/search/q=${value}`)
     }
   }
 

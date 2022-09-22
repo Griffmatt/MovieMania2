@@ -19,7 +19,7 @@ module.exports = {
       'bg-primary': '#FFFFFF',
       'bg-secondary': '#EFF3F4',
       'bg-primary-dark': '#000000',
-      'bg-secondary-dark': '#16181C',
+      'bg-secondary-dark': '#2D2F32',
       'font-primary': '#000000',
       'font-secondary': '#5C6165',
       'font-primary-dark': '#FFFFFF',

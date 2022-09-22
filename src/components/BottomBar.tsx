@@ -21,7 +21,7 @@ function BottomBar() {
   ]
 
   return (
-    <div className="w-screen  py-3 bg-black text-white bottom-0 sticky  md:hidden">
+    <nav className="w-screen py-3 border-t-2 border-bg-secondary dark:border-bg-secondary-dark bg-bg-primary dark:bg-bg-primary-dark fixed bottom-0 md:hidden">
       <ul className="flex justify-around">
         {options.map((option) => {
           return (
@@ -45,7 +45,7 @@ function BottomBar() {
           </button>
         </li>
       </ul>
-    </div>
+    </nav>
   )
 }
 

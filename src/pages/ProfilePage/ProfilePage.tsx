@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react'
-import Review from '../../components/Review'
-
+import { useState, useEffect } from 'react'
 import MovieRow from '../../components/MovieGrid'
 
 import { useSelector } from 'react-redux'
@@ -8,6 +6,7 @@ import { selectWatchList } from '../../redux/watchListSlice'
 import { selectReview } from '../../redux/reviewSlice'
 import { Link, useParams } from 'react-router-dom'
 import ProfileHeader from './ProfileHeader'
+import ProfileReviews from './ProfileReviews'
 
 const MENU_OPTIONS = [
   {
@@ -17,6 +16,10 @@ const MENU_OPTIONS = [
   {
     name: 'Watch List',
     value: 'watch-list',
+  },
+  {
+    name: 'Stats',
+    value: 'stats',
   },
 ]
 
@@ -36,50 +39,35 @@ function ProfilePage() {
   }, [value])
 
   return (
-    <div className="p-8">
-      <ProfileHeader reviews={reviews.length} />
-      <div className="px-8 py-2 flex justify-center gap-5 border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
-        {MENU_OPTIONS.map((option: Option) => {
-          return (
-            <Link to={`/profile-page/${option.value}`} key={option.name}>
-              <button
-                className={`text-lg font-semibold hover:text-primary cursor-pointer ${
-                  openMenu === option.value ? 'border-b-2 border-primary' : ''
-                }`}
-                onClick={() => setOpenMenu(option.value)}
+    <div className="flex">
+      <div className="p-4 md:p-8 md:w-3/4 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark md:min-h-screen">
+        <ProfileHeader reviews={reviews.length} />
+        <nav className="px-8 py-2 flex justify-around gap-5 border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
+          {MENU_OPTIONS.map((option: Option) => {
+            return (
+              <Link
+                to={`/profile-page/${option.value}`}
+                key={option.name}
+                className={`${option.value === 'stats' ? 'md:hidden' : ''}`}
               >
-                {option.name}
-              </button>
-            </Link>
-          )
-        })}
+                <button
+                  className={`text-bg md:text-lg font-semibold cursor-pointer ${
+                    openMenu === option.value
+                      ? 'border-b-2 border-primary text-primary'
+                      : ''
+                  }`}
+                  onClick={() => setOpenMenu(option.value)}
+                >
+                  {option.name}
+                </button>
+              </Link>
+            )
+          })}
+        </nav>
+        {openMenu === '' && <ProfileReviews reviews={reviews} />}
+        {openMenu === 'watch-list' && <MovieRow movies={watchListMovies} />}
       </div>
-      {openMenu === 'watch-list' ? (
-        <MovieRow movies={watchListMovies} />
-      ) : (
-        <>
-          {reviews.length > 0 ? (
-            <div className="grid gap-3 px-8">
-              {reviews.map((review) => {
-                return (
-                  <React.Fragment key={review.id}>
-                    <Review review={review} />
-                  </React.Fragment>
-                )
-              })}
-            </div>
-          ) : (
-            <div className="flex justify-center py-10">
-              <div className="bg-bg-secondary dark:bg-bg-secondary-dark p-14 rounded-2xl text-center grid gap-6">
-                <h2>You haven&apos;t reviewed any movies yet</h2>
-                <Link to="/explore">
-                  <h3>Click here to find a movie to review</h3>
-                </Link>
-              </div>
-            </div>
-          )}
-        </>
-      )}
+      <div className="w-1/4 m-auto text-center sm:hidden">Hi</div>
     </div>
   )
 }

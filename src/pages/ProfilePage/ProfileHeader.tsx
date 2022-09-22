@@ -5,7 +5,7 @@ function ProfileHeader({ reviews }: { reviews: number }) {
   return (
     <header className="flex justify-between">
       <div className="w-fit grid gap-2">
-        <img src={user.image} alt="Profile" className="w-[6rem]" />
+        <img src={user.image} alt="Profile" className=" w-[4rem] md:w-[6rem]" />
         <div>
           <h3 className="font-bold">{user.name}</h3>
           <p className="text-font-secondary">{user.userName}</p>

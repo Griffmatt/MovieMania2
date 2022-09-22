@@ -22,31 +22,31 @@ function App() {
   const Layout = () => (
     <>
       <NavBar />
-      <div className="border-t-2 border-bg-secondary dark:border-bg-secondary-dark">
-        <Outlet />
-      </div>
+      <Outlet />
     </>
   )
 
   return (
-    <div className="container mx-auto">
-      <div className="flex">
-        <SideBar />
-        <div className="border-l-2 border-bg-secondary dark:border-bg-secondary-dark md:w-5/6">
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<HomePage />} />
-              <Route path="/:id" element={<MovieInfoPage />} />
-              <Route path="/profile-page/:value" element={<ProfilePage />} />
-              <Route path="/profile-page" element={<ProfilePage />} />
-            </Route>
-            <Route path="/search/q=:value" element={<MovieSearchPage />} />
-            <Route path="/explore" element={<MovieSearchPage />} />
-          </Routes>
+    <>
+      <div className="container mx-auto sm:mb-12">
+        <div className="flex">
+          <SideBar />
+          <div className="md:border-l-2 md:border-bg-secondary dark:border-bg-secondary-dark md:w-5/6 md:min-h-screen">
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<HomePage />} />
+                <Route path="/:id" element={<MovieInfoPage />} />
+                <Route path="/profile-page/:value" element={<ProfilePage />} />
+                <Route path="/profile-page" element={<ProfilePage />} />
+              </Route>
+              <Route path="/search/q=:value" element={<MovieSearchPage />} />
+              <Route path="/explore" element={<MovieSearchPage />} />
+            </Routes>
+          </div>
         </div>
       </div>
       <BottomBar />
-    </div>
+    </>
   )
 }
 

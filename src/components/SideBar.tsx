@@ -26,7 +26,7 @@ function SideBar() {
   ]
 
   return (
-    <div className="hidden py-5 w-1/6 top-0 sticky text-center h-fit md:grid gap-3">
+    <nav className="hidden py-5 w-1/6 top-0 sticky text-center h-fit md:grid gap-3">
       <Link to="/">
         <h1>
           <span className="text-primary">M</span>ovie
@@ -57,7 +57,7 @@ function SideBar() {
           </button>
         </li>
       </ul>
-    </div>
+    </nav>
   )
 }
 
