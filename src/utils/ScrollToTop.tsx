@@ -1,17 +1,17 @@
-import { ReactNode, useEffect } from 'react'
-import { useLocation } from 'react-router'
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
-interface Props {
-  children: ReactNode
-}
+export default function ScrollToTop() {
+  const { pathname } = useLocation()
 
-const ScrollToTop = ({ children }: Props) => {
-  const location = useLocation()
   useEffect(() => {
+    const canControlScrollRestoration = 'scrollRestoration' in window.history
+    if (canControlScrollRestoration) {
+      window.history.scrollRestoration = 'manual'
+    }
+
     window.scrollTo(0, 0)
-  }, [location])
+  }, [pathname])
 
-  return <>{children}</>
+  return <></>
 }
-
-export default ScrollToTop

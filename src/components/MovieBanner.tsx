@@ -12,6 +12,7 @@ function MoviePoster({ movie }: Props) {
         src={`${base_url}${movie.backdrop_path}`}
         alt={movie.title}
         className="rounded-xl"
+        loading="lazy"
       />
     </div>
   )
