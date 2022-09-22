@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 body{
-    @apply bg-bg-primary dark:bg-bg-primary-dark dark:text-font-primary-dark text-font-primary w-screen;
-    margin-left: calc(100vw - 100%);
+    @apply bg-bg-primary dark:bg-bg-primary-dark dark:text-font-primary-dark text-font-primary w-screen overflow-y-scroll overflow-x-hidden;
+
 }
 
 #root{
@@ -35,3 +35,4 @@ p{
 .search-bar{
     @apply bg-bg-secondary text-sm rounded-3xl w-full h-10 indent-2 outline outline-none outline-1 focus:outline-primary p-2.5 dark:bg-bg-secondary-dark;
 }
+

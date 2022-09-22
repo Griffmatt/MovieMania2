@@ -26,10 +26,7 @@ export function ThemeContextProvider({ children }: Props) {
   const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
-    if (
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    ) {
+    if (localStorage.getItem('theme') === 'dark') {
       setDarkMode(true)
     }
   }, [])

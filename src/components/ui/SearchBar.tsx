@@ -20,7 +20,7 @@ function SearchBar({ searchFocus, setSearchFocus }: Props) {
   return (
     <form
       onSubmit={(event) => handleSubmit(event)}
-      className={`w-2/5 ${searchFocus ? 'sm:w-full' : ''} `}
+      className={`w-2/5 ${searchFocus ? 'w-full' : ''} transition-width`}
     >
       <input
         type="search"

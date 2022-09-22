@@ -26,7 +26,11 @@ module.exports = {
       'white': '#FFFFFF',
       'black': '#000000'
     },
-    extend: {},
+    extend: {
+      transitionProperty: {
+        'width': 'width'
+    },
+    },
   },
   plugins: [],
 }

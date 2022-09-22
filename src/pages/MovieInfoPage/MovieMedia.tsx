@@ -4,7 +4,7 @@ import { Carousel } from 'react-responsive-carousel'
 import { Imovie, Iimage, Iresults } from '../../typescript/interfaces/movie'
 
 interface Props {
-  images?: Iimage[]
+  images: Iimage[]
   movie: Imovie
   videos?: Iresults[]
 }
@@ -51,7 +51,7 @@ function MovieMedia({ images, movie, videos }: Props) {
 
   return (
     <div className="flex items-center flex-col lg:flex-row lg:justify-between ">
-      {images && <MovieImages />}
+      {images.length > 0 && <MovieImages />}
       {trailer && <MovieTrailer />}
     </div>
   )

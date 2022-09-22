@@ -7,11 +7,13 @@ interface Props {
 function MoviePoster({ movie }: Props) {
   const base_url = `https://image.tmdb.org/t/p/original`
   return (
-    <img
-      src={`${base_url}${movie.backdrop_path}`}
-      alt={movie.title}
-      className="rounded-xl"
-    />
+    <div className="img-wrapper">
+      <img
+        src={`${base_url}${movie.backdrop_path}`}
+        alt={movie.title}
+        className="rounded-xl"
+      />
+    </div>
   )
 }
 

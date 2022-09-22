@@ -31,7 +31,9 @@ function MovieInfoPage() {
               <BackButton />
             </div>
             <div className="flex justify-center">
-              <MoviePoster movie={movies} posterSize="500" />
+              <div className="w-60 md:w-[31.25rem] aspect-[2/3]">
+                <MoviePoster movie={movies} posterSize="500" />
+              </div>
             </div>
             <MovieInfo movie={movies} />
             <MovieMedia
