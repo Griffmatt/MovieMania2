@@ -34,16 +34,6 @@ function BottomBar() {
             </React.Fragment>
           )
         })}
-
-        <li className="rounded-3xl w-fit cursor-pointer">
-          <button
-            onClick={() => {
-              setDarkMode(!darkMode)
-            }}
-          >
-            <p>{darkMode ? 'Light' : 'Dark'}</p>
-          </button>
-        </li>
       </ul>
     </nav>
   )
