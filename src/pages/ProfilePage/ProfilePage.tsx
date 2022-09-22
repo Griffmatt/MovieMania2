@@ -38,13 +38,13 @@ function ProfilePage() {
   return (
     <div className="p-8">
       <ProfileHeader reviews={reviews.length} />
-      <div className="px-8 py-2 flex justify-center gap-5 border-b-2 dark:border-gray-700">
+      <div className="px-8 py-2 flex justify-center gap-5 border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
         {MENU_OPTIONS.map((option: Option) => {
           return (
             <Link to={`/profile-page/${option.value}`} key={option.name}>
               <button
-                className={`text-lg font-semibold hover:text-gray-400 cursor-pointer ${
-                  openMenu === option.value ? 'border-b-2 border-blue-700' : ''
+                className={`text-lg font-semibold hover:text-primary cursor-pointer ${
+                  openMenu === option.value ? 'border-b-2 border-primary' : ''
                 }`}
                 onClick={() => setOpenMenu(option.value)}
               >
@@ -70,7 +70,7 @@ function ProfilePage() {
             </div>
           ) : (
             <div className="flex justify-center py-10">
-              <div className="bg-gray-200 dark:bg-gray-700 p-14 rounded-2xl text-center grid gap-6">
+              <div className="bg-bg-secondary dark:bg-bg-secondary-dark p-14 rounded-2xl text-center grid gap-6">
                 <h2>You haven&apos;t reviewed any movies yet</h2>
                 <Link to="/explore">
                   <h3>Click here to find a movie to review</h3>

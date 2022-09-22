@@ -10,7 +10,7 @@ const Genres = ({ movie }: { movie: Imovie }) => {
       {movie.genres.map((genre) => (
         <p
           key={genre.name}
-          className="border-solid border-2 border-gray-600 p-1 rounded-xl text-sm hover:border-gray-400 hover:text-gray-400 dark:border-gray-100 hover:dark:border-gray-400 cursor-pointer"
+          className="border-2  p-1 rounded-xl hover:text-font-secondary hover:dark:text-font-secondary border-font-primary dark:border-font-primary-dark hover:border-font-secondary hover:dark:border-font-secondary cursor-pointer"
         >
           {genre.name}
         </p>

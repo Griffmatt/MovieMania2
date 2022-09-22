@@ -22,7 +22,7 @@ function App() {
   const Layout = () => (
     <>
       <NavBar />
-      <div className="border-t-2 dark:border-gray-700">
+      <div className="border-t-2 border-bg-secondary dark:border-bg-secondary-dark">
         <Outlet />
       </div>
     </>
@@ -32,7 +32,7 @@ function App() {
     <div className="container mx-auto">
       <div className="flex">
         <SideBar />
-        <div className="border-l-2 dark:border-gray-700 md:w-5/6">
+        <div className="border-l-2 border-bg-secondary dark:border-bg-secondary-dark md:w-5/6">
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<HomePage />} />

@@ -4,7 +4,7 @@ function BackButton() {
   const navigate = useNavigate()
   return (
     <button
-      className=" font-bold cursor-pointer hover:text-gray-400 h-fit"
+      className=" font-bold cursor-pointer hover:text-font-secondary h-fit"
       onClick={() => navigate(-1)}
     >
       Back

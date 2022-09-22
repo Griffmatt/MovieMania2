@@ -26,7 +26,7 @@ function MovieInfoPage() {
         <div></div>
       ) : (
         movies && (
-          <div className="p-8 grid gap-3 ">
+          <div className="p-5 grid gap-3 ">
             <div className="items-start">
               <BackButton />
             </div>
@@ -39,7 +39,7 @@ function MovieInfoPage() {
               movie={movies}
               videos={movies.videos.results}
             />
-            <div className="border-t-2 dark:border-gray-700">
+            <div className="border-t-2 border-bg-secondary dark:border-bg-secondary-dark">
               <h2>Recent Reviews</h2>
               <div className="grid gap-5 xl:grid-cols-2 py-4">
                 {reviews.map((review: Ireview) => {

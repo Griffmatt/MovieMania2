@@ -4,6 +4,7 @@ import {
   ReactNode,
   SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from 'react'
 
@@ -23,6 +24,15 @@ export function useThemeContext() {
 
 export function ThemeContextProvider({ children }: Props) {
   const [darkMode, setDarkMode] = useState(false)
+
+  useEffect(() => {
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ) {
+      setDarkMode(true)
+    }
+  }, [])
 
   return (
     <ThemeContext.Provider value={{ darkMode, setDarkMode }}>

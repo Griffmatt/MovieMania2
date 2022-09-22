@@ -12,11 +12,10 @@ interface Props {
 function MovieMedia({ images, movie, videos }: Props) {
   const trailer = videos?.find((video) => video.name.includes('Trailer'))
 
-  const movieImages = () => {
+  const MovieImages = () => {
     return (
-      <div className="w-[18rem]  md:w-[28rem] xl:w-[30rem]">
+      <div className="w-full  md:w-[28rem] xl:w-[30rem] grid gap-2">
         <h2>Images</h2>
-        <hr />
         <Carousel showThumbs={false} infiniteLoop={true} key={movie.title}>
           {images?.map((image: Iimage, index: number) => {
             return (
@@ -33,13 +32,13 @@ function MovieMedia({ images, movie, videos }: Props) {
     )
   }
 
-  const movieTrailer = () => {
-    return trailer ? (
-      <div className=" w-[18rem] md:w-[28rem] xl:w-[30rem]">
+  const MovieTrailer = () => {
+    return (
+      <div className=" w-full md:w-[28rem] xl:w-[30rem] grid gap-2">
         <h2>Trailer</h2>
-        <hr />
         <iframe
-          src={`https://www.youtube.com/embed/${trailer.key}?rel=0`}
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+          src={`https://www.youtube.com/embed/${trailer?.key}?rel=0`}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -47,15 +46,13 @@ function MovieMedia({ images, movie, videos }: Props) {
           className="w-full aspect-video"
         ></iframe>
       </div>
-    ) : (
-      ''
     )
   }
 
   return (
     <div className="flex items-center flex-col lg:flex-row lg:justify-between ">
-      {images?.length === 0 ? '' : movieImages()}
-      {movieTrailer()}
+      {images && <MovieImages />}
+      {trailer && <MovieTrailer />}
     </div>
   )
 }

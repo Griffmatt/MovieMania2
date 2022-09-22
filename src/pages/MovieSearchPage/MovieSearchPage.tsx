@@ -32,18 +32,18 @@ function MovieSearchPage() {
 
   return (
     <>
-      <div className="p-3 flex gap-5 relative items-center">
+      <div className="p-3 flex gap-5 relative items-center md:w-2/5">
         <BackButton />
         <input
           key={value}
           type="search"
           placeholder="Search"
           defaultValue={value}
-          className="bg-gray-200 border-gray-300 text-sm rounded-lg md:w-2/5 focus:outline-none focus:border-blue-500 p-2.5 dark:bg-gray-900 lg:w-1/3"
+          className="search-bar"
           onChange={(event) => debounce(event.target.value)}
         />
       </div>
-      <div className="border-t-2 dark:border-gray-700">
+      <div className="border-t-2 border-bg-secondary dark:border-bg-secondary-dark">
         {loading ? <div>Loading</div> : movies && <MovieRow movies={movies} />}
       </div>
     </>

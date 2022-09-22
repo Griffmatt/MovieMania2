@@ -8,9 +8,9 @@ function ProfileHeader({ reviews }: { reviews: number }) {
         <img src={user.image} alt="Profile" className="w-[6rem]" />
         <div>
           <h3 className="font-bold">{user.name}</h3>
-          <p className="text-gray-600 dark:text-gray-300">{user.userName}</p>
+          <p className="text-font-secondary">{user.userName}</p>
         </div>
-        <p className="text-gray-600 dark:text-gray-300">{user.joinDate}</p>
+        <p className="text-font-secondary">{user.joinDate}</p>
       </div>
       <div className="flex flex-col justify-center">
         <h2>{reviews} Reviews</h2>

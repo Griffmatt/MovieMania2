@@ -17,7 +17,7 @@ function MoviePoster({ movie, posterSize }: Props) {
           className="rounded-xl w-60 md:w-max"
         />
       ) : (
-        <div className="bg-black/50 text-white p-2 w-fit">
+        <div className="bg-bg-secondary dark:bg-bg-secondary-dark p-2 w-fit">
           {movie.title} <br /> Image Unavailable
         </div>
       )}

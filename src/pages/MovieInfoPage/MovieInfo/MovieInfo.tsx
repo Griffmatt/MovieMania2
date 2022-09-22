@@ -24,13 +24,13 @@ function MovieInfo({ movie }: Props) {
       <h1 className="py-3">{movie.title}</h1>
       <Genres movie={movie} />
       <div className="flex justify-between flex-col gap-2 md:flex-row">
-        <h5>
+        <h4>
           {movie.release_date.slice(0, 4)} - {runTime(movie.runtime)} -{' '}
           <span className="infoRating">
             {Math.trunc(movie.vote_average * 10)}
             <span className="text-sm">%</span>
           </span>
-        </h5>
+        </h4>
         <div className="flex gap-4">
           <WatchListButton movie={movie} />
           <ReviewButton />
@@ -38,7 +38,7 @@ function MovieInfo({ movie }: Props) {
       </div>
       <h2>Overview</h2>
       <p>{movie.overview}</p>
-      <div className="grid py-3 border-t-2 dark:border-gray-700 md:grid-cols-3">
+      <div className="grid py-3 border-t-2 border-bg-secondary dark:border-bg-secondary-dark md:grid-cols-3">
         <Crew crew={movie.credits.crew} />
         <div>
           <h3>Budget</h3>
