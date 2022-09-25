@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-    @apply bg-bg-primary dark:bg-bg-primary-dark dark:text-font-primary-dark text-font-primary w-screen overflow-y-scroll overflow-x-hidden;
+    @apply bg-bg-primary dark:bg-bg-primary-dark dark:text-font-primary-dark text-font-primary w-screen mx-auto overflow-x-hidden;
 
 }
 

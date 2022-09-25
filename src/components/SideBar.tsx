@@ -1,25 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import { useThemeContext } from '../context/themeContext'
+import { sideOptions } from '../shared/navBarOptions'
+
 function SideBar() {
-  const options = [
-    {
-      name: 'Home',
-      value: '',
-    },
-    {
-      name: 'Profile',
-      value: 'profile-page',
-    },
-    {
-      name: 'Categories',
-      value: 'profile-page',
-    },
-    {
-      name: 'Genres',
-      value: 'profile-page',
-    },
-  ]
+  const { darkMode, setDarkMode } = useThemeContext()
 
   return (
     <nav className="hidden py-5 w-1/6 top-0 sticky text-center h-fit md:grid gap-3">
@@ -31,7 +17,7 @@ function SideBar() {
         </h1>
       </Link>
       <ul className="grid gap-2">
-        {options.map((option) => {
+        {sideOptions.map((option) => {
           return (
             <React.Fragment key={option.name}>
               <Link to={`/${option.value}`}>
@@ -42,6 +28,15 @@ function SideBar() {
             </React.Fragment>
           )
         })}
+        <li className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark cursor-pointer mx-auto">
+          <button
+            onClick={() => {
+              setDarkMode(!darkMode)
+            }}
+          >
+            <h3>{darkMode ? 'Light' : 'Dark'}</h3>
+          </button>
+        </li>
       </ul>
     </nav>
   )

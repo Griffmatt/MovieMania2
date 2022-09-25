@@ -2,28 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useThemeContext } from '../context/themeContext'
 
+import { bottomOptions } from '../shared/navBarOptions'
+
 function BottomBar() {
   const { darkMode, setDarkMode } = useThemeContext()
-
-  const options = [
-    {
-      name: 'Home',
-      value: '',
-    },
-    {
-      name: 'Profile',
-      value: 'profile-page',
-    },
-    {
-      name: 'Explore',
-      value: 'explore',
-    },
-  ]
 
   return (
     <nav className="w-screen py-3 border-t-2 border-bg-secondary dark:border-bg-secondary-dark bg-bg-primary dark:bg-bg-primary-dark fixed bottom-0 md:hidden">
       <ul className="flex justify-around">
-        {options.map((option) => {
+        {bottomOptions.map((option) => {
           return (
             <React.Fragment key={option.name}>
               <Link to={`/${option.value}`} className="flex">
@@ -34,6 +21,16 @@ function BottomBar() {
             </React.Fragment>
           )
         })}
+
+        <li className="rounded-3xl w-fit cursor-pointer">
+          <button
+            onClick={() => {
+              setDarkMode(!darkMode)
+            }}
+          >
+            <p>{darkMode ? 'Light' : 'Dark'}</p>
+          </button>
+        </li>
       </ul>
     </nav>
   )
