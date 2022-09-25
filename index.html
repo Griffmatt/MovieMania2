@@ -11,10 +11,15 @@
   </head>
   <body>
     <script>
+      const theme = localStorage.getItem('theme')
       if (
         window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches
+        window.matchMedia('(prefers-color-scheme: dark)').matches && !theme
       ) {
+          document.documentElement.classList.add('dark')
+      }
+
+      if(theme === 'dark'){
         document.documentElement.classList.add('dark')
       }
     </script>

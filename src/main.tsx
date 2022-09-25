@@ -10,6 +10,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist'
 
 import { UserContextProvider } from './context/userContext'
+import { ThemeContextProvider } from './context/themeContext'
 
 const persistor = persistStore(store)
 
@@ -19,9 +20,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <UserContextProvider>
-            <App />
-          </UserContextProvider>
+          <ThemeContextProvider>
+            <UserContextProvider>
+              <App />
+            </UserContextProvider>
+          </ThemeContextProvider>
         </PersistGate>
       </Provider>
     </BrowserRouter>

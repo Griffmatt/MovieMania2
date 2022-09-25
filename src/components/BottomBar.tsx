@@ -5,7 +5,7 @@ import { useThemeContext } from '../context/themeContext'
 import { bottomOptions } from '../shared/navBarOptions'
 
 function BottomBar() {
-  const { darkMode, setDarkMode } = useThemeContext()
+  const { darkMode, handleDarkMode } = useThemeContext()
 
   return (
     <nav className="w-screen py-3 border-t-2 border-bg-secondary dark:border-bg-secondary-dark bg-bg-primary dark:bg-bg-primary-dark fixed bottom-0 md:hidden">
@@ -23,11 +23,7 @@ function BottomBar() {
         })}
 
         <li className="rounded-3xl w-fit cursor-pointer">
-          <button
-            onClick={() => {
-              setDarkMode(!darkMode)
-            }}
-          >
+          <button onClick={handleDarkMode}>
             <p>{darkMode ? 'Light' : 'Dark'}</p>
           </button>
         </li>

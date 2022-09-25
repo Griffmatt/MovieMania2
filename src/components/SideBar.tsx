@@ -5,7 +5,7 @@ import { useThemeContext } from '../context/themeContext'
 import { sideOptions } from '../shared/navBarOptions'
 
 function SideBar() {
-  const { darkMode, setDarkMode } = useThemeContext()
+  const { darkMode, handleDarkMode } = useThemeContext()
 
   return (
     <nav className="hidden py-5 w-1/6 top-0 sticky text-center h-fit md:grid gap-3">
@@ -28,12 +28,8 @@ function SideBar() {
             </React.Fragment>
           )
         })}
-        <li className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark cursor-pointer mx-auto">
-          <button
-            onClick={() => {
-              setDarkMode(!darkMode)
-            }}
-          >
+        <li className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark cursor-pointer">
+          <button onClick={handleDarkMode}>
             <h3>{darkMode ? 'Light' : 'Dark'}</h3>
           </button>
         </li>

@@ -10,7 +10,7 @@ import {
 
 interface Context {
   darkMode: boolean
-  setDarkMode: Dispatch<SetStateAction<boolean>>
+  handleDarkMode: () => void
 }
 interface Props {
   children: ReactNode
@@ -26,13 +26,34 @@ export function ThemeContextProvider({ children }: Props) {
   const [darkMode, setDarkMode] = useState(false)
 
   useEffect(() => {
-    if (localStorage.getItem('theme') === 'dark') {
+    const theme = localStorage.getItem('theme')
+    if (
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches &&
+      !theme
+    ) {
+      setDarkMode(true)
+    }
+
+    if (theme === 'dark') {
       setDarkMode(true)
     }
   }, [])
 
+  const handleDarkMode = () => {
+    if (darkMode) {
+      localStorage.setItem('theme', 'light')
+      document.documentElement.classList.remove('dark')
+      setDarkMode(false)
+      return
+    }
+    localStorage.setItem('theme', 'dark')
+    document.documentElement.classList.add('dark')
+    setDarkMode(true)
+  }
+
   return (
-    <ThemeContext.Provider value={{ darkMode, setDarkMode }}>
+    <ThemeContext.Provider value={{ darkMode, handleDarkMode }}>
       {children}
     </ThemeContext.Provider>
   )

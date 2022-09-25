@@ -11,7 +11,6 @@ import BackButton from '../../components/ui/BackButton'
 function MovieSearchPage() {
   const { value } = useParams()
   const navigate = useNavigate()
-  console.log(value)
 
   let timer: string | number | NodeJS.Timeout | undefined
   const request = value
