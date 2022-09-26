@@ -15,7 +15,6 @@ function MoviePoster({ movie, posterSize }: Props) {
           src={`${base_url}${movie.poster_path}`}
           alt={movie.title}
           className="rounded-xl w-60 h-full md:w-max"
-          loading="lazy"
         />
       ) : (
         <div className="bg-bg-secondary dark:bg-bg-secondary-dark p-2 w-fit shadow-2xl">

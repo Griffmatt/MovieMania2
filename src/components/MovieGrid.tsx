@@ -13,7 +13,9 @@ function MovieGrid({ movies }: { movies: Imovie[] }) {
           <React.Fragment key={movie.id}>
             <Link
               to={`/${movie.id}`}
-              className={`${index === 0 ? 'col-span-full' : ''}`}
+              className={`${
+                index === 0 ? 'col-span-full aspect-video' : ''
+              } w-full aspect-[2/3]`}
             >
               {index === 0 ? (
                 <MovieBanner movie={movie} />
