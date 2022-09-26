@@ -29,7 +29,7 @@ Things to Improve
 * Planned Updates
   - [ ] implement react query to cache fetch requests
   - [ ] connect with firebase for user auth and to store user data
-  - [ ]update home page for better user experience and differentiate from other pages
+  - [ ] update home page for better user experience and differentiate from other pages
   - [ ] add statistics for users to visualize their favortie movies and reviews
 
 ## Technologies
