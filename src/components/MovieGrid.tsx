@@ -14,13 +14,15 @@ function MovieGrid({ movies }: { movies: Imovie[] }) {
             <Link
               to={`/${movie.id}`}
               className={`${
-                index === 0 ? 'col-span-full aspect-video' : 'aspect-[2/3]'
+                index === 0 && movie.backdrop_path
+                  ? 'col-span-full aspect-video'
+                  : 'aspect-[2/3]'
               } w-full`}
             >
-              {index === 0 ? (
+              {index === 0 && movie.backdrop_path ? (
                 <MovieBanner movie={movie} />
               ) : (
-                <MoviePoster movie={movie} posterSize="300" />
+                <MoviePoster movie={movie} />
               )}
             </Link>
           </React.Fragment>

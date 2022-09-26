@@ -33,7 +33,7 @@ function MovieInfoPage() {
             </div>
             <div className="flex justify-center">
               <div className="w-60 md:w-[31.25rem] aspect-[2/3]">
-                <MoviePoster movie={movies} posterSize="500" />
+                <MoviePoster movie={movies} />
               </div>
             </div>
             <MovieInfo movie={movies} />

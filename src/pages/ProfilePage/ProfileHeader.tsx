@@ -10,7 +10,6 @@ function ProfileHeader({ reviews }: { reviews: number }) {
             src={user.image}
             alt="Profile"
             className=" w-[4rem] h-[4rem] md:w-[6rem] md:h-[6rem] absolute top-0 left-0"
-            loading="lazy"
           />
         </div>
         <div>

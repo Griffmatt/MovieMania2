@@ -1,10 +1,11 @@
 import { Imovie } from '../typescript/interfaces/movie'
+import MoviePoster from './MoviePoster'
 
 interface Props {
   movie: Imovie
 }
 
-function MoviePoster({ movie }: Props) {
+function MovieBanner({ movie }: Props) {
   const base_url = `https://image.tmdb.org/t/p/original`
   return (
     <div className="img-wrapper">
@@ -12,10 +13,9 @@ function MoviePoster({ movie }: Props) {
         src={`${base_url}${movie.backdrop_path}`}
         alt={movie.title}
         className="rounded-xl"
-        loading="lazy"
       />
     </div>
   )
 }
 
-export default MoviePoster
+export default MovieBanner
