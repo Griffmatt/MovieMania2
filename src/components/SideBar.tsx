@@ -20,16 +20,22 @@ function SideBar() {
         {sideOptions.map((option) => {
           return (
             <React.Fragment key={option.name}>
-              <Link to={`/${option.value}`}>
-                <li className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark cursor-pointer">
+              <Link
+                to={`/${option.value}`}
+                className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark cursor-pointer"
+              >
+                <li>
                   <h3>{option.name}</h3>
                 </li>
               </Link>
             </React.Fragment>
           )
         })}
-        <li className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark cursor-pointer">
-          <button onClick={handleDarkMode}>
+        <li>
+          <button
+            onClick={handleDarkMode}
+            className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark cursor-pointer"
+          >
             <h3>{darkMode ? 'Light' : 'Dark'}</h3>
           </button>
         </li>

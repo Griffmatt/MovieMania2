@@ -19,7 +19,7 @@ function App() {
 
   return (
     <>
-      <div className="container mx-auto sm:mb-12">
+      <div className="md:container mx-auto sm:mb-12">
         <ScrollToTop />
         <div className="flex">
           <SideBar />

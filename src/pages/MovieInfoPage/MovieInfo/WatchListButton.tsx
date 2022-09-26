@@ -13,7 +13,6 @@ function WatchListButton({ movie }: { movie: Imovie }) {
   const includesMovie = movieIds.includes(movie.id)
 
   const handleClick = () => {
-    console.log(movie)
     includesMovie ? dispatch(removeMovie(movie)) : dispatch(addMovie(movie))
   }
   return (

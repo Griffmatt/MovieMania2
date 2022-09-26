@@ -7,8 +7,8 @@ body{
 
 }
 
-#root{
-    @apply min-h-screen
+html{
+    @apply h-full
 }
 
 h1{

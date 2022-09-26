@@ -12,6 +12,10 @@ interface Props {
 }
 
 function MovieInfo({ movie }: Props) {
+  // eslint-disable-next-line prettier/prettier
+  const { genres, credits, budget, revenue, vote_average, title, tagline, runtime } = movie
+
+
   const runTime = (runtime: number) =>
     runtime < 60
       ? `${runtime}m`
@@ -21,13 +25,16 @@ function MovieInfo({ movie }: Props) {
 
   return (
     <div className="flex flex-col gap-3">
-      <h1 className="py-3">{movie.title}</h1>
-      <Genres movie={movie} />
+      <div>
+        <h1 className="pt-3">{title}</h1>
+        <p>{tagline}</p>
+      </div>
+      <Genres genres={genres} />
       <div className="flex justify-between flex-col gap-2 md:flex-row">
         <h4>
-          {movie.release_date.slice(0, 4)} - {runTime(movie.runtime)} -{' '}
+          {movie.release_date.slice(0, 4)} - {runTime(runtime)} -{' '}
           <span className="infoRating">
-            {Math.trunc(movie.vote_average * 10)}
+            {Math.trunc(vote_average * 10)}
             <span className="text-sm">%</span>
           </span>
         </h4>
@@ -39,17 +46,17 @@ function MovieInfo({ movie }: Props) {
       <h2>Overview</h2>
       <p>{movie.overview}</p>
       <div className="grid py-3 border-t-2 border-bg-secondary dark:border-bg-secondary-dark md:grid-cols-3">
-        <Crew crew={movie.credits.crew} />
+        <Crew crew={credits.crew} />
         <div>
           <h3>Budget</h3>
-          <p>{formatMoney(movie.budget)}</p>
+          <p>{formatMoney(budget)}</p>
         </div>
         <div>
           <h3>Revenue</h3>
-          <p>{formatMoney(movie.revenue)}</p>
+          <p>{formatMoney(revenue)}</p>
         </div>
       </div>
-      <Cast cast={movie.credits.cast} />
+      <Cast cast={credits.cast} />
     </div>
   )
 }

@@ -31,7 +31,7 @@ function MovieSearchPage() {
 
   return (
     <>
-      <div className="w-full h-fit sticky top-0  bg-bg-primary/95 dark:bg-bg-primary-dark/95 border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
+      <div className="w-full h-fit sticky top-0  bg-bg-primary dark:bg-bg-primary-dark border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
         <div className="p-3 flex gap-5 items-center md:w-2/5">
           <BackButton />
           <input

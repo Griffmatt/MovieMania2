@@ -15,10 +15,12 @@ export interface Imovie {
   runtime: number
   revenue: number
   budget: number
+
   credits: Icredits
   genres: { name: string }[]
   videos: Ivideos
   images: Iimages
+  tagline: string
 }
 
 export interface Ivideos {

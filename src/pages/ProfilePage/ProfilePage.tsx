@@ -65,7 +65,7 @@ function ProfilePage() {
         {openMenu === '' && <ProfileReviews reviews={reviews} />}
         {openMenu === 'watch-list' && <ProfileWatchList />}
       </div>
-      <div className="w-1/4 m-auto text-center sm:hidden">Hi</div>
+      <div className="w-1/4 m-auto text-center xs:hidden">Hi</div>
     </div>
   )
 }

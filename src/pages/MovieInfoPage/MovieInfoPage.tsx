@@ -1,6 +1,4 @@
 import MovieMedia from './MovieMedia'
-import Review from '../../components/Review'
-import { reviews } from '../../shared/reviewsArray'
 import requests from '../../shared/requests'
 import MoviePoster from '../../components/MoviePoster'
 import MovieInfo from './MovieInfo/MovieInfo'
@@ -8,10 +6,13 @@ import MovieInfo from './MovieInfo/MovieInfo'
 import useFetchMovies from '../../hooks/useFetchMovies'
 import { useParams } from 'react-router-dom'
 
+import { reviews } from '../../shared/reviewsArray'
+
 import { Imovie } from '../../typescript/interfaces/movie'
 import { Ireview } from '../../typescript/interfaces/review'
 import React from 'react'
 import BackButton from '../../components/ui/BackButton'
+import Review from '../../components/Review'
 
 function MovieInfoPage() {
   const { id } = useParams()
@@ -43,7 +44,7 @@ function MovieInfoPage() {
             />
             <div className="border-t-2 border-bg-secondary dark:border-bg-secondary-dark">
               <h2>Recent Reviews</h2>
-              <div className="grid gap-5 xl:grid-cols-2 py-4">
+              <div className="grid gap-5 w-full xl:grid-cols-2 py-4">
                 {reviews.map((review: Ireview) => {
                   return (
                     <React.Fragment key={review.id}>

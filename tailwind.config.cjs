@@ -7,7 +7,8 @@ module.exports = {
   darkMode: "class",
   theme: {
     screens: {
-      'sm': {'max': '640px'},
+      'xs': {'max': '425px'},
+      'sm': '426px',
       'md': '768px',
       'lg': '1024px',
       'xl': '1280px',
@@ -28,7 +29,8 @@ module.exports = {
     },
     extend: {
       transitionProperty: {
-        'width': 'width'
+        'width': 'width',
+        'height': 'height'
     },
     },
   },
