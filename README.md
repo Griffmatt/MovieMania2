@@ -11,7 +11,7 @@ Refactoring some of my earlier work, that can be seen [here](https://github.com/
 * [Author](#author)
 
 ## Overview
-I have learned a lot since complting the original application, so i am going back to see how and hwere i can make improvments. Some of the main things i am focusing on are making the code more maintanable, readable, reusable, and accessible. You can view the [Plan](#plan) below to see how i plan to do these certain things, aswell as features i will be working on in the future and different ways i have already improved the application.
+I have learned a lot since completing the original application, so i am going back to see how and here i can make improvements. Some of the main things i am focusing on are making the code more maintainable, readable, reusable, and accessible. You can view the [Plan](#plan) below to see how i plan to do these certain things, as well as features i will be working on in the future and different ways i have already improved the application.
 
 
 ## Plan
@@ -21,16 +21,16 @@ Things to Improve
   - [x] look for places to limit rerenders
 * Readability and Reusability
   - [x] Add typescript and eslint to improve development
-  - [x] Update the folder and file structure to better seperate components
-  - [x] Create a context and util folder to seperate out repeated functions and state being used in multiple components
+  - [x] Update the folder and file structure to better separate components
+  - [x] Create a context and util folder to separate out repeated functions and state being used in multiple components
   - [x] Look over code to look for possible extra blocks being used in multiple components
-  - [x] better seperate state to make code easier to follow
+  - [x] better separate state to make code easier to follow
   - [ ] add tailwind
 * Planned Updates
   - [ ] implement react query to cache fetch requests
   - [ ] connect with firebase for user auth and to store user data
   - [ ] update home page for better user experience and differentiate from other pages
-  - [ ] add statistics for users to visualize their favortie movies and reviews
+  - [ ] add statistics for users to visualize their favorite movies and reviews
 
 ## Technologies
 Project is created with:

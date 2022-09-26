@@ -1,5 +1,4 @@
 import { Imovie } from '../typescript/interfaces/movie'
-import MoviePoster from './MoviePoster'
 
 interface Props {
   movie: Imovie
