@@ -44,7 +44,7 @@ function MovieSearchPage() {
           />
         </div>
       </div>
-      <div className="border-t-2 border-bg-secondary dark:border-bg-secondary-dark">
+      <div className="border-bg-secondary dark:border-bg-secondary-dark">
         {loading ? <div>Loading</div> : movies && <MovieRow movies={movies} />}
       </div>
     </>

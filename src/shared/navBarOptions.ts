@@ -8,14 +8,6 @@ export const sideOptions = [
     value: 'profile-page',
   },
   {
-    name: 'Categories',
-    value: 'profile-page',
-  },
-  {
-    name: 'Genres',
-    value: 'profile-page',
-  },
-  {
     name: 'Explore',
     value: 'explore',
   },
