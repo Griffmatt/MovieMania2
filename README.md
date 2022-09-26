@@ -11,7 +11,7 @@ Refactoring some of my earlier work, that can be seen [here](https://github.com/
 * [Author](#author)
 
 ## Overview
-I have learned a lot since complting the original application, so i am going back to see how and hwere i can make improvments. Some of the main things i am focusing on are making the code more maintanable, readable, reusable, and accessible. You can view the [Plan](#plan) below to see how i plan to do these certain things, aswell as features i will be workign on in the future and different ways i have already improved the application.
+I have learned a lot since complting the original application, so i am going back to see how and hwere i can make improvments. Some of the main things i am focusing on are making the code more maintanable, readable, reusable, and accessible. You can view the [Plan](#plan) below to see how i plan to do these certain things, aswell as features i will be working on in the future and different ways i have already improved the application.
 
 
 ## Plan
@@ -42,8 +42,9 @@ Project is created with:
 ## Features
 - Movie Filter
 - Multiple Pages
-- Add to Favourites
+- Add to Watch List
 - Movie Search
+- add / post review to database
 
 ## Setup
 To run this project, download Zip file, extract it and open the Terminal to locate the folder...
