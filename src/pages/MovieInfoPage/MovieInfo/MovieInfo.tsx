@@ -6,6 +6,8 @@ import { formatMoney } from '../../../utils/formatMoney'
 import { Imovie } from '../../../typescript/interfaces/movie'
 import WatchListButton from './WatchListButton'
 import ReviewButton from './ReviewButton'
+import ReviewModal from './ReviewModal'
+import { ReviewModalContextProvider } from '../../../context/reviewModalContext'
 
 interface Props {
   movie: Imovie
@@ -13,8 +15,16 @@ interface Props {
 
 function MovieInfo({ movie }: Props) {
   // eslint-disable-next-line prettier/prettier
-  const { genres, credits, budget, revenue, vote_average, title, tagline, runtime } = movie
-
+  const {
+    genres,
+    credits,
+    budget,
+    revenue,
+    vote_average,
+    title,
+    tagline,
+    runtime,
+  } = movie
 
   const runTime = (runtime: number) =>
     runtime < 60
@@ -40,12 +50,15 @@ function MovieInfo({ movie }: Props) {
         </h4>
         <div className="flex gap-4">
           <WatchListButton movie={movie} />
-          <ReviewButton />
+          <ReviewModalContextProvider>
+            <ReviewButton />
+            <ReviewModal movie={movie} />
+          </ReviewModalContextProvider>
         </div>
       </div>
       <h2>Overview</h2>
       <p>{movie.overview}</p>
-      <div className="grid py-3 border-t-2 border-bg-secondary dark:border-bg-secondary-dark md:grid-cols-3">
+      <div className="grid py-3 border-t-2 border-bg-secondary dark:border-bg-secondary-dark md:grid-cols-3 md:text-center">
         <Crew crew={credits.crew} />
         <div>
           <h3>Budget</h3>

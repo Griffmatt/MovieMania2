@@ -13,7 +13,7 @@ function MovieGrid({ movies }: { movies: Imovie[] }) {
           <React.Fragment key={movie.id}>
             <Link
               to={`/${movie.id}`}
-              className={`${
+              className={`bg-bg-secondary dark:bg-bg-secondary-dark ${
                 index === 0 && movie.backdrop_path
                   ? 'col-span-full aspect-video'
                   : 'aspect-[2/3]'

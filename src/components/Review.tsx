@@ -6,7 +6,7 @@ function Review({ review }: { review: Ireview }) {
     <div className="border-2 w-full border-bg-secondary dark:border-bg-secondary-dark p-5 rounded-xl shadow">
       <div className="flex gap-3">
         <img src={profileImage} alt="Profile" className="w-10 h-10" />
-        <div className="grid gap-1">
+        <div className="grid gap-1 w-full">
           <div className="flex justify-between">
             <div className="flex xs:flex-col xs:gap-0 items-start gap-1 h-fit">
               <h4 className="font-bold">{review.name}</h4>

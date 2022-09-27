@@ -7,6 +7,10 @@ body{
 
 }
 
+.modal-open{
+    @apply overflow-hidden
+}
+
 html{
     @apply h-full
 }

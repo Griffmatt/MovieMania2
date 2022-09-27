@@ -9,6 +9,7 @@ import {
 
 interface Context {
   user: {
+    id: string
     name: string
     userName: string
     image: string
@@ -20,6 +21,7 @@ interface Context {
       userName: string
       image: string
       joinDate: string
+      id: string
     }>
   >
 }
@@ -39,6 +41,7 @@ export function UserContextProvider({ children }: Props) {
     userName: '@griffin',
     image: '/Images/profileImage.png',
     joinDate: 'August 2022',
+    id: 'default',
   })
 
   return (

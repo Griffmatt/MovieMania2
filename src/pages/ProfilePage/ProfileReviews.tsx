@@ -12,7 +12,7 @@ function ProfileReviews({ reviews }: Props) {
   return (
     <>
       {reviews.length > 0 ? (
-        <div className="grid gap-3 px-8">
+        <div className="grid gap-3 p-3">
           {reviews.map((review) => {
             return (
               <React.Fragment key={review.id}>

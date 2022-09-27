@@ -23,7 +23,7 @@ function Crew({ crew }: CrewProps) {
     return (
       <div>
         <h3>{position}</h3>
-        <div className="flex gap-2 flex-wrap">
+        <div className="flex gap-2 flex-wrap md:justify-center">
           {results.map((result, index) => (
             <p key={result.name}>
               {result.name}

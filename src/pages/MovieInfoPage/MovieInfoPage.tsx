@@ -47,7 +47,7 @@ function MovieInfoPage() {
               <div className="grid gap-5 w-full xl:grid-cols-2 py-4">
                 {reviews.map((review: Ireview) => {
                   return (
-                    <React.Fragment key={review.id}>
+                    <React.Fragment key={review.userId}>
                       <Review review={review} />
                     </React.Fragment>
                   )

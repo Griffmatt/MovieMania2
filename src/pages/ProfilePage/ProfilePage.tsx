@@ -38,7 +38,7 @@ function ProfilePage() {
 
   return (
     <div className="flex">
-      <div className="p-4 w-full md:p-8 md:w-3/4 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark md:min-h-[calc(100vh-5.125rem)]">
+      <div className="p-4 w-full md:p-8 md:w-3/4 xl:w-2/3 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark md:min-h-[calc(100vh-5.125rem)]">
         <ProfileHeader reviews={reviews.length} />
         <nav className="px-8 py-2 flex justify-around gap-5 border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
           {MENU_OPTIONS.map((option: Option) => {
@@ -65,7 +65,7 @@ function ProfilePage() {
         {openMenu === '' && <ProfileReviews reviews={reviews} />}
         {openMenu === 'watch-list' && <ProfileWatchList />}
       </div>
-      <div className="w-1/4 m-auto text-center xs:hidden">Hi</div>
+      <div className="xl:w-1/3 w-1/4 m-auto text-center xs:hidden">Hi</div>
     </div>
   )
 }

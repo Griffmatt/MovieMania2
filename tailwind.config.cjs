@@ -15,7 +15,7 @@ module.exports = {
       '2xl': '1536px',
     },
     colors: {
-      'primary': 'tomato',
+      'primary': '#FA320A',
       'secondary': '#34568B',
       'bg-primary': '#FFFFFF',
       'bg-secondary': '#F5F3EF',
