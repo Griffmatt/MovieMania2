@@ -17,7 +17,7 @@ function MovieSearchPage() {
     ? `${requests.fetchSearch}${value}`
     : `${requests.fetchPopular}`
 
-  const { movies, loading } = useFetchMovies<Imovie[]>(request)
+  const { movies } = useFetchMovies<Imovie[]>(request)
 
   const debounce = (value: string) => {
     clearTimeout(timer)
@@ -45,7 +45,15 @@ function MovieSearchPage() {
         </div>
       </div>
       <div className="border-bg-secondary dark:border-bg-secondary-dark">
-        {loading ? <div>Loading</div> : movies && <MovieRow movies={movies} />}
+        {movies?.length === 0 ? (
+          <div className="flex justify-center py-10">
+            <div className="bg-bg-secondary dark:bg-bg-secondary-dark p-3 md:py-10 rounded-2xl text-center grid gap-6 w-fit">
+              <h3>No movies Were found for {value}</h3>
+            </div>
+          </div>
+        ) : (
+          movies && <MovieRow movies={movies} />
+        )}
       </div>
     </>
   )

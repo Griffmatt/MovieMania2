@@ -15,7 +15,7 @@ function ProfileReviews({ reviews }: Props) {
             return (
               <div
                 key={review.id}
-                className="border-b-2 border-bg-secondary dark:border-bg-secondary-dark py-5"
+                className="border-b-2 border-bg-secondary dark:border-bg-secondary-dark p-4"
               >
                 <Review review={review} profileReview={true} />
               </div>

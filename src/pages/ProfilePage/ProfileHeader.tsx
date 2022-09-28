@@ -3,7 +3,7 @@ import { useUserContext } from '../../context/userContext'
 function ProfileHeader({ reviews }: { reviews: number }) {
   const { user } = useUserContext()
   return (
-    <header className="flex justify-between">
+    <header className="flex justify-between p-4">
       <div className="w-fit grid gap-2">
         <div className="relative w-[4rem] h-[4rem] md:w-[6rem] md:h-[6rem]">
           <img

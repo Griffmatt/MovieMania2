@@ -15,8 +15,8 @@ module.exports = {
       '2xl': '1536px',
     },
     colors: {
-      'primary': '#FA320A',
-      'secondary': '#34568B',
+      'primary': 'tomato',
+      'secondary': 'dodgerblue',
       'bg-primary': '#FFFFFF',
       'bg-secondary': '#F5F3EF',
       'bg-primary-dark': '#000000',
@@ -25,7 +25,8 @@ module.exports = {
       'font-secondary': '#5C6165',
       'font-primary-dark': '#FFFFFF',
       'white': '#FFFFFF',
-      'black': '#000000'
+      'black': '#000000',
+      'error': 'red'
     },
     extend: {
       transitionProperty: {
