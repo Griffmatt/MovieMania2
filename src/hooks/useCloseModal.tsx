@@ -6,21 +6,27 @@ export default function useCloseModal(
   modalOpen: boolean
 ) {
   useEffect(() => {
-    function handleClickOutside(event: { target: Node | null }) {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
+    function handleClickOutside(target: Node) {
+      if (modalRef.current && !modalRef.current.contains(target)) {
         closeModal()
       }
     }
 
-    function handleEscape(event) {
-      if (event.key === 'Escape') {
+    function handleEscapePress(key: string) {
+      if (key === 'Escape') {
         closeModal()
       }
     }
-    document.addEventListener('mousedown', handleClickOutside)
-    document.addEventListener('keydown', handleEscape)
+    document.addEventListener('mousedown', (event) =>
+      handleClickOutside(event.target as Node)
+    )
+    document.addEventListener('keydown', (event) =>
+      handleEscapePress(event.key)
+    )
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('mousedown', (event) =>
+        handleClickOutside(event.target as Node)
+      )
     }
   }, [modalRef, closeModal])
 
