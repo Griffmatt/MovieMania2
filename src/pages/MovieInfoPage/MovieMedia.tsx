@@ -14,7 +14,7 @@ function MovieMedia({ images, movie, videos }: Props) {
 
   const MovieImages = () => {
     return (
-      <div className="w-full md:w-[40%] grid gap-2">
+      <div className="w-full lg:w-[45%] grid gap-2">
         <h2>Images</h2>
         <Carousel showThumbs={false} infiniteLoop={true} key={movie.title}>
           {images?.map((image: Iimage, index: number) => {
@@ -34,7 +34,7 @@ function MovieMedia({ images, movie, videos }: Props) {
 
   const MovieTrailer = () => {
     return (
-      <div className=" w-full md:w-[40%] grid gap-2">
+      <div className=" w-full lg:w-[45%] grid gap-2">
         <h2>Trailer</h2>
         <iframe
           // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
