@@ -20,7 +20,6 @@ function App() {
   return (
     <>
       <div className="md:container mx-auto sm:mb-12">
-        <ScrollToTop />
         <div className="flex">
           <SideBar />
           <div className="md:border-l-2 md:border-bg-secondary dark:border-bg-secondary-dark md:w-5/6 md:min-h-screen">
@@ -38,6 +37,7 @@ function App() {
         </div>
       </div>
       <BottomBar />
+      <ScrollToTop />
     </>
   )
 }
