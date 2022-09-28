@@ -51,7 +51,7 @@ function MovieInfo({ movie }: Props) {
         <div className="flex gap-4">
           <WatchListButton movie={movie} />
           <ReviewModalContextProvider>
-            <ReviewButton />
+            <ReviewButton movie={movie} />
             <ReviewModal movie={movie} />
           </ReviewModalContextProvider>
         </div>

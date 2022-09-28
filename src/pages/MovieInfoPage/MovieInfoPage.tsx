@@ -10,7 +10,6 @@ import { reviews } from '../../shared/reviewsArray'
 
 import { Imovie } from '../../typescript/interfaces/movie'
 import { Ireview } from '../../typescript/interfaces/review'
-import React from 'react'
 import BackButton from '../../components/ui/BackButton'
 import Review from '../../components/Review'
 
@@ -47,9 +46,12 @@ function MovieInfoPage() {
               <div className="grid gap-5 w-full xl:grid-cols-2 py-4">
                 {reviews.map((review: Ireview) => {
                   return (
-                    <React.Fragment key={review.userId}>
+                    <div
+                      className="border-2 w-full border-bg-secondary dark:border-bg-secondary-dark p-5 rounded-xl shadow"
+                      key={review.userId}
+                    >
                       <Review review={review} />
-                    </React.Fragment>
+                    </div>
                   )
                 })}
               </div>

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Review from '../../components/Review'
 import { Ireview } from '../../typescript/interfaces/review'
 import ProfileSectionEmpty from './ProfileSectionEmpty'
@@ -12,12 +10,15 @@ function ProfileReviews({ reviews }: Props) {
   return (
     <>
       {reviews.length > 0 ? (
-        <div className="grid gap-3 p-3">
+        <div className="grid gap-3">
           {reviews.map((review) => {
             return (
-              <React.Fragment key={review.id}>
-                <Review review={review} />
-              </React.Fragment>
+              <div
+                key={review.id}
+                className="border-b-2 border-bg-secondary dark:border-bg-secondary-dark py-5"
+              >
+                <Review review={review} profileReview={true} />
+              </div>
             )
           })}
         </div>
