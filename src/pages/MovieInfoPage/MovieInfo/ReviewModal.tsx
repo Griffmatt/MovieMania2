@@ -47,7 +47,7 @@ function ReviewModal({ movie }: Props) {
       )
       return
     }
-    if (rating && review !== '') {
+    if (rating !== null && review !== '') {
       handleOpenReviewModal()
       dispatch(
         addReview({
