@@ -1,5 +1,4 @@
 import MovieRow from '../../components/MovieGrid'
-import requests from '../../shared/requests'
 import { Imovie } from '../../typescript/interfaces/movie'
 
 import useFetchMovies from '../../hooks/useFetchMovies'
@@ -8,16 +7,21 @@ import { useNavigate } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import BackButton from '../../components/ui/BackButton'
 
-function MovieSearchPage() {
+import { genres } from '../../shared/genres'
+import Genres from '../../components/Genres'
+
+interface Props {
+  request: string
+}
+
+function MovieSearchPage({ request }: Props) {
   const { value } = useParams()
   const navigate = useNavigate()
 
   let timer: string | number | NodeJS.Timeout | undefined
-  const request = value
-    ? `${requests.fetchSearch}${value}`
-    : `${requests.fetchPopular}`
+  const fetchRequest = value ? `${request}${value}` : `${request}`
 
-  const { movies } = useFetchMovies<Imovie[]>(request)
+  const { movies } = useFetchMovies<Imovie[]>(fetchRequest)
 
   const debounce = (value: string) => {
     clearTimeout(timer)
@@ -29,6 +33,16 @@ function MovieSearchPage() {
     navigate(`/search/q=${value}`)
   }
 
+  const findDefaultValue = () => {
+    for (let i = 0; i < genres.length; i++) {
+      console.log(value)
+      console.log(genres[i].id)
+      if (genres[i].id === Number(value)) {
+        return
+      }
+    }
+    return value
+  }
   return (
     <>
       <div className="w-full h-fit sticky top-0  bg-bg-primary dark:bg-bg-primary-dark border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
@@ -38,13 +52,16 @@ function MovieSearchPage() {
             key={value}
             type="search"
             placeholder="Search"
-            defaultValue={value}
+            defaultValue={findDefaultValue()}
             className="search-bar"
             onChange={(event) => debounce(event.target.value)}
           />
         </div>
       </div>
       <div className="border-bg-secondary dark:border-bg-secondary-dark">
+        <div className="lg:hidden pt-4 pb-2 px-4 w-screen overflow-y-scroll overflow-x-hidden">
+          <Genres genres={genres} value={value} />
+        </div>
         {movies?.length === 0 ? (
           <div className="flex justify-center py-10">
             <div className="bg-bg-secondary dark:bg-bg-secondary-dark p-3 md:py-10 rounded-2xl text-center grid gap-6 w-fit">

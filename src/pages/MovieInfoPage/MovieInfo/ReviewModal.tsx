@@ -24,7 +24,7 @@ function ReviewModal({ movie }: Props) {
     (review) => review.movieId === movie.id
   )
   const [rating, setRating] = useState<number>(userReview?.rating ?? 5)
-  const [review, setReview] = useState(userReview?.review ?? '')
+  const [review, setReview] = useState<string>(userReview?.review ?? '')
   const [error, setError] = useState(false)
   const modalRef = useRef<HTMLDivElement>(null)
 
@@ -71,6 +71,12 @@ function ReviewModal({ movie }: Props) {
       )
     }
   }
+
+  const handleCancel = () => {
+    userReview && setReview(userReview.review)
+    userReview && setRating(userReview.rating)
+  }
+
   return (
     <>
       {modalOpen && (
@@ -80,13 +86,13 @@ function ReviewModal({ movie }: Props) {
             ref={modalRef}
             aria-hidden="true"
           >
+            <h2 className="text-2xl">{movie.title}</h2>
             <form
               className="flex flex-col items-center gap-6 text-center"
               onSubmit={handleSubmit}
               aria-modal="true"
               role="dialog"
             >
-              <h2 className="text-xl">{movie.title}</h2>
               <StarRating rating={rating} setRating={setRating} />
               <div className="grid gap-2 w-full text-left">
                 <textarea
@@ -104,12 +110,22 @@ function ReviewModal({ movie }: Props) {
                   Review Cannot be Empty
                 </p>
               </div>
-              <button
-                className="rounded w-full text-white font-semibold bg-primary hover:bg-primary/90 mx-auto py-3"
-                type="submit"
-              >
-                Submit {userReview ? 'Edit' : 'Review'}
-              </button>
+              <div className="grid grid-cols-2 w-full">
+                {userReview && (
+                  <button
+                    className="rounded-2xl w-[50%] font-semibold py-3 bg-bg-secondary dark:bg-bg-secondary-dark place-self-start"
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </button>
+                )}
+                <button
+                  className="rounded-2xl w-[50%] text-white font-semibold bg-primary py-3 col-start-2 place-self-end"
+                  type="submit"
+                >
+                  Submit {userReview ? 'Edit' : 'Review'}
+                </button>
+              </div>
             </form>
           </div>
         </div>

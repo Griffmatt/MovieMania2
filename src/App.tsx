@@ -8,6 +8,7 @@ import BottomBar from './components/BottomBar'
 
 import { Routes, Route, Outlet } from 'react-router-dom'
 import ScrollToTop from './utils/ScrollToTop'
+import requests from './shared/requests'
 
 function App() {
   const Layout = () => (
@@ -30,8 +31,18 @@ function App() {
                 <Route path="/profile-page/:value" element={<ProfilePage />} />
                 <Route path="/profile-page" element={<ProfilePage />} />
               </Route>
-              <Route path="/search/q=:value" element={<MovieSearchPage />} />
-              <Route path="/explore" element={<MovieSearchPage />} />
+              <Route
+                path="/search/q=:value"
+                element={<MovieSearchPage request={requests.fetchSearch} />}
+              />
+              <Route
+                path="/genre=:value"
+                element={<MovieSearchPage request={requests.fetchByGenre} />}
+              />
+              <Route
+                path="/explore"
+                element={<MovieSearchPage request={requests.fetchPopular} />}
+              />
             </Routes>
           </div>
         </div>

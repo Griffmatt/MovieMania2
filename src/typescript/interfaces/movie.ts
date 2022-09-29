@@ -15,9 +15,8 @@ export interface Imovie {
   runtime: number
   revenue: number
   budget: number
-
   credits: Icredits
-  genres: { name: string }[]
+  genres: { name: string; id: number }[]
   videos: Ivideos
   images: Iimages
   tagline: string

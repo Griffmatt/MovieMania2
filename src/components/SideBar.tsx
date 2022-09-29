@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useThemeContext } from '../context/themeContext'
 import { sideOptions } from '../shared/navBarOptions'
 
+import { genres } from '../shared/genres'
+
 function SideBar() {
   const { darkMode, handleDarkMode } = useThemeContext()
+  const [genresOpen, setGenresOpen] = useState(false)
 
   return (
     <nav className="hidden py-5 w-1/6 top-0 sticky text-center h-fit md:grid gap-3">
@@ -22,7 +25,7 @@ function SideBar() {
             <React.Fragment key={option.name}>
               <Link
                 to={`/${option.value}`}
-                className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark cursor-pointer"
+                className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"
               >
                 <li>
                   <h3>{option.name}</h3>
@@ -31,10 +34,33 @@ function SideBar() {
             </React.Fragment>
           )
         })}
+        <li className="hidden lg:block">
+          <button
+            onClick={() => setGenresOpen(!genresOpen)}
+            className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"
+          >
+            <h3>Genres</h3>
+          </button>
+          <ul
+            className={`${
+              genresOpen ? 'h-fit' : 'h-0 overflow-hidden'
+            } transition-height`}
+          >
+            {genres.map((genre) => (
+              <li key={genre.name}>
+                <Link to={`/genre=${genre.id}`} className="h-fit">
+                  <p className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark">
+                    {genre.name}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </li>
         <li>
           <button
             onClick={handleDarkMode}
-            className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark cursor-pointer"
+            className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"
           >
             <h3>{darkMode ? 'Light' : 'Dark'}</h3>
           </button>

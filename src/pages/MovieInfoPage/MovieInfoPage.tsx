@@ -20,6 +20,8 @@ function MovieInfoPage() {
     `/movie/${id}${requests.fetchMovieInfo}`
   )
 
+  console.log(movies)
+
   return (
     <>
       {loading ? (

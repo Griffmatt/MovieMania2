@@ -1,6 +1,6 @@
 import Crew from './Crew'
 import Cast from './Cast'
-import Genres from './Genres'
+import Genres from '../../../components/Genres'
 
 import { formatMoney } from '../../../utils/formatMoney'
 import { Imovie } from '../../../typescript/interfaces/movie'
