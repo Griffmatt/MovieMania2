@@ -6,7 +6,6 @@ const requests = {
   fetchSearch: `/search/movie?api_key=${API_KEY}&query=`,
   fetchMovieInfo: `?api_key=${API_KEY}&language=en-US&append_to_response=videos,credits,images&include_image_language=en`,
   fetchByGenre: `/discover/movie?api_key=${API_KEY}&with_genres=`,
-  postRating: `?api_key=${API_KEY}`,
 }
 
 export default requests

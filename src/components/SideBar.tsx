@@ -1,14 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { useThemeContext } from '../context/themeContext'
 import { sideOptions } from '../shared/navBarOptions'
 
-import { genres } from '../shared/genres'
-
 function SideBar() {
   const { darkMode, handleDarkMode } = useThemeContext()
-  const [genresOpen, setGenresOpen] = useState(false)
 
   return (
     <nav className="hidden py-5 w-1/6 top-0 sticky text-center h-fit md:grid gap-3">
