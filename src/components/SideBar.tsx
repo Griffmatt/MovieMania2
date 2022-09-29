@@ -34,29 +34,6 @@ function SideBar() {
             </React.Fragment>
           )
         })}
-        <li className="hidden lg:block">
-          <button
-            onClick={() => setGenresOpen(!genresOpen)}
-            className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"
-          >
-            <h3>Genres</h3>
-          </button>
-          <ul
-            className={`${
-              genresOpen ? 'h-fit' : 'h-0 overflow-hidden'
-            } transition-height`}
-          >
-            {genres.map((genre) => (
-              <li key={genre.name}>
-                <Link to={`/genre=${genre.id}`} className="h-fit">
-                  <p className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark">
-                    {genre.name}
-                  </p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </li>
         <li>
           <button
             onClick={handleDarkMode}

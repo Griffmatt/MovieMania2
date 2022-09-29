@@ -16,7 +16,7 @@ interface Data {
 function HomePage() {
   const [request] = useState('upcoming')
 
-  const { data } = useQuery([`${request}`], () =>
+  const { data } = useQuery([request], () =>
     fetchMovies<Data>(`/movie/${request}${requests.fetchMovies}`)
   )
 

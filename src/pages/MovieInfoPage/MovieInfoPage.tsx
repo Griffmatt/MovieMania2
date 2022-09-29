@@ -18,7 +18,8 @@ import { useQuery } from '@tanstack/react-query'
 function MovieInfoPage() {
   const { id } = useParams()
 
-  const { data, isLoading } = useQuery([`${id}`], () =>
+  const { data, isLoading } = useQuery([id], () =>
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     fetchMovies<Imovie>(`/movie/${id}${requests.fetchMovieInfo}`)
   )
 
