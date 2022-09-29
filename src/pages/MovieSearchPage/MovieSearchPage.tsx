@@ -59,7 +59,7 @@ function MovieSearchPage({ request }: Props) {
         </div>
       </div>
       <div className="border-bg-secondary dark:border-bg-secondary-dark">
-        <div className="lg:hidden pt-4 pb-2 px-4 w-screen overflow-y-scroll overflow-x-hidden">
+        <div className="lg:hidden pt-4 pb-2 px-4 w-full overflow-x-scroll no-scrollbar">
           <Genres genres={genres} value={value} />
         </div>
         {movies?.length === 0 ? (

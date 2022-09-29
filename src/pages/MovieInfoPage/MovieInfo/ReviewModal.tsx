@@ -86,7 +86,7 @@ function ReviewModal({ movie }: Props) {
             ref={modalRef}
             aria-hidden="true"
           >
-            <h2 className="text-2xl">{movie.title}</h2>
+            <h2 className="text-2xl py-2">{movie.title}</h2>
             <form
               className="flex flex-col items-center gap-6 text-center"
               onSubmit={handleSubmit}
