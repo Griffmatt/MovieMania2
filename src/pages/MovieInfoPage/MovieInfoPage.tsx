@@ -3,7 +3,6 @@ import requests from '../../shared/requests'
 import MoviePoster from '../../components/MoviePoster'
 import MovieInfo from './MovieInfo/MovieInfo'
 
-import useFetchMovies from '../../hooks/useFetchMovies'
 import { useParams } from 'react-router-dom'
 
 import { reviews } from '../../shared/reviewsArray'
@@ -13,35 +12,36 @@ import { Ireview } from '../../typescript/interfaces/review'
 import BackButton from '../../components/ui/BackButton'
 import Review from '../../components/Review'
 
+import { fetchMovies } from '../../utils/fetchMovies'
+import { useQuery } from '@tanstack/react-query'
+
 function MovieInfoPage() {
   const { id } = useParams()
-  const { movies, loading } = useFetchMovies<Imovie>(
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    `/movie/${id}${requests.fetchMovieInfo}`
-  )
 
-  console.log(movies)
+  const { data, isLoading } = useQuery([`${id}`], () =>
+    fetchMovies<Imovie>(`/movie/${id}${requests.fetchMovieInfo}`)
+  )
 
   return (
     <>
-      {loading ? (
+      {isLoading ? (
         <div></div>
       ) : (
-        movies && (
+        data && (
           <div className="p-5 grid gap-3 ">
             <div className="items-start">
               <BackButton />
             </div>
             <div className="flex justify-center">
               <div className="w-60 md:w-[31.25rem] aspect-[2/3]">
-                <MoviePoster movie={movies} />
+                <MoviePoster movie={data} />
               </div>
             </div>
-            <MovieInfo movie={movies} />
+            <MovieInfo movie={data} />
             <MovieMedia
-              images={movies.images.backdrops}
-              movie={movies}
-              videos={movies.videos.results}
+              images={data.images.backdrops}
+              movie={data}
+              videos={data.videos.results}
             />
             <div className="border-t-2 border-bg-secondary dark:border-bg-secondary-dark">
               <h2>Recent Reviews</h2>

@@ -1,4 +1,4 @@
-import { useRef, useState, useId, useEffect } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { addReview, updateReview } from '../../../redux/reviewSlice'
 import { useDispatch } from 'react-redux'
 import { useUserContext } from '../../../context/userContext'
@@ -12,6 +12,7 @@ import useCloseModal from '../../../hooks/useCloseModal'
 
 import { Ireview } from '../../../typescript/interfaces/review'
 import StarRating from './StarRating'
+import { v4 as uuidv4 } from 'uuid'
 
 interface Props {
   movie: Imovie
@@ -27,8 +28,6 @@ function ReviewModal({ movie }: Props) {
   const [review, setReview] = useState<string>(userReview?.review ?? '')
   const [error, setError] = useState(false)
   const modalRef = useRef<HTMLDivElement>(null)
-
-  const id = useId()
 
   const { modalOpen, handleOpenReviewModal } = useReviewModalContext()
 
@@ -66,7 +65,7 @@ function ReviewModal({ movie }: Props) {
           date: new Date().toLocaleDateString(),
           rating: rating,
           review: review,
-          id: id,
+          id: uuidv4(),
         })
       )
     }
