@@ -20,7 +20,7 @@ function Review({ review, profileReview }: Props) {
           <h4 className="font-bold">{review.rating}/10</h4>
         </div>
         {profileReview && (
-          <Link to={`/${review.movieId}`}>
+          <Link to={`/${review.movieId}`} className="w-fit">
             <h3 className="text-black dark:text-white hover:lg:text-primary">
               {review.title}
             </h3>
