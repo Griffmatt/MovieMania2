@@ -8,7 +8,7 @@ function BottomBar() {
   const { darkMode, handleDarkMode } = useThemeContext()
 
   return (
-    <nav className="w-screen py-3 border-t-2 border-bg-secondary dark:border-bg-secondary-dark bg-bg-primary dark:bg-bg-primary-dark fixed bottom-0 md:hidden">
+    <nav className="w-screen py-4 border-t-2 border-bg-secondary dark:border-bg-secondary-dark bg-bg-primary dark:bg-bg-primary-dark fixed bottom-0 md:hidden">
       <div className="flex justify-around">
         {bottomOptions.map((option) => {
           return (

@@ -11,7 +11,7 @@ const Genres = ({ genres, value }: Props) => {
   }
 
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 lg:flex-wrap lg:w-[60%] lg:mx-auto lg:justify-center">
       {genres.map((genre) => (
         <Link key={genre.name} className="w-fit" to={`/genre=${genre.id}`}>
           <h5
