@@ -18,7 +18,7 @@ import { useQuery } from '@tanstack/react-query'
 function MovieInfoPage() {
   const { id } = useParams()
 
-  const { data, isLoading } = useQuery([id], () =>
+  const { data, isLoading } = useQuery(['movie', id], () =>
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     fetchMovies<Imovie>(`/movie/${id}${requests.fetchMovieInfo}`)
   )
@@ -45,7 +45,7 @@ function MovieInfoPage() {
               videos={data.videos.results}
             />
             <div className="border-t-2 border-bg-secondary dark:border-bg-secondary-dark">
-              <h2>Recent Reviews</h2>
+              <h3>Recent Reviews</h3>
               <div className="grid gap-5 w-full xl:grid-cols-2 py-4">
                 {reviews.map((review: Ireview) => {
                   return (

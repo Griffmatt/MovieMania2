@@ -25,7 +25,7 @@ function MovieSearchPage({ request }: Props) {
   let timer: string | number | NodeJS.Timeout | undefined
   const fetchRequest = value ? `${request}${value}` : `${request}`
 
-  const { data } = useQuery([fetchRequest], () =>
+  const { data } = useQuery(['movies', fetchRequest], () =>
     fetchMovies<Data>(fetchRequest)
   )
 

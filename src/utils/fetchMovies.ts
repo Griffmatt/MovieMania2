@@ -9,5 +9,6 @@ export const fetchMovies = async <T>(request: string): Promise<T | void> => {
     return response.data
   } catch {
     console.log('error')
+    throw new Error()
   }
 }

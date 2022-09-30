@@ -17,7 +17,6 @@ function App() {
       <Outlet />
     </>
   )
-
   return (
     <>
       <div className="md:container mx-auto sm:mb-12">

@@ -14,13 +14,13 @@ const Genres = ({ genres, value }: Props) => {
     <div className="flex gap-2">
       {genres.map((genre) => (
         <Link key={genre.name} className="w-fit" to={`/genre=${genre.id}`}>
-          <p
+          <h5
             className={`whitespace-nowrap border-2 px-2 py-1 rounded-xl ${
               Number(value) === genre.id ? 'border-primary text-primary' : ''
             }`}
           >
             {genre.name}
-          </p>
+          </h5>
         </Link>
       ))}
     </div>

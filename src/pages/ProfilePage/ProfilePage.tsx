@@ -50,10 +50,8 @@ function ProfilePage() {
                 onClick={() => setOpenMenu(option.value)}
               >
                 <h3
-                  className={`text-bg md:text-lg font-semibold cursor-pointer ${
-                    openMenu === option.value
-                      ? 'border-b-2 border-primary text-primary'
-                      : ''
+                  className={`text-bg md:text-lg font-semibold cursor-pointer text-black dark:text-white ${
+                    openMenu === option.value ? 'border-b-2 border-primary' : ''
                   }`}
                 >
                   {option.name}

@@ -16,7 +16,7 @@ function SideBar() {
           <span className="text-secondary">M</span>ania
         </h1>
       </Link>
-      <ul className="grid gap-2">
+      <div className="grid gap-2">
         {sideOptions.map((option) => {
           return (
             <React.Fragment key={option.name}>
@@ -24,22 +24,18 @@ function SideBar() {
                 to={`/${option.value}`}
                 className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"
               >
-                <li>
-                  <h3>{option.name}</h3>
-                </li>
+                <h2>{option.name}</h2>
               </Link>
             </React.Fragment>
           )
         })}
-        <li>
-          <button
-            onClick={handleDarkMode}
-            className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"
-          >
-            <h3>{darkMode ? 'Light' : 'Dark'}</h3>
-          </button>
-        </li>
-      </ul>
+        <button
+          onClick={handleDarkMode}
+          className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"
+        >
+          <h2>{darkMode ? 'Light' : 'Dark'}</h2>
+        </button>
+      </div>
     </nav>
   )
 }
