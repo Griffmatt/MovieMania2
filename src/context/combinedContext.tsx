@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 import { ThemeContextProvider } from './themeContext'
 import { UserContextProvider } from './userContext'
+import { ModalContextProvider } from './modalContext'
 
 interface Props {
   children: ReactNode
@@ -9,7 +10,9 @@ interface Props {
 export function CombinedContextProvider({ children }: Props) {
   return (
     <ThemeContextProvider>
-      <UserContextProvider>{children}</UserContextProvider>
+      <ModalContextProvider>
+        <UserContextProvider>{children}</UserContextProvider>
+      </ModalContextProvider>
     </ThemeContextProvider>
   )
 }

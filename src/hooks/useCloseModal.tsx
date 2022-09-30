@@ -2,8 +2,7 @@ import { useEffect } from 'react'
 
 export default function useCloseModal(
   modalRef: React.RefObject<HTMLDivElement>,
-  closeModal: () => void,
-  modalOpen: boolean
+  closeModal: () => void
 ) {
   useEffect(() => {
     function handleClickOutside(target: Node) {
@@ -29,14 +28,4 @@ export default function useCloseModal(
       )
     }
   }, [modalRef, closeModal])
-
-  useEffect(() => {
-    if (modalOpen) {
-      document.body.classList.add('modal-open')
-    }
-
-    return () => {
-      document.body.classList.remove('modal-open')
-    }
-  }, [modalOpen])
 }

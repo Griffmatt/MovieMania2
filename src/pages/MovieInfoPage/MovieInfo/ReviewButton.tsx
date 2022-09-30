@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { useReviewModalContext } from '../../../context/reviewModalContext'
+import { useModalContext } from '../../../context/modalContext'
 import { useSelector } from 'react-redux'
 import { selectReview } from '../../../redux/reviewSlice'
 import { Imovie } from '../../../typescript/interfaces/movie'
@@ -10,7 +10,7 @@ interface Props {
 }
 
 function ReviewButton({ movie }: Props) {
-  const { handleOpenReviewModal } = useReviewModalContext()
+  const { openModal } = useModalContext()
   const reviews = useSelector(selectReview)
 
   const review: Ireview | undefined = reviews.find(
@@ -21,7 +21,7 @@ function ReviewButton({ movie }: Props) {
 
   const handleClick = () => {
     if (throttleRef.current === false) {
-      handleOpenReviewModal()
+      openModal()
       throttleRef.current = true
       setTimeout(() => (throttleRef.current = false), 750)
     }

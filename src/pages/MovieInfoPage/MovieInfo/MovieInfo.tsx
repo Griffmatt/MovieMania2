@@ -7,7 +7,6 @@ import { Imovie } from '../../../typescript/interfaces/movie'
 import WatchListButton from './WatchListButton'
 import ReviewButton from './ReviewButton'
 import ReviewModal from './ReviewModal'
-import { ReviewModalContextProvider } from '../../../context/reviewModalContext'
 
 interface Props {
   movie: Imovie
@@ -50,10 +49,8 @@ function MovieInfo({ movie }: Props) {
         </h4>
         <div className="flex gap-4">
           <WatchListButton movie={movie} />
-          <ReviewModalContextProvider>
-            <ReviewButton movie={movie} />
-            <ReviewModal movie={movie} />
-          </ReviewModalContextProvider>
+          <ReviewButton movie={movie} />
+          <ReviewModal movie={movie} />
         </div>
       </div>
       <h2>Overview</h2>
