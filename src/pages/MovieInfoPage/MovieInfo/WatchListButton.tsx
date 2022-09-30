@@ -18,8 +18,8 @@ function WatchListButton({ movie }: { movie: Imovie }) {
   return (
     <button className="movie-info__button" onClick={handleClick}>
       <h5>
-        Watch List{' '}
-        <span className="text-xl">{`${includesMovie ? '-' : '+'}`}</span>
+        Watch List
+        {`${includesMovie ? ' -' : ' +'}`}
       </h5>
     </button>
   )

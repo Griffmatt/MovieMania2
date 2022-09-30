@@ -29,11 +29,11 @@ function MovieInfoPage() {
         <div></div>
       ) : (
         data && (
-          <div className="p-5 grid gap-3 ">
+          <div className="p-5 grid gap-3">
             <div className="items-start">
               <BackButton />
             </div>
-            <div className="flex justify-center">
+            <div className="mx-auto">
               <div className="w-60 md:w-[31.25rem] aspect-[2/3]">
                 <MoviePoster movie={data} />
               </div>

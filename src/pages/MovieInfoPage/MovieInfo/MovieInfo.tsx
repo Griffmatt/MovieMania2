@@ -49,7 +49,7 @@ function MovieInfo({ movie }: Props) {
             <span className="text-sm">%</span>
           </span>
         </h4>
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <WatchListButton movie={movie} />
           <ReviewButton movie={movie} />
           <ReviewModal movie={movie} />

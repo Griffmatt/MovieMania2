@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { Iactor } from '../../../typescript/interfaces/castAndCrew'
 
 interface Props {
@@ -6,15 +6,13 @@ interface Props {
 }
 
 function Cast({ cast }: Props) {
-  const castNumber = 11
+  const castNumber = 19
 
-  const castRef = useRef<HTMLDivElement | null>(null)
   const [shownCast, setShownCast] = useState(castNumber)
   const base_url = 'https://image.tmdb.org/t/p/w300'
   const starringCast = cast.filter((actor) => actor.profile_path)
 
   const handleShowCast = () => {
-    castRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
     shownCast === castNumber
       ? setShownCast(starringCast.length)
       : setShownCast(castNumber)
@@ -22,19 +20,23 @@ function Cast({ cast }: Props) {
 
   const StarringCast = () => {
     return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+      <div className="flex w-[calc(100vw-2.5rem)] md:w-[calc(83.33333333333333333333vw-2.5rem)] lg:w-full no-scrollbar overflow-x-scroll lg:grid lg:grid-cols-10 gap-3">
         {starringCast.slice(0, shownCast).map((actor) => {
           return (
-            <div key={actor.id} className="auto-cols-min w-full aspect-[2/3]">
-              <img
-                src={`${base_url}${actor.profile_path}`}
-                alt={actor.name}
-                className="rounded-xl"
-              />
-              <p className="pt-2 md:pt-0 overflow-ellipsis">
-                <span className="font-semibold">{actor.name}</span>
-                <br /> {actor.character}
-              </p>
+            <div key={actor.id}>
+              <div className="w-32 lg:w-full">
+                <img
+                  src={`${base_url}${actor.profile_path}`}
+                  alt={actor.name}
+                  className="rounded-xl w-full aspect-[2/3]"
+                />
+              </div>
+              <div>
+                <p className="pt-2 w-full md:pt-0 overflow-ellipsis">
+                  <span className="font-semibold">{actor.name}</span>
+                  <br /> {actor.character}
+                </p>
+              </div>
             </div>
           )
         })}
@@ -50,14 +52,14 @@ function Cast({ cast }: Props) {
   }
 
   return (
-    <div ref={castRef}>
+    <>
       {starringCast.length > 0 && (
-        <>
+        <div>
           <h2 className="py-4">Starring</h2>
           <StarringCast />
-        </>
+        </div>
       )}
-    </div>
+    </>
   )
 }
 
