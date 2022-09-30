@@ -44,8 +44,8 @@ function MovieInfoPage() {
               movie={data}
               videos={data.videos.results}
             />
-            <div className="border-t-2 border-bg-secondary dark:border-bg-secondary-dark">
-              <h3>Recent Reviews</h3>
+            <div className="border-t-2 py-2 border-bg-secondary dark:border-bg-secondary-dark">
+              <h2>Recent Reviews</h2>
               <div className="grid gap-5 w-full xl:grid-cols-2 py-4">
                 {reviews.map((review: Ireview) => {
                   return (

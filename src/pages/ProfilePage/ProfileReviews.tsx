@@ -10,7 +10,7 @@ function ProfileReviews({ reviews }: Props) {
   return (
     <>
       {reviews.length > 0 ? (
-        <div className="grid gap-3">
+        <div>
           {reviews.map((review) => {
             return (
               <div

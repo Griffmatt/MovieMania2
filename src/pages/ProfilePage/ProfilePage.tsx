@@ -49,13 +49,15 @@ function ProfilePage() {
                 className={`${option.value === 'stats' ? 'md:hidden' : ''}`}
                 onClick={() => setOpenMenu(option.value)}
               >
-                <h3
-                  className={`text-bg md:text-lg font-semibold cursor-pointer text-black dark:text-white ${
-                    openMenu === option.value ? 'border-b-2 border-primary' : ''
+                <h2
+                  className={`text-bg md:text-lg font-semibold cursor-pointer ${
+                    openMenu === option.value
+                      ? 'border-b-2 border-primary text-primary'
+                      : ''
                   }`}
                 >
                   {option.name}
-                </h3>
+                </h2>
               </Link>
             )
           })}
