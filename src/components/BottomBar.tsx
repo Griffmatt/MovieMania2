@@ -9,25 +9,27 @@ function BottomBar() {
 
   return (
     <nav className="w-screen py-3 border-t-2 border-bg-secondary dark:border-bg-secondary-dark bg-bg-primary dark:bg-bg-primary-dark fixed bottom-0 md:hidden">
-      <ul className="flex justify-around">
+      <div className="flex justify-around">
         {bottomOptions.map((option) => {
           return (
             <React.Fragment key={option.name}>
-              <Link to={`/${option.value}`} className="flex">
-                <li className="my-auto rounded-3xl w-fit cursor-pointer">
-                  <p>{option.name}</p>
-                </li>
+              <Link
+                to={`/${option.value}`}
+                className="my-auto rounded-3xl w-fit cursor-pointer"
+              >
+                <p>{option.name}</p>
               </Link>
             </React.Fragment>
           )
         })}
 
-        <li className="rounded-3xl w-fit cursor-pointer">
-          <button onClick={handleDarkMode}>
-            <p>{darkMode ? 'Light' : 'Dark'}</p>
-          </button>
-        </li>
-      </ul>
+        <button
+          onClick={handleDarkMode}
+          className="rounded-3xl w-fit cursor-pointer"
+        >
+          <p>{darkMode ? 'Light' : 'Dark'}</p>
+        </button>
+      </div>
     </nav>
   )
 }
