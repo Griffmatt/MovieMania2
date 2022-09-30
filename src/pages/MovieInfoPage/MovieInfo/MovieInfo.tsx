@@ -38,7 +38,9 @@ function MovieInfo({ movie }: Props) {
         <h1 className="pt-3">{title}</h1>
         <p>{tagline}</p>
       </div>
-      <Genres genres={genres} />
+      <div className="flex gap-2 flex-wrap">
+        <Genres genres={genres} />
+      </div>
       <div className="flex justify-between flex-col gap-2 md:flex-row">
         <h4>
           {movie.release_date.slice(0, 4)} - {runTime(runtime)} -{' '}
