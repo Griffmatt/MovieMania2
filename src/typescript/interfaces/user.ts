@@ -3,5 +3,5 @@ export interface Iuser {
   userName: string
   image: string
   joinDate: string
-  id: string
+  uid: string
 }

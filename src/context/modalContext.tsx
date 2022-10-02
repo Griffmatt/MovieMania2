@@ -1,8 +1,10 @@
 import { createContext, ReactNode, useContext, useState } from 'react'
 
 interface Context {
-  isOpen: boolean
-  openModal: () => void
+  isOpenReview: boolean
+  isOpenLogin: boolean
+  openReviewModal: () => void
+  openLoginModal: () => void
   closeModal: () => void
 }
 interface Props {
@@ -16,18 +18,32 @@ export function useModalContext() {
 }
 
 export function ModalContextProvider({ children }: Props) {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpenReview, setIsOpenReview] = useState(false)
+  const [isOpenLogin, setIsOpenLogin] = useState(false)
 
-  const openModal = () => {
-    setIsOpen(true)
+  const openReviewModal = () => {
+    setIsOpenReview(true)
+  }
+
+  const openLoginModal = () => {
+    setIsOpenLogin(true)
   }
 
   const closeModal = () => {
-    setIsOpen(false)
+    setIsOpenReview(false)
+    setIsOpenLogin(false)
   }
 
   return (
-    <ModalContext.Provider value={{ isOpen, openModal, closeModal }}>
+    <ModalContext.Provider
+      value={{
+        isOpenReview,
+        isOpenLogin,
+        openReviewModal,
+        openLoginModal,
+        closeModal,
+      }}
+    >
       {children}
     </ModalContext.Provider>
   )

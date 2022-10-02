@@ -1,6 +1,7 @@
 export const reviews = [
   {
     name: 'Griffin',
+    userName: 'Griffin',
     movieId: 0,
     rating: 7,
     date: '4/20/2022',
@@ -12,6 +13,7 @@ export const reviews = [
   },
   {
     name: 'Griffin',
+    userName: 'Griffin',
     movieId: 0,
     rating: 7,
     date: '4/20/2022',
@@ -23,6 +25,7 @@ export const reviews = [
   },
   {
     name: 'Griffin',
+    userName: 'Griffin',
     movieId: 0,
     rating: 7,
     date: '4/20/2022',
@@ -34,6 +37,7 @@ export const reviews = [
   },
   {
     name: 'Griffin',
+    userName: 'Griffin',
     movieId: 0,
     rating: 7,
     date: '4/20/2022',
@@ -45,6 +49,7 @@ export const reviews = [
   },
   {
     name: 'Griffin',
+    userName: 'Griffin',
     movieId: 0,
     rating: 7,
     date: '4/20/2022',
@@ -56,6 +61,7 @@ export const reviews = [
   },
   {
     name: 'Griffin',
+    userName: 'Griffin',
     movieId: 0,
     rating: 7,
     date: '4/20/2022',

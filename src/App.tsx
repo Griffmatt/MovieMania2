@@ -9,8 +9,11 @@ import BottomBar from './components/BottomBar'
 import { Routes, Route, Outlet } from 'react-router-dom'
 import ScrollToTop from './utils/ScrollToTop'
 import requests from './shared/requests'
+import LoginModal from './components/LoginModal'
+import { useModalContext } from './context/modalContext'
 
 function App() {
+  const { isOpenLogin } = useModalContext()
   const Layout = () => (
     <>
       <NavBar />
@@ -20,6 +23,7 @@ function App() {
   return (
     <>
       <div className="md:container mx-auto sm:mb-12">
+        {isOpenLogin && <LoginModal />}
         <div className="flex">
           <SideBar />
           <div className="md:border-l-2 md:border-bg-secondary dark:border-bg-secondary-dark md:w-5/6 md:min-h-screen">

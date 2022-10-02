@@ -1,20 +1,24 @@
-import { useUserContext } from '../../context/userContext'
+import { Iuser } from '../../typescript/interfaces/user'
 
-function ProfileHeader({ reviews }: { reviews: number }) {
-  const { user } = useUserContext()
+interface Props {
+  reviews: number
+  user: Iuser
+}
+
+function ProfileHeader({ reviews, user }: Props) {
   return (
     <header className="flex justify-between p-4">
       <div className="w-fit grid gap-2">
         <div className="relative w-[4rem] h-[4rem] md:w-[6rem] md:h-[6rem]">
           <img
-            src={user.image}
+            src="images/profileImage.png"
             alt="Profile"
             className=" w-[4rem] h-[4rem] md:w-[6rem] md:h-[6rem] absolute top-0 left-0"
           />
         </div>
         <div>
           <h3 className="font-bold">{user.name}</h3>
-          <p className="text-font-secondary">{user.userName}</p>
+          <p className="text-font-secondary">@{user.userName}</p>
         </div>
         <p className="text-font-secondary">{user.joinDate}</p>
       </div>

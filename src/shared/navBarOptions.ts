@@ -4,12 +4,12 @@ export const sideOptions = [
     value: '',
   },
   {
-    name: 'Profile',
-    value: 'profile-page',
-  },
-  {
     name: 'Explore',
     value: 'explore',
+  },
+  {
+    name: 'Profile',
+    value: 'profile-page',
   },
 ]
 
@@ -19,11 +19,11 @@ export const bottomOptions = [
     value: '',
   },
   {
-    name: 'Profile',
-    value: 'profile-page',
-  },
-  {
     name: 'Explore',
     value: 'explore',
+  },
+  {
+    name: 'Profile',
+    value: 'profile-page',
   },
 ]

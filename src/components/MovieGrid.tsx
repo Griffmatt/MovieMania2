@@ -21,7 +21,7 @@ function MovieGrid({ movies }: { movies: Imovie[] }) {
             {index === 0 && movie.backdrop_path ? (
               <MovieBanner movie={movie} />
             ) : (
-              <MoviePoster movie={movie} />
+              <MoviePoster movie={movie} posterSize="300" />
             )}
           </Link>
         )

@@ -35,7 +35,7 @@ function MovieInfoPage() {
             </div>
             <div className="mx-auto">
               <div className="w-60 md:w-[31.25rem] aspect-[2/3]">
-                <MoviePoster movie={data} />
+                <MoviePoster movie={data} posterSize="500" />
               </div>
             </div>
             <MovieInfo movie={data} />
@@ -51,7 +51,7 @@ function MovieInfoPage() {
                   return (
                     <div
                       className="border-2 w-full border-bg-secondary dark:border-bg-secondary-dark p-5 rounded-xl shadow"
-                      key={review.userId}
+                      key={review.id}
                     >
                       <Review review={review} />
                     </div>

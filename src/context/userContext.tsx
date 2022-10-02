@@ -1,29 +1,16 @@
 import {
   createContext,
-  Dispatch,
   ReactNode,
-  SetStateAction,
   useContext,
+  useEffect,
   useState,
 } from 'react'
+import { Iuser } from '../typescript/interfaces/user'
 
+type userValue = Iuser | null
 interface Context {
-  user: {
-    id: string
-    name: string
-    userName: string
-    image: string
-    joinDate: string
-  }
-  setUser: Dispatch<
-    SetStateAction<{
-      name: string
-      userName: string
-      image: string
-      joinDate: string
-      id: string
-    }>
-  >
+  user: Iuser | null
+  handleSetUser: (user: userValue) => void
 }
 interface Props {
   children: ReactNode
@@ -36,16 +23,24 @@ export function useUserContext() {
 }
 
 export function UserContextProvider({ children }: Props) {
-  const [user, setUser] = useState({
-    name: 'griffin',
-    userName: '@griffin',
-    image: '/Images/profileImage.png',
-    joinDate: 'August 2022',
-    id: 'default',
-  })
+  const [user, setUser] = useState<Iuser | null>(null)
+
+  const handleSetUser = (userValue: userValue) => {
+    setUser(userValue)
+    localStorage.setItem('user', JSON.stringify(userValue))
+  }
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user')
+    console.log(storedUser)
+    if (storedUser !== null) {
+      const parsedUser = JSON.parse(storedUser) as Iuser
+      setUser(parsedUser)
+    }
+  }, [])
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, handleSetUser }}>
       {children}
     </UserContext.Provider>
   )

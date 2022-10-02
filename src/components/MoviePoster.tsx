@@ -2,10 +2,11 @@ import { Imovie } from '../typescript/interfaces/movie'
 
 interface Props {
   movie: Imovie
+  posterSize: string
 }
 
-function MoviePoster({ movie }: Props) {
-  const base_url = `https://image.tmdb.org/t/p/w500`
+function MoviePoster({ movie, posterSize }: Props) {
+  const base_url = `https://image.tmdb.org/t/p/w${posterSize}`
 
   return (
     <>

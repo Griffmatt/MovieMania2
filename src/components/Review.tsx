@@ -15,7 +15,7 @@ function Review({ review, profileReview }: Props) {
         <div className="flex justify-between">
           <div className="flex xs:flex-col xs:gap-0 items-start gap-1 h-fit">
             <h4 className="font-bold">{review.name}</h4>
-            <h4 className="text-font-secondary">@{review.name}</h4>
+            <h4 className="text-font-secondary">@{review.userName}</h4>
           </div>
           <h4 className="font-bold">{review.rating}/10</h4>
         </div>
@@ -27,12 +27,6 @@ function Review({ review, profileReview }: Props) {
           </Link>
         )}
         <p className="col-span-full">{review.review}</p>
-        <div className="flex gap-2 justify-between pt-2">
-          <button>
-            <p>Read Full Review Here</p>
-          </button>
-          <p>{review.date}</p>
-        </div>
       </div>
     </div>
   )

@@ -4,7 +4,7 @@ export interface Ireview {
   date: string
   review: string
   title: string
-  userId: string
+  userName: string
   movieId: number
   id: string
 }

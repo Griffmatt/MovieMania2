@@ -1,15 +1,17 @@
-import { useSelector } from 'react-redux'
 import MovieGrid from '../../components/MovieGrid'
-import { selectWatchList } from '../../redux/watchListSlice'
 
 import ProfileSectionEmpty from './ProfileSectionEmpty'
+import { Imovie } from '../../typescript/interfaces/movie'
 
-function ProfileWatchList() {
-  const watchListMovies = useSelector(selectWatchList)
+interface Props {
+  movies: Imovie[]
+}
+
+function ProfileWatchList({ movies }: Props) {
   return (
     <>
-      {watchListMovies.length > 0 ? (
-        <MovieGrid movies={watchListMovies} />
+      {movies.length > 0 ? (
+        <MovieGrid movies={movies} />
       ) : (
         <ProfileSectionEmpty message="add" />
       )}

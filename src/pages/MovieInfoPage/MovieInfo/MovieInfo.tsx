@@ -7,13 +7,20 @@ import { Imovie } from '../../../typescript/interfaces/movie'
 import WatchListButton from './WatchListButton'
 import ReviewButton from './ReviewButton'
 import ReviewModal from './ReviewModal'
+import { useQuery } from '@tanstack/react-query'
+import { fetchReview } from '../../../fireBaseUtils/fetchReview'
+import { useUserContext } from '../../../context/userContext'
 
 interface Props {
   movie: Imovie
 }
 
 function MovieInfo({ movie }: Props) {
-  // eslint-disable-next-line prettier/prettier
+  const { user } = useUserContext()
+  const { data } = useQuery(
+    ['review', movie.title],
+    () => user && fetchReview(movie, user)
+  )
   const {
     genres,
     credits,
@@ -51,8 +58,8 @@ function MovieInfo({ movie }: Props) {
         </h4>
         <div className="flex flex-col sm:flex-row gap-4">
           <WatchListButton movie={movie} />
-          <ReviewButton movie={movie} />
-          <ReviewModal movie={movie} />
+          <ReviewButton />
+          <ReviewModal movie={movie} userReview={data} />
         </div>
       </div>
       <h2>Overview</h2>
