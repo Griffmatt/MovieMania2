@@ -27,6 +27,7 @@ function Review({ review, profileReview }: Props) {
           </Link>
         )}
         <p className="col-span-full">{review.review}</p>
+        <h5 className="w-full text-right">{review.date}</h5>
       </div>
     </div>
   )

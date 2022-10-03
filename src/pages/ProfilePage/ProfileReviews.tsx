@@ -8,16 +8,13 @@ interface Props {
 }
 
 function ProfileReviews({ reviews, isLoading }: Props) {
-  console.log(isLoading)
   if (isLoading) return <div></div>
 
-  const reversedReviews = reviews.reverse()
-  console.log(reversedReviews)
-
-  if (reviews[0] && reviews)
+  const reversed = [...reviews].reverse()
+  if (reviews[0])
     return (
       <div>
-        {reversedReviews.map((review) => {
+        {reversed.map((review) => {
           return (
             <div
               key={review.id}
