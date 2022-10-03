@@ -5,7 +5,7 @@ import ProfileHeader from './ProfileHeader'
 import ProfileReviews from './ProfileReviews'
 import ProfileWatchList from './ProfileWatchList'
 import { useUserContext } from '../../context/userContext'
-import { useFetchUserReviews } from '../../fireBaseHooks/useFetchUserReviews'
+import { Navigate } from 'react-router-dom'
 
 const MENU_OPTIONS = [
   {
@@ -30,20 +30,23 @@ interface Option {
 function ProfilePage() {
   const { value } = useParams()
   const [openMenu, setOpenMenu] = useState(value ?? 'reviews')
-  const { user } = useUserContext()
+  const { user, userData } = useUserContext()
 
-  const { reviews, isLoadingReviews } = useFetchUserReviews()
+  console.log(user)
 
   useEffect(() => {
     setOpenMenu(value ?? '')
   }, [value])
 
+  if (user == null) {
+    return <Navigate to={'/'} />
+  }
   return (
     <>
-      {user && (
+      {userData && (
         <div className="flex">
           <div className="w-full md:w-3/4 xl:w-2/3 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark md:min-h-[calc(100vh-5.125rem)]">
-            <ProfileHeader user={user} />
+            <ProfileHeader user={userData} />
             <nav className="px-8 py-2 flex justify-around gap-5 border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
               {MENU_OPTIONS.map((option: Option) => {
                 return (
@@ -66,13 +69,8 @@ function ProfilePage() {
                 )
               })}
             </nav>
-            {openMenu === '' && (
-              <ProfileReviews
-                reviews={reviews ?? []}
-                isLoading={isLoadingReviews}
-              />
-            )}
-            {openMenu === 'watch-list' && <ProfileWatchList />}
+            {openMenu === '' && <ProfileReviews user={user} />}
+            {openMenu === 'watch-list' && <ProfileWatchList user={user} />}
           </div>
           <div className="sticky top-[5.125rem] md:w-1/4 xl:w-1/3 h-fit p-10 xs:hidden ">
             <div className="text-center">hi</div>

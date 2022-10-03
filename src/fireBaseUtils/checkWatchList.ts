@@ -1,16 +1,18 @@
 import { doc, getDoc } from 'firebase/firestore'
 import db from '../firebase'
 import { Imovie } from '../typescript/interfaces/movie'
-import { Iuser } from '../typescript/interfaces/user'
 
-export const checkWatchList = async (id: string, user: Iuser | null) => {
-  if (user === null) return user
-  const docRef = doc(db, 'watch-list', user.uid)
+export const checkWatchList = async (
+  userId: string | null,
+  movieId?: string
+) => {
+  if (userId === null) return userId
+  const docRef = doc(db, 'watch-list', userId)
   const watchListDoc = await getDoc(docRef)
   const watchListData = watchListDoc.data() as { watchList: Imovie[] }
 
   const isOn = watchListData.watchList.find(
-    (watchListMovie) => watchListMovie.id === Number(id)
+    (watchListMovie) => watchListMovie.id === Number(movieId)
   )
   return isOn ? true : false
 }

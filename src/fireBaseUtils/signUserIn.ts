@@ -6,11 +6,14 @@ import { Iuser } from '../typescript/interfaces/user'
 export const signUserIn = async (
   email: string,
   password: string,
-  handleSetUser: (user: Iuser) => void,
+  handleSetUser: (userId: string, userData: Iuser) => void,
   closeModal: () => void
 ) => {
   const user = await signInWithEmailAndPassword(auth, email, password)
-  const userDoc = await getDoc(doc(db, 'user', `${user.user.uid}`))
-  handleSetUser(userDoc.data() as unknown as Iuser)
+  const userDoc = await getDoc(doc(db, 'user', user.user.uid))
+  handleSetUser(
+    user.user.uid as unknown as string,
+    userDoc.data() as unknown as Iuser
+  )
   closeModal()
 }

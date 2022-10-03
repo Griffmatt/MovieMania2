@@ -1,4 +1,4 @@
-import { signUserIn } from '../fireBaseHooks/signUserIn'
+import { signUserIn } from '../fireBaseUtils/signUserIn'
 import { useUserContext } from '../context/userContext'
 import { SyntheticEvent, useState } from 'react'
 import { useModalContext } from '../context/modalContext'

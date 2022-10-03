@@ -5,12 +5,16 @@ import {
   useEffect,
   useState,
 } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import db, { auth } from '../firebase'
 import { Iuser } from '../typescript/interfaces/user'
+import { getDoc, doc } from 'firebase/firestore'
 
-type userValue = Iuser | null
+type userValue = string | null
 interface Context {
-  user: Iuser | null
-  handleSetUser: (user: userValue) => void
+  user?: string | null
+  userData?: Iuser | null
+  handleSetUser: (user: userValue, userData: Iuser) => void
 }
 interface Props {
   children: ReactNode
@@ -23,23 +27,37 @@ export function useUserContext() {
 }
 
 export function UserContextProvider({ children }: Props) {
-  const [user, setUser] = useState<Iuser | null>(null)
+  const [user, setUser] = useState<string | null>(null)
+  const [userData, setUserData] = useState<Iuser | null>()
 
-  const handleSetUser = (userValue: userValue) => {
+  const handleSetUser = (userValue: userValue, userData: Iuser) => {
     setUser(userValue)
-    localStorage.setItem('user', JSON.stringify(userValue))
+    setUserData(userData)
   }
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user')
-    if (storedUser !== null) {
-      const parsedUser = JSON.parse(storedUser) as Iuser
-      setUser(parsedUser)
+    if (user == null) {
+      setUserData(null)
+      return
     }
-  }, [])
+    const getUserData = async () => {
+      const userDoc = await getDoc(doc(db, 'user', user))
+      setUserData(userDoc.data() as unknown as Iuser)
+    }
+    void getUserData()
+  }, [user])
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUser(user.uid)
+      return
+    }
+    setUser(null)
+    setUserData(null)
+  })
 
   return (
-    <UserContext.Provider value={{ user, handleSetUser }}>
+    <UserContext.Provider value={{ user, userData, handleSetUser }}>
       {children}
     </UserContext.Provider>
   )

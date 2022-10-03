@@ -8,6 +8,7 @@ import { Imovie } from '../../typescript/interfaces/movie'
 
 import { fetchMovies } from '../../utils/fetchMovies'
 import { useQuery } from '@tanstack/react-query'
+import LoadingComponent from '../../components/ui/LoadingComponent'
 
 interface Data {
   results: Imovie[]
@@ -16,7 +17,7 @@ interface Data {
 function HomePage() {
   const [request] = useState('upcoming')
 
-  const { data } = useQuery(['movies', request], () =>
+  const { data, isLoading } = useQuery(['movies', request], () =>
     fetchMovies<Data>(`/movie/${request}${requests.fetchMovies}`)
   )
 
@@ -27,7 +28,7 @@ function HomePage() {
       optionMap.current.set(option.value, option.name)
     })
   }, [])
-
+  if (isLoading) return <LoadingComponent />
   return <>{data && <MovieGrid movies={data.results} />}</>
 }
 

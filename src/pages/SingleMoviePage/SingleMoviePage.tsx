@@ -16,19 +16,34 @@ import WatchListButton from './MovieInfoComponents/WatchListButton'
 import ReviewModal from './MovieInfoComponents/ReviewModal'
 import Crew from './MovieInfoComponents/Crew'
 import Cast from './MovieInfoComponents/Cast'
-import { useFetchMovie } from '../../fireBaseHooks/useFetchMovie'
 
+import { checkWatchList } from '../../fireBaseUtils/checkWatchList'
+import { fetchReview } from '../../fireBaseUtils/fetchReview'
+import { fetchMovies } from '../../utils/fetchMovies'
+import { Imovie } from '../../typescript/interfaces/movie'
+import requests from '../../shared/requests'
+import { useUserContext } from '../../context/userContext'
+import { useQuery } from '@tanstack/react-query'
+import LoadingComponent from '../../components/ui/LoadingComponent'
 function SingleMoviePage() {
   const { id } = useParams()
-  const [movieData, reviewData, onWatchListData] = useFetchMovie(id)
+  const { user } = useUserContext()
 
-  const isLoading =
-    movieData.isLoading && reviewData.isLoading && onWatchListData.isLoading
-  const movie = movieData.data
-  const review = reviewData.data
-  const isOnWatchList = onWatchListData.data
+  const { data: movie, isLoading: isLoadingMovies } = useQuery(
+    ['movie', id],
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    () => fetchMovies<Imovie>(`/movie/${id}${requests.fetchMovieInfo}`)
+  )
+  const { data: review, isLoading: isLoadingReview } = useQuery(
+    ['review', id, user],
+    () => fetchReview(user, id)
+  )
+  const { data: isOnWatchList, isLoading: isLoadingOnWatchList } = useQuery(
+    ['on-watch-list', id, user],
+    () => checkWatchList(user, id)
+  )
 
-  const readyToLoad = movie && reviewData.isSuccess && onWatchListData.isSuccess
+  const isLoading = isLoadingMovies && isLoadingOnWatchList && isLoadingReview
 
   const runTime = (runtime: number) =>
     runtime < 60
@@ -39,9 +54,9 @@ function SingleMoviePage() {
   return (
     <>
       {isLoading ? (
-        <div></div>
+        <LoadingComponent />
       ) : (
-        readyToLoad && (
+        movie && (
           <div className="p-5 grid gap-3">
             <div className="items-start">
               <BackButton />

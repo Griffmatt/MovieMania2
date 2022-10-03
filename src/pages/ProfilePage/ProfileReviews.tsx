@@ -1,20 +1,23 @@
+import { useQuery } from '@tanstack/react-query'
 import Review from '../../components/Review'
-import { Ireview } from '../../typescript/interfaces/review'
+import LoadingComponent from '../../components/ui/LoadingComponent'
+import { fetchUserReviews } from '../../fireBaseUtils/fetchUserReviews'
 import ProfileSectionEmpty from './ProfileSectionEmpty'
 
 interface Props {
-  reviews: Ireview[]
-  isLoading: boolean
+  user: string
 }
 
-function ProfileReviews({ reviews, isLoading }: Props) {
-  if (isLoading) return <div></div>
+function ProfileReviews({ user }: Props) {
+  const { data: reviews, isLoading } = useQuery(['reviews', user], () =>
+    fetchUserReviews(user)
+  )
+  if (isLoading) return <LoadingComponent />
 
-  const reversed = [...reviews].reverse()
-  if (reviews[0])
+  if (reviews && reviews[0])
     return (
       <div>
-        {reversed.map((review) => {
+        {[...reviews].reverse().map((review) => {
           return (
             <div
               key={review.id}

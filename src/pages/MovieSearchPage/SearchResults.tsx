@@ -2,6 +2,7 @@ import MovieRow from '../../components/MovieGrid'
 import { useQuery } from '@tanstack/react-query'
 import { fetchMovies } from '../../utils/fetchMovies'
 import { Imovie } from '../../typescript/interfaces/movie'
+import LoadingComponent from '../../components/ui/LoadingComponent'
 
 interface Props {
   request: string
@@ -13,9 +14,10 @@ interface Data {
 }
 
 function SearchResults({ request, value }: Props) {
-  const { data } = useQuery(['movies', request], () =>
+  const { data, isLoading } = useQuery(['movies', request], () =>
     fetchMovies<Data>(request)
   )
+  if (isLoading) return <LoadingComponent />
   return (
     <>
       {data && (

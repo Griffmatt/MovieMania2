@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { SyntheticEvent, useState } from 'react'
 import db, { auth } from '../firebase'
-import { signUserIn } from '../fireBaseHooks/signUserIn'
+import { signUserIn } from '../fireBaseUtils/signUserIn'
 import { useModalContext } from '../context/modalContext'
 import { useUserContext } from '../context/userContext'
 
@@ -12,6 +12,7 @@ function SignUpForm() {
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [password2, setPassword2] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const { handleSetUser } = useUserContext()
 
@@ -19,7 +20,7 @@ function SignUpForm() {
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault()
-
+    setIsLoading(true)
     const createUser = async () => {
       const { user } = await createUserWithEmailAndPassword(
         auth,
@@ -53,16 +54,19 @@ function SignUpForm() {
     const validateSignUp = async () => {
       if (password !== password2) {
         console.log('passwords do not match')
+        setIsLoading(false)
         return
       }
       if (password.length < 6) {
         console.log('password is not long enough')
+        setIsLoading(false)
         return
       }
       const document = await getDoc(doc(db, 'userNamesInUse', `${userName}`))
       // eslint-disable-next-line @typescript-eslint/unbound-method
       if (document.exists()) {
         console.log('user name is in use')
+        setIsLoading(false)
         return
       }
       void createUser()
@@ -118,7 +122,7 @@ function SignUpForm() {
         className="rounded-2xl w-full text-white font-semibold bg-primary hover:bg-primary/90 mx-auto py-2"
         type="submit"
       >
-        Create Account
+        {isLoading ? 'Creating Account...' : 'Create Account'}
       </button>
     </form>
   )

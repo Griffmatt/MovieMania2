@@ -30,7 +30,7 @@ function ReviewModal({ movie, userReview }: Props) {
 
   const { isOpenReview, closeModal } = useModalContext()
 
-  const { user } = useUserContext()
+  const { user, userData } = useUserContext()
   useEffect(() => {
     setError(false)
   }, [isOpenReview])
@@ -91,19 +91,20 @@ function ReviewModal({ movie, userReview }: Props) {
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault()
-    if (user === null) return
+    if (user == null) return null
+    if (userData == null) return null
     const reviewObj = {
       movieId: movie.id,
       title: movie.title,
-      name: user.name,
-      userName: user.userName,
+      name: userData.name,
+      userName: userData.userName,
       date: new Date().toLocaleDateString(),
       rating: rating,
       review: review,
       id: uuidv4(),
     }
 
-    mutation.mutate({ review: reviewObj, id: user.uid })
+    mutation.mutate({ review: reviewObj, id: user })
   }
 
   const handleCancel = (event: SyntheticEvent) => {
@@ -138,7 +139,7 @@ function ReviewModal({ movie, userReview }: Props) {
                 Review Cannot be Empty
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-6 w-full">
+            <div className="grid grid-cols-2 gap-2 md:gap-6 w-full">
               <button
                 className="rounded-2xl w-full md:w-[50%] font-semibold py-3 bg-bg-secondary dark:bg-bg-secondary-dark place-self-start"
                 onClick={handleCancel}
