@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useModalContext } from '../context/modalContext'
 
 import { useThemeContext } from '../context/themeContext'
@@ -10,6 +10,7 @@ function SideBar() {
   const { darkMode, handleDarkMode } = useThemeContext()
   const { openLoginModal } = useModalContext()
   const { user, handleSetUser } = useUserContext()
+  const navigate = useNavigate()
 
   const handleLogin = () => {
     if (user === null) {
@@ -17,6 +18,7 @@ function SideBar() {
       return
     }
     handleSetUser(null)
+    navigate('/', { replace: true })
   }
 
   return (

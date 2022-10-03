@@ -2,7 +2,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { SyntheticEvent, useState } from 'react'
 import db, { auth } from '../firebase'
-import { signUserIn } from '../fireBaseUtils/signUserIn'
+import { signUserIn } from '../fireBaseHooks/signUserIn'
 import { useModalContext } from '../context/modalContext'
 import { useUserContext } from '../context/userContext'
 

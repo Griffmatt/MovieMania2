@@ -9,19 +9,19 @@ interface Props {
 }
 
 function Modal({ children, title }: Props) {
-  const { isOpen, closeModal } = useModalContext()
+  const { isOpenLogin, isOpenReview, closeModal } = useModalContext()
   const modalRef = useRef<HTMLDivElement>(null)
   useCloseModal(modalRef, closeModal)
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpenReview || isOpenLogin) {
       document.body.classList.add('modal-open')
     }
 
     return () => {
       document.body.classList.remove('modal-open')
     }
-  }, [isOpen])
+  }, [isOpenLogin, isOpenReview])
 
   return (
     <div className="transition-height h-full w-full flex justify-center overflow-hidden fixed top-0 left-0 backdrop-blur-sm bg-bg-primary-dark/50 dark:bg-bg-primary/10 z-20">

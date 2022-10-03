@@ -4,29 +4,32 @@ import ProfileSectionEmpty from './ProfileSectionEmpty'
 
 interface Props {
   reviews: Ireview[]
+  isLoading: boolean
 }
 
-function ProfileReviews({ reviews }: Props) {
-  return (
-    <>
-      {reviews.length > 0 ? (
-        <div>
-          {reviews.map((review) => {
-            return (
-              <div
-                key={review.id}
-                className="border-b-2 border-bg-secondary dark:border-bg-secondary-dark p-4"
-              >
-                <Review review={review} profileReview={true} />
-              </div>
-            )
-          })}
-        </div>
-      ) : (
-        <ProfileSectionEmpty message="review" />
-      )}
-    </>
-  )
+function ProfileReviews({ reviews, isLoading }: Props) {
+  console.log(isLoading)
+  if (isLoading) return <div></div>
+
+  const reversedReviews = reviews.reverse()
+  console.log(reversedReviews)
+
+  if (reviews[0] && reviews)
+    return (
+      <div>
+        {reversedReviews.map((review) => {
+          return (
+            <div
+              key={review.id}
+              className="border-b-2 border-bg-secondary dark:border-bg-secondary-dark p-4"
+            >
+              <Review review={review} profileReview={true} />
+            </div>
+          )
+        })}
+      </div>
+    )
+  return <ProfileSectionEmpty message="review" />
 }
 
 export default ProfileReviews

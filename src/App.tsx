@@ -1,6 +1,6 @@
 import NavBar from './components/NavBar'
 import HomePage from './pages/HomePage/HomePage'
-import MovieInfoPage from './pages/MovieInfoPage/MovieInfoPage'
+import SingleMoviePage from './pages/SingleMoviePage/SingleMoviePage'
 import ProfilePage from './pages/ProfilePage/ProfilePage'
 import MovieSearchPage from './pages/MovieSearchPage/MovieSearchPage'
 import SideBar from './components/SideBar'
@@ -30,7 +30,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<HomePage />} />
-                <Route path="/:id" element={<MovieInfoPage />} />
+                <Route path="/:id" element={<SingleMoviePage />} />
                 <Route path="/profile-page/:value" element={<ProfilePage />} />
                 <Route path="/profile-page" element={<ProfilePage />} />
               </Route>

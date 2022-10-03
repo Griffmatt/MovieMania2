@@ -1,11 +1,10 @@
 import { Iuser } from '../../typescript/interfaces/user'
 
 interface Props {
-  reviews: number
   user: Iuser
 }
 
-function ProfileHeader({ reviews, user }: Props) {
+function ProfileHeader({ user }: Props) {
   return (
     <header className="flex justify-between p-4">
       <div className="w-fit grid gap-2">
@@ -22,9 +21,7 @@ function ProfileHeader({ reviews, user }: Props) {
         </div>
         <p className="text-font-secondary">{user.joinDate}</p>
       </div>
-      <div className="flex flex-col justify-center">
-        <h2>{reviews} Reviews</h2>
-      </div>
+      <div className="flex flex-col justify-center"></div>
     </header>
   )
 }

@@ -32,7 +32,6 @@ export function UserContextProvider({ children }: Props) {
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user')
-    console.log(storedUser)
     if (storedUser !== null) {
       const parsedUser = JSON.parse(storedUser) as Iuser
       setUser(parsedUser)

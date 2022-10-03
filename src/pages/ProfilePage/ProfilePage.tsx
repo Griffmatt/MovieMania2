@@ -5,9 +5,7 @@ import ProfileHeader from './ProfileHeader'
 import ProfileReviews from './ProfileReviews'
 import ProfileWatchList from './ProfileWatchList'
 import { useUserContext } from '../../context/userContext'
-import { useQueries } from '@tanstack/react-query'
-import { fetchUserReviews } from '../../fireBaseUtils/fetchUserReviews'
-import { fetchWatchList } from '../../fireBaseUtils/fetchWatchList'
+import { useFetchUserReviews } from '../../fireBaseHooks/useFetchUserReviews'
 
 const MENU_OPTIONS = [
   {
@@ -33,12 +31,8 @@ function ProfilePage() {
   const { value } = useParams()
   const [openMenu, setOpenMenu] = useState(value ?? 'reviews')
   const { user } = useUserContext()
-  const results = useQueries({
-    queries: [
-      { queryKey: ['reviews', user], queryFn: () => fetchUserReviews(user) },
-      { queryKey: ['watch-list', user], queryFn: () => fetchWatchList(user) },
-    ],
-  })
+
+  const { reviews, isLoadingReviews } = useFetchUserReviews()
 
   useEffect(() => {
     setOpenMenu(value ?? '')
@@ -46,10 +40,10 @@ function ProfilePage() {
 
   return (
     <>
-      {user && results[0].data && results[1].data && (
+      {user && (
         <div className="flex">
           <div className="w-full md:w-3/4 xl:w-2/3 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark md:min-h-[calc(100vh-5.125rem)]">
-            <ProfileHeader reviews={results[0].data.length} user={user} />
+            <ProfileHeader user={user} />
             <nav className="px-8 py-2 flex justify-around gap-5 border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
               {MENU_OPTIONS.map((option: Option) => {
                 return (
@@ -72,10 +66,13 @@ function ProfilePage() {
                 )
               })}
             </nav>
-            {openMenu === '' && <ProfileReviews reviews={results[0].data} />}
-            {openMenu === 'watch-list' && (
-              <ProfileWatchList movies={results[1].data} />
+            {openMenu === '' && (
+              <ProfileReviews
+                reviews={reviews ?? []}
+                isLoading={isLoadingReviews}
+              />
             )}
+            {openMenu === 'watch-list' && <ProfileWatchList />}
           </div>
           <div className="sticky top-[5.125rem] md:w-1/4 xl:w-1/3 h-fit p-10 xs:hidden ">
             <div className="text-center">hi</div>
