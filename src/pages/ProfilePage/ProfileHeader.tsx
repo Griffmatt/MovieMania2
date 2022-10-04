@@ -1,10 +1,16 @@
+import { signOut } from 'firebase/auth'
+import { auth } from '../../firebase'
 import { Iuser } from '../../typescript/interfaces/user'
 
 interface Props {
   user: Iuser
+  userId: string
 }
 
-function ProfileHeader({ user }: Props) {
+function ProfileHeader({ user, userId }: Props) {
+  const handleLogOut = () => {
+    void signOut(auth)
+  }
   return (
     <header className="flex justify-between p-4">
       <div className="w-fit grid gap-2">
@@ -21,7 +27,15 @@ function ProfileHeader({ user }: Props) {
         </div>
         <p className="text-font-secondary">{user.joinDate}</p>
       </div>
-      <div className="flex flex-col justify-center"></div>
+      {userId === user.uid ? (
+        <div className="flex flex-col justify-center">
+          <button className="movie-info__button" onClick={handleLogOut}>
+            Logout
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
     </header>
   )
 }

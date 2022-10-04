@@ -11,7 +11,7 @@ import { sideOptions } from '../shared/navBarOptions'
 function SideBar() {
   const { darkMode, handleDarkMode } = useThemeContext()
   const { openLoginModal } = useModalContext()
-  const { user } = useUserContext()
+  const { user, userData } = useUserContext()
 
   const handleLogin = async () => {
     if (user === null) {
@@ -32,7 +32,7 @@ function SideBar() {
       </Link>
       <div className="grid gap-2">
         {sideOptions.map((option) => {
-          if (user === null && option.name === 'Profile') return
+          if (userData === null && option.name === 'Profile') return
           return (
             <React.Fragment key={option.name}>
               <Link
@@ -44,12 +44,14 @@ function SideBar() {
             </React.Fragment>
           )
         })}
-        <button
-          onClick={() => void handleLogin()}
-          className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"
-        >
-          <h2>{user ? 'Logout' : 'Login'}</h2>
-        </button>
+        {userData === null && (
+          <button
+            onClick={() => void handleLogin()}
+            className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"
+          >
+            <h2>Login</h2>
+          </button>
+        )}
         <button
           onClick={handleDarkMode}
           className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"

@@ -12,7 +12,7 @@ import { getDoc, doc } from 'firebase/firestore'
 
 type userValue = string | null
 interface Context {
-  user?: string | null
+  user: string | null
   userData?: Iuser | null
   handleSetUser: (user: userValue, userData: Iuser) => void
 }
@@ -36,10 +36,13 @@ export function UserContextProvider({ children }: Props) {
   }
 
   useEffect(() => {
-    if (user == null) {
+    if (user === undefined) return
+
+    if (user === null) {
       setUserData(null)
       return
     }
+    console.log('e')
     const getUserData = async () => {
       const userDoc = await getDoc(doc(db, 'user', user))
       setUserData(userDoc.data() as unknown as Iuser)

@@ -32,21 +32,19 @@ function ProfilePage() {
   const [openMenu, setOpenMenu] = useState(value ?? 'reviews')
   const { user, userData } = useUserContext()
 
-  console.log(user)
-
   useEffect(() => {
     setOpenMenu(value ?? '')
   }, [value])
 
-  if (user == null) {
-    return <Navigate to={'/'} />
+  if (userData === null) {
+    return <Navigate to={'/'} replace />
   }
   return (
     <>
-      {userData && (
+      {user && userData && (
         <div className="flex">
           <div className="w-full md:w-3/4 xl:w-2/3 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark md:min-h-[calc(100vh-5.125rem)]">
-            <ProfileHeader user={userData} />
+            <ProfileHeader user={userData} userId={user} />
             <nav className="px-8 py-2 flex justify-around gap-5 border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
               {MENU_OPTIONS.map((option: Option) => {
                 return (

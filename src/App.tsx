@@ -13,13 +13,17 @@ import LoginModal from './components/LoginModal'
 import { useModalContext } from './context/modalContext'
 import LoadingScreen from './components/ui/LoadingScreen'
 import { useEffect, useState } from 'react'
+import { useUserContext } from './context/userContext'
 
 function App() {
   const { isOpenLogin } = useModalContext()
   const [initialLoad, setInitialLoad] = useState(true)
+  const { userData } = useUserContext()
   useEffect(() => {
-    setTimeout(() => setInitialLoad(false), 1000)
-  }, [])
+    if (userData !== undefined) {
+      setTimeout(() => setInitialLoad(false), 1000)
+    }
+  }, [userData])
   const Layout = () => (
     <>
       <NavBar />
