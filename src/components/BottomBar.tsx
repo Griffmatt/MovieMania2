@@ -15,11 +15,11 @@ function BottomBar() {
   }
 
   return (
-    <nav className="w-screen py-2 border-t-2 border-bg-secondary dark:border-bg-secondary-dark bg-bg-primary dark:bg-bg-primary-dark fixed bottom-0 md:hidden">
+    <nav className="w-screen border-t-2 border-bg-secondary dark:border-bg-secondary-dark bg-bg-primary dark:bg-bg-primary-dark fixed bottom-0 md:hidden">
       <div className="flex justify-around">
-        <Link to={`/`} className="my-auto rounded-3xl w-fit cursor-pointer">
+        <Link to={`/`} className="rounded-3xl w-full cursor-pointer">
           <svg
-            className="fill-black dark:fill-white"
+            className="fill-black dark:fill-white mx-auto py-2 h-full"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -27,12 +27,9 @@ function BottomBar() {
             <path d="M12 2.1 1 12h3v9h7v-6h2v6h7v-9h3L12 2.1zm0 2.691 6 5.4V19h-3v-6H9v6H6v-8.809l6-5.4z" />
           </svg>
         </Link>
-        <Link
-          to={`/explore`}
-          className="my-auto rounded-3xl w-fit cursor-pointer"
-        >
+        <Link to={`/explore`} className="rounded-3xl w-full cursor-pointer">
           <svg
-            className="fill-black dark:fill-white"
+            className="fill-black dark:fill-white mx-auto py-2 h-full"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
@@ -43,24 +40,28 @@ function BottomBar() {
 
         <button
           onClick={handleDarkMode}
-          className="rounded-3xl w-fit cursor-pointer"
+          className="rounded-3xl w-full cursor-pointer"
         >
-          <p>{darkMode ? 'Light' : 'Dark'}</p>
+          <h5 className="mx-auto py-2 h-full">{darkMode ? 'Light' : 'Dark'}</h5>
         </button>
 
         {userData == null ? (
           <button
             onClick={handleClick}
-            className="rounded-3xl w-fit cursor-pointer"
+            className="rounded-3xl w-full cursor-pointer"
           >
-            <p>Login</p>
+            <h5 className="mx-auto py-2 h-full">Login</h5>
           </button>
         ) : (
           <Link
             to={`/profile-page`}
-            className="my-auto rounded-3xl w-fit cursor-pointer"
+            className="rounded-3xl w-full cursor-pointer"
           >
-            <img className="w-6 h-auto" src={profileImage} alt="Profile" />
+            <img
+              className="w-6 mx-auto py-2 h-full"
+              src={profileImage}
+              alt="Profile"
+            />
           </Link>
         )}
       </div>

@@ -39,8 +39,8 @@ function MovieSearchPage({ request }: Props) {
   }
   return (
     <>
-      <div className="w-full h-fit sticky top-0  bg-bg-primary dark:bg-bg-primary-dark border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
-        <div className="p-3 md:p-5 flex gap-5 items-center md:w-3/5 lg:w-2/5">
+      <nav className="top-0 sticky w-screen z-10 flex justify-between p-2 md:p-5 md:w-full bg-bg-primary dark:bg-bg-primary-dark border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
+        <div className="flex gap-5 items-center md:w-3/5 lg:w-2/5">
           <BackButton />
           <input
             key={value}
@@ -51,7 +51,7 @@ function MovieSearchPage({ request }: Props) {
             onChange={(event) => debounce(event.target.value)}
           />
         </div>
-      </div>
+      </nav>
       <div className="border-bg-secondary dark:border-bg-secondary-dark">
         <div className="pt-4 pb-2 px-4 w-screen md:w-[calc(83.33333333333333333333vw-1.5rem)] lg:w-full overflow-x-scroll no-scrollbar flex gap-2 lg:flex-wrap lg:mx-auto">
           <Genres genres={genres} value={value} />
