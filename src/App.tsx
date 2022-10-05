@@ -56,11 +56,11 @@ function App() {
   }
   return (
     <>
-      <div className="md:container mx-auto pb-11 md:pb-0">
+      <div className="lg:container mx-auto pb-10 md:pb-0">
         {isOpenLogin && <LoginModal />}
         <div className="flex">
           <SideBar />
-          <div className="md:border-l-2 md:border-bg-secondary dark:border-bg-secondary-dark md:w-5/6 md:min-h-screen">
+          <div className="md:border-l-2 md:border-bg-secondary dark:border-bg-secondary-dark md:w-[90%] lg::w-5/6 md:min-h-screen">
             <AppRoutes />
           </div>
         </div>

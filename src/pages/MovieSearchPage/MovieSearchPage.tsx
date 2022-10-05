@@ -53,7 +53,7 @@ function MovieSearchPage({ request }: Props) {
         </div>
       </nav>
       <div className="border-bg-secondary dark:border-bg-secondary-dark">
-        <div className="pt-4 pb-2 px-4 w-screen md:w-[calc(83.33333333333333333333vw-1.5rem)] lg:w-full overflow-x-scroll no-scrollbar flex gap-2 lg:flex-wrap lg:mx-auto">
+        <div className="pt-2 px-3 w-screen md:w-full overflow-x-scroll no-scrollbar flex gap-2 lg:flex-wrap lg:mx-auto">
           <Genres genres={genres} value={value} />
         </div>
         <SearchResults request={fetchRequest} value={value} />
