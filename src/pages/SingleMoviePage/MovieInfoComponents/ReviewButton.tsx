@@ -1,4 +1,3 @@
-import LoadingComponent from '../../../components/ui/LoadingComponent'
 import { useModalContext } from '../../../context/modalContext'
 import { useUserContext } from '../../../context/userContext'
 import { Ireview } from '../../../typescript/interfaces/review'
