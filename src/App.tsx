@@ -35,8 +35,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="/:id" element={<SingleMoviePage />} />
-          <Route path="/profile-page/:value" element={<ProfilePage />} />
+          <Route path="/:movieId" element={<SingleMoviePage />} />
+          <Route path="/profile-page/:userId" element={<ProfilePage />} />
           <Route path="/profile-page" element={<ProfilePage />} />
         </Route>
         <Route

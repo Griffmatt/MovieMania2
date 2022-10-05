@@ -27,3 +27,18 @@ export const bottomOptions = [
     value: 'profile-page',
   },
 ]
+
+export const profileOptions = [
+  {
+    name: 'Reviews',
+    value: '',
+  },
+  {
+    name: 'Watch List',
+    value: 'watch-list',
+  },
+  {
+    name: 'Stats',
+    value: 'stats',
+  },
+]

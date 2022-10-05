@@ -36,16 +36,18 @@ function LoginForm({ setTitle }: Props) {
     >
       <div className="grid gap-3">
         <input
-          type="text"
+          type="email"
           className="p-2 bg-bg-secondary dark:bg-bg-secondary-dark rounded resize-none overflow-hidden w-full"
           placeholder="Enter Email"
+          autoComplete="Email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
         <input
           type="password"
           className="p-2 bg-bg-secondary dark:bg-bg-secondary-dark rounded resize-none overflow-hidden w-full"
-          placeholder="enter Password"
+          placeholder="Enter Password"
+          autoComplete="current-password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />

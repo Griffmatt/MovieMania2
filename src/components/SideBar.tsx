@@ -11,10 +11,10 @@ import { sideOptions } from '../shared/navBarOptions'
 function SideBar() {
   const { darkMode, handleDarkMode } = useThemeContext()
   const { openLoginModal } = useModalContext()
-  const { user, userData } = useUserContext()
+  const { userId, userData } = useUserContext()
 
   const handleLogin = async () => {
-    if (user === null) {
+    if (userId === null) {
       openLoginModal()
       return
     }

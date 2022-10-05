@@ -5,12 +5,12 @@ import { fetchUserReviews } from '../../fireBaseUtils/fetchUserReviews'
 import ProfileSectionEmpty from './ProfileSectionEmpty'
 
 interface Props {
-  user: string
+  userId: string
 }
 
-function ProfileReviews({ user }: Props) {
-  const { data: reviews, isLoading } = useQuery(['reviews', user], () =>
-    fetchUserReviews(user)
+function ProfileReviews({ userId }: Props) {
+  const { data: reviews, isLoading } = useQuery(['reviews', userId], () =>
+    fetchUserReviews(userId)
   )
   if (isLoading) return <LoadingComponent />
 

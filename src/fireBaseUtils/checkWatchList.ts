@@ -3,10 +3,10 @@ import db from '../firebase'
 import { Imovie } from '../typescript/interfaces/movie'
 
 export const checkWatchList = async (
-  userId: string | null,
-  movieId?: string
+  movieId: number,
+  userId?: string | null
 ) => {
-  if (userId === null) return userId
+  if (userId == null) return null
   const docRef = doc(db, 'watch-list', userId)
   const watchListDoc = await getDoc(docRef)
   const watchListData = watchListDoc.data() as { watchList: Imovie[] }

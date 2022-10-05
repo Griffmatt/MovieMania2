@@ -6,21 +6,7 @@ import ProfileReviews from './ProfileReviews'
 import ProfileWatchList from './ProfileWatchList'
 import { useUserContext } from '../../context/userContext'
 import { Navigate } from 'react-router-dom'
-
-const MENU_OPTIONS = [
-  {
-    name: 'Reviews',
-    value: '',
-  },
-  {
-    name: 'Watch List',
-    value: 'watch-list',
-  },
-  {
-    name: 'Stats',
-    value: 'stats',
-  },
-]
+import { profileOptions } from '../../shared/navBarOptions'
 
 interface Option {
   name: string
@@ -28,25 +14,24 @@ interface Option {
 }
 
 function ProfilePage() {
-  const { value } = useParams()
-  const [openMenu, setOpenMenu] = useState(value ?? 'reviews')
-  const { user, userData } = useUserContext()
+  const { userId: id } = useParams()
+  const [openMenu, setOpenMenu] = useState(id ?? 'reviews')
+  const { userId, userData } = useUserContext()
 
   useEffect(() => {
-    setOpenMenu(value ?? '')
-  }, [value])
-
+    setOpenMenu(id ?? '')
+  }, [id])
   if (userData === null) {
     return <Navigate to={'/'} replace />
   }
   return (
     <>
-      {user && userData && (
+      {userId && userData && (
         <div className="flex">
           <div className="w-full md:w-3/4 xl:w-2/3 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark md:min-h-[calc(100vh-5.125rem)]">
-            <ProfileHeader user={userData} userId={user} />
+            <ProfileHeader user={userData} userId={userId} />
             <nav className="px-8 py-2 flex justify-around gap-5 border-b-2 border-bg-secondary dark:border-bg-secondary-dark">
-              {MENU_OPTIONS.map((option: Option) => {
+              {profileOptions.map((option: Option) => {
                 return (
                   <Link
                     to={`/profile-page/${option.value}`}
@@ -67,8 +52,8 @@ function ProfilePage() {
                 )
               })}
             </nav>
-            {openMenu === '' && <ProfileReviews user={user} />}
-            {openMenu === 'watch-list' && <ProfileWatchList user={user} />}
+            {openMenu === '' && <ProfileReviews userId={userId} />}
+            {openMenu === 'watch-list' && <ProfileWatchList userId={userId} />}
           </div>
           <div className="sticky top-[5.125rem] md:w-1/4 xl:w-1/3 h-fit p-10 xs:hidden ">
             <div className="text-center">hi</div>

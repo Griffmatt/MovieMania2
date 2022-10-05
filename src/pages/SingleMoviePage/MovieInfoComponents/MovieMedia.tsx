@@ -1,7 +1,7 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 
-import { Imovie, Iimage, Iresults } from '../../typescript/interfaces/movie'
+import { Imovie, Iimage, Iresults } from '../../../typescript/interfaces/movie'
 
 interface Props {
   images: Iimage[]
@@ -47,9 +47,8 @@ function MovieMedia({ images, movie, videos }: Props) {
               title="YouTube video player"
               frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
               className="w-full aspect-video"
-            ></iframe>
+            />
           </div>
         )}
       </>

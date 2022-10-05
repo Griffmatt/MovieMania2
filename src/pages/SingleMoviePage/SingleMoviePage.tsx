@@ -10,40 +10,29 @@ import Genres from '../../components/Genres'
 
 import { formatMoney } from '../../utils/formatMoney'
 
-import MovieMedia from './MovieMedia'
-import ReviewButton from './MovieInfoComponents/ReviewButton'
+import MovieMedia from './MovieInfoComponents/MovieMedia'
 import WatchListButton from './MovieInfoComponents/WatchListButton'
-import ReviewModal from './MovieInfoComponents/ReviewModal'
 import Crew from './MovieInfoComponents/Crew'
 import Cast from './MovieInfoComponents/Cast'
 
-import { checkWatchList } from '../../fireBaseUtils/checkWatchList'
-import { fetchReview } from '../../fireBaseUtils/fetchReview'
 import { fetchMovies } from '../../utils/fetchMovies'
 import { Imovie } from '../../typescript/interfaces/movie'
 import requests from '../../shared/requests'
-import { useUserContext } from '../../context/userContext'
+
 import { useQuery } from '@tanstack/react-query'
 import LoadingComponent from '../../components/ui/LoadingComponent'
+import ReviewMovie from './ReviewMovie'
+
 function SingleMoviePage() {
-  const { id } = useParams()
-  const { user } = useUserContext()
+  const { movieId } = useParams()
 
   const { data: movie, isLoading: isLoadingMovies } = useQuery(
-    ['movie', id],
+    ['movie', movieId],
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-    () => fetchMovies<Imovie>(`/movie/${id}${requests.fetchMovieInfo}`)
-  )
-  const { data: review, isLoading: isLoadingReview } = useQuery(
-    ['review', id, user],
-    () => fetchReview(user, id)
-  )
-  const { data: isOnWatchList, isLoading: isLoadingOnWatchList } = useQuery(
-    ['on-watch-list', id, user],
-    () => checkWatchList(user, id)
+    () => fetchMovies<Imovie>(`/movie/${movieId}${requests.fetchMovieInfo}`)
   )
 
-  const isLoading = isLoadingMovies && isLoadingOnWatchList && isLoadingReview
+  const isLoading = isLoadingMovies
 
   const runTime = (runtime: number) =>
     runtime < 60
@@ -83,12 +72,8 @@ function SingleMoviePage() {
                   </span>
                 </h4>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <WatchListButton
-                    movie={movie}
-                    isOnWatchList={isOnWatchList}
-                  />
-                  <ReviewButton review={review} isLoading={isLoading} />
-                  <ReviewModal movie={movie} userReview={review} />
+                  <WatchListButton movie={movie} />
+                  <ReviewMovie movie={movie} />
                 </div>
               </div>
               <h2>Overview</h2>

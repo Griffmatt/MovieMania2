@@ -1,5 +1,5 @@
-import { useRef } from 'react'
 import { useModalContext } from '../../../context/modalContext'
+import { useUserContext } from '../../../context/userContext'
 import { Ireview } from '../../../typescript/interfaces/review'
 
 interface Props {
@@ -9,15 +9,11 @@ interface Props {
 
 function ReviewButton({ review, isLoading }: Props) {
   const { openReviewModal } = useModalContext()
-
-  const throttleRef = useRef(false)
+  const { userId } = useUserContext()
 
   const handleClick = () => {
-    if (throttleRef.current === false) {
-      openReviewModal()
-      throttleRef.current = true
-      setTimeout(() => (throttleRef.current = false), 750)
-    }
+    if (userId === null) return
+    openReviewModal()
   }
   if (isLoading) return <div className="movie-info__button"></div>
   return (

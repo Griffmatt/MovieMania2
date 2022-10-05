@@ -8,11 +8,8 @@ import { useModalContext } from '../../../context/modalContext'
 import StarRating from './StarRating'
 import { v4 as uuidv4 } from 'uuid'
 import Modal from '../../../components/ui/Modal'
-import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore'
-import db from '../../../firebase'
 import { Ireview } from '../../../typescript/interfaces/review'
-import { useMutation } from '@tanstack/react-query'
-import { queryClient } from '../../../main'
+import { useAddReview } from '../../../hooks/useAddReview'
 
 interface Props {
   movie: Imovie
@@ -20,6 +17,9 @@ interface Props {
 }
 
 function ReviewModal({ movie, userReview }: Props) {
+  const { isOpenReview, closeModal } = useModalContext()
+  const { userId, userData } = useUserContext()
+
   const [rating, setRating] = useState<number>(
     userReview ? userReview.rating : 5
   )
@@ -28,70 +28,16 @@ function ReviewModal({ movie, userReview }: Props) {
   )
   const [error, setError] = useState(false)
 
-  const { isOpenReview, closeModal } = useModalContext()
+  const mutation = useAddReview(movie, userId, userReview)
 
-  const { user, userData } = useUserContext()
   useEffect(() => {
     setError(false)
   }, [isOpenReview])
 
-  const updateReviewDoc = async (data: { review: Ireview; id: string }) => {
-    const docRef = doc(db, 'reviews', data.id)
-    await updateDoc(docRef, {
-      reviews: arrayRemove(userReview),
-    })
-    await updateDoc(docRef, {
-      reviews: arrayUnion(data.review),
-    })
-    console.log(data.review)
-    return data
-  }
-
-  const mutation = useMutation(updateReviewDoc, {
-    // When mutate is called:
-    onMutate: async ({ review }) => {
-      // Cancel any outgoing refetches (so they don't overwrite our optimistic update)
-      await queryClient.cancelQueries(['reviews', user])
-
-      // Snapshot the previous value
-      const previousReviews = queryClient.getQueryData([
-        'reviews',
-        user,
-      ]) as Ireview[]
-
-      // Optimistically update to the new value
-      console.log(queryClient.getQueryData(['reviews', user]))
-      previousReviews &&
-        userReview &&
-        queryClient.setQueryData(
-          ['reviews', user],
-          [
-            ...previousReviews.filter((review) => review.id !== userReview.id),
-            review,
-          ]
-        )
-      previousReviews &&
-        !userReview &&
-        queryClient.setQueryData(
-          ['reviews', user],
-          [...previousReviews, review]
-        )
-      // Return a context with the previous and new todo
-      return { previousReviews }
-    },
-    onError: (err, value, context) => {
-      queryClient.setQueryData(['reviews', user], context?.previousReviews)
-    },
-    // Always refetch after error or success:
-    onSettled: () => {
-      void queryClient.invalidateQueries(['reviews', user])
-      closeModal()
-    },
-  })
-
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault()
-    if (user == null) return null
+    closeModal()
+    if (userId == null) return null
     if (userData == null) return null
     const reviewObj = {
       movieId: movie.id,
@@ -104,7 +50,7 @@ function ReviewModal({ movie, userReview }: Props) {
       id: uuidv4(),
     }
 
-    mutation.mutate({ review: reviewObj, id: user })
+    mutation.mutate(reviewObj)
   }
 
   const handleCancel = (event: SyntheticEvent) => {

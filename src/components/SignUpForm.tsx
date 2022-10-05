@@ -86,6 +86,7 @@ function SignUpForm() {
           type="text"
           className="p-2 bg-bg-secondary dark:bg-bg-secondary-dark rounded resize-none overflow-hidden w-full"
           placeholder="Email"
+          autoComplete="Email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         />
@@ -93,6 +94,7 @@ function SignUpForm() {
           type="text"
           className="p-2 bg-bg-secondary dark:bg-bg-secondary-dark rounded resize-none overflow-hidden w-full"
           placeholder="Name"
+          autoComplete="Given-Name"
           value={name}
           onChange={(event) => setName(event.target.value)}
         />
@@ -100,6 +102,7 @@ function SignUpForm() {
           type="text"
           className="p-2 bg-bg-secondary dark:bg-bg-secondary-dark rounded resize-none overflow-hidden w-full"
           placeholder="UserName"
+          autoComplete="username"
           value={userName}
           onChange={(event) => setUserName(event.target.value.toLowerCase())}
         />
@@ -107,13 +110,15 @@ function SignUpForm() {
           type="password"
           className="p-2 bg-bg-secondary dark:bg-bg-secondary-dark rounded resize-none overflow-hidden w-full"
           placeholder="Password"
+          autoComplete="new-password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
         <input
           type="password"
           className="p-2 bg-bg-secondary dark:bg-bg-secondary-dark rounded resize-none overflow-hidden w-full"
-          placeholder="Reenter Password"
+          placeholder="ReEnter Password"
+          autoComplete="new-password"
           value={password2}
           onChange={(event) => setPassword2(event.target.value)}
         />

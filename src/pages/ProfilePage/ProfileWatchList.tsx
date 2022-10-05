@@ -6,12 +6,12 @@ import { fetchWatchList } from '../../fireBaseUtils/fetchWatchList'
 import ProfileSectionEmpty from './ProfileSectionEmpty'
 
 interface Props {
-  user: string
+  userId: string
 }
 
-function ProfileWatchList({ user }: Props) {
-  const { data, isLoading } = useQuery(['watch-list', user], () =>
-    fetchWatchList(user)
+function ProfileWatchList({ userId }: Props) {
+  const { data, isLoading } = useQuery(['watch-list', userId], () =>
+    fetchWatchList(userId)
   )
   if (isLoading) return <LoadingComponent />
   if (data && data[0]) return <MovieGrid movies={data} />
