@@ -61,11 +61,7 @@ function SideBar() {
           </button>
         ) : (
           <Link to={`/profile-page`} className="side-nav__link">
-            <img
-              className="w-6 h-6"
-              src={userData.image === '' ? profileImage : userData.image}
-              alt="Profile"
-            />
+            <img className="w-6 h-6" src={profileImage} alt="Profile" />
             <h2>Profile</h2>
           </Link>
         )}

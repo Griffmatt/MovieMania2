@@ -60,11 +60,7 @@ function BottomBar() {
             to={`/profile-page`}
             className="my-auto rounded-3xl w-fit cursor-pointer"
           >
-            <img
-              className="w-6 h-6"
-              src={userData.image === '' ? profileImage : userData.image}
-              alt="Profile"
-            />
+            <img className="w-6 h-auto" src={profileImage} alt="Profile" />
           </Link>
         )}
       </div>
