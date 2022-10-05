@@ -1,6 +1,7 @@
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
 import { Iuser } from '../../typescript/interfaces/user'
+import profileImage from '/Images/profileImage.png'
 
 interface Props {
   user: Iuser
@@ -16,7 +17,7 @@ function ProfileHeader({ user, userId }: Props) {
       <div className="w-fit grid gap-2">
         <div className="relative w-[4rem] h-[4rem] md:w-[6rem] md:h-[6rem]">
           <img
-            src="images/profileImage.png"
+            src={profileImage}
             alt="Profile"
             className=" w-[4rem] h-[4rem] md:w-[6rem] md:h-[6rem] absolute top-0 left-0"
           />

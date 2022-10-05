@@ -1,24 +1,18 @@
-import { signOut } from 'firebase/auth'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useModalContext } from '../context/modalContext'
 
 import { useThemeContext } from '../context/themeContext'
 import { useUserContext } from '../context/userContext'
-import { auth } from '../firebase'
 import { sideOptions } from '../shared/navBarOptions'
 
 function SideBar() {
   const { darkMode, handleDarkMode } = useThemeContext()
   const { openLoginModal } = useModalContext()
-  const { userId, userData } = useUserContext()
+  const { userData } = useUserContext()
 
-  const handleLogin = async () => {
-    if (userId === null) {
-      openLoginModal()
-      return
-    }
-    await signOut(auth)
+  const handleClick = () => {
+    openLoginModal()
   }
 
   return (
@@ -46,7 +40,7 @@ function SideBar() {
         })}
         {userData === null && (
           <button
-            onClick={() => void handleLogin()}
+            onClick={handleClick}
             className="rounded-3xl px-3 py-1 w-fit mx-auto hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark"
           >
             <h2>Login</h2>
