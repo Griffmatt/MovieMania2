@@ -13,21 +13,6 @@ export const sideOptions = [
   },
 ]
 
-export const bottomOptions = [
-  {
-    name: 'Home',
-    value: '',
-  },
-  {
-    name: 'Explore',
-    value: 'explore',
-  },
-  {
-    name: 'Profile',
-    value: 'profile-page',
-  },
-]
-
 export const profileOptions = [
   {
     name: 'Reviews',

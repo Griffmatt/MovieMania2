@@ -6,7 +6,7 @@ import MoviePoster from './MoviePoster'
 
 function MovieGrid({ movies }: { movies: Imovie[] }) {
   return (
-    <div className="grid grid-cols-2 gap-2 p-2 md:gap-4 md:p-4 md:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-3 gap-2 p-2 md:gap-4 md:p-4 md:grid-cols-4 lg:grid-cols-5">
       {movies.map((movie: Imovie, index) => {
         return (
           <Link

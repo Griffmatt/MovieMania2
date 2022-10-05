@@ -1,3 +1,4 @@
+import LoadingComponent from '../../../components/ui/LoadingComponent'
 import { useModalContext } from '../../../context/modalContext'
 import { useUserContext } from '../../../context/userContext'
 import { Ireview } from '../../../typescript/interfaces/review'
@@ -15,7 +16,7 @@ function ReviewButton({ review, isLoading }: Props) {
     if (userId === null) return
     openReviewModal()
   }
-  if (isLoading) return <div className="movie-info__button"></div>
+  if (isLoading) return <div className="movie-info__button animate-pulse" />
   return (
     <button className="movie-info__button" onClick={handleClick}>
       <h5>{review ? 'Edit' : 'Add'} Review</h5>

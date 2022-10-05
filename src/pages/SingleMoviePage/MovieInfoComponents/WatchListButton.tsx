@@ -30,9 +30,11 @@ function WatchListButton({ movie }: Props) {
     mutationAdd.mutate(true)
   }
 
+  if (isLoading) return <div className="movie-info__button animate-pulse" />
+
   return (
     <button className="movie-info__button" onClick={handleClick}>
-      {!isLoading && <h5>Watch List {isOnWatchList ? '-' : '+'}</h5>}
+      <h5>Watch List {isOnWatchList ? '-' : '+'}</h5>
     </button>
   )
 }

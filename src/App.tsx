@@ -56,7 +56,7 @@ function App() {
   }
   return (
     <>
-      <div className="md:container mx-auto pb-14 md:pb-0">
+      <div className="md:container mx-auto pb-11 md:pb-0">
         {isOpenLogin && <LoginModal />}
         <div className="flex">
           <SideBar />

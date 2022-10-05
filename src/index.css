@@ -48,3 +48,12 @@ p {
 .search-bar {
   @apply bg-bg-secondary text-sm rounded-3xl w-full h-10 indent-2 outline outline-none outline-1 focus:outline-primary p-2.5 dark:bg-bg-secondary-dark;
 }
+
+
+.side-nav__option{
+  @apply rounded-3xl hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark
+}
+
+.side-nav__link {
+  @apply rounded-3xl w-fit hover:bg-bg-secondary  dark:hover:bg-bg-secondary-dark flex gap-4 lg:px-3 lg:py-2 
+}
