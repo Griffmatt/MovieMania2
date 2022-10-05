@@ -18,6 +18,7 @@ function SearchBar({ searchFocus, setSearchFocus }: Props) {
   }
 
   const handleChange = (value: string) => {
+    if (value === ' ') return
     setSearchValue(value)
   }
 

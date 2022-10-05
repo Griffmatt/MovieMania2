@@ -77,8 +77,6 @@ function SignUpForm() {
   return (
     <form
       className="items-center text-center grid gap-8"
-      aria-modal="true"
-      role="dialog"
       onSubmit={handleSubmit}
     >
       <div className="grid gap-3">
