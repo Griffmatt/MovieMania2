@@ -6,7 +6,7 @@ interface Props {
 }
 
 function Cast({ cast }: Props) {
-  const castNumber = 19
+  const castNumber = cast.length === 20 ? 20 : 19
 
   const [shownCast, setShownCast] = useState(castNumber)
   const base_url = 'https://image.tmdb.org/t/p/w300'
@@ -40,7 +40,7 @@ function Cast({ cast }: Props) {
             </div>
           )
         })}
-        {starringCast.length > castNumber + 1 ? (
+        {starringCast.length > castNumber ? (
           <button onClick={handleShowCast} className="w-full aspect-[4/5]">
             <h3>Toggle Cast</h3>
           </button>
