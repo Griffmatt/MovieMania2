@@ -40,7 +40,7 @@ function Cast({ cast }: Props) {
             </div>
           )
         })}
-        {starringCast.length > castNumber ? (
+        {starringCast.length > castNumber + 1 ? (
           <button onClick={handleShowCast} className="w-full aspect-[4/5]">
             <h3>Toggle Cast</h3>
           </button>
