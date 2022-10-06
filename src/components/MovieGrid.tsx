@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import MoviePoster from './MoviePoster'
 
 interface WatchListMovie {
-  id: string
+  id: number
   title: string
   poster_path: string
 }

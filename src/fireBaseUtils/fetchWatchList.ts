@@ -2,7 +2,7 @@ import { doc, getDoc } from 'firebase/firestore'
 import db from '../firebase'
 
 interface WatchListMovie {
-  id: string
+  id: number
   title: string
   poster_path: string
 }
