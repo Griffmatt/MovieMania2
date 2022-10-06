@@ -10,11 +10,12 @@ interface Props {
 }
 
 function ProfileWatchList({ userId }: Props) {
-  const { data, isLoading } = useQuery(['watch-list', userId], () =>
+  const { data: movies, isLoading } = useQuery(['watch-list', userId], () =>
     fetchWatchList(userId)
   )
+
   if (isLoading) return <LoadingComponent />
-  if (data && data[0]) return <MovieGrid movies={data} />
+  if (movies && movies[0]) return <MovieGrid movies={movies} />
   return <ProfileSectionEmpty message="add" />
 }
 

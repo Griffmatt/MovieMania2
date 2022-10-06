@@ -1,7 +1,10 @@
-import { Imovie } from '../typescript/interfaces/movie'
-
+interface WatchListMovie {
+  id: string
+  title: string
+  poster_path: string
+}
 interface Props {
-  movie: Imovie
+  movie: WatchListMovie
   posterSize: string
 }
 

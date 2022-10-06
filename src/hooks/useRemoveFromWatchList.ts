@@ -12,7 +12,11 @@ export const useRemoveFromWatchList = (
     if (userId == null) return
     const docRef = doc(db, 'watch-list', userId)
     await updateDoc(docRef, {
-      watchList: arrayRemove(movie),
+      watchList: arrayRemove({
+        id: movie.id,
+        poster_path: movie.poster_path,
+        title: movie.title,
+      }),
     })
     return value
   }
@@ -56,6 +60,7 @@ export const useRemoveFromWatchList = (
     },
     onSettled: () => {
       void queryClient.invalidateQueries(['on-watch-list', movie.id, userId])
+      void queryClient.invalidateQueries(['watch-list', userId])
     },
   })
 

@@ -9,7 +9,11 @@ export const useAddToWatchList = (movie: Imovie, userId?: string | null) => {
     if (userId == null) return
     const docRef = doc(db, 'watch-list', userId)
     await updateDoc(docRef, {
-      watchList: arrayUnion(movie),
+      watchList: arrayUnion({
+        id: movie.id,
+        poster_path: movie.poster_path,
+        title: movie.title,
+      }),
     })
     return value
   }
@@ -37,7 +41,14 @@ export const useAddToWatchList = (movie: Imovie, userId?: string | null) => {
       previousWatchList &&
         queryClient.setQueryData(
           ['watch-list', userId],
-          [...previousWatchList, movie]
+          [
+            ...previousWatchList,
+            {
+              id: movie.id,
+              poster_path: movie.poster_path,
+              title: movie.title,
+            },
+          ]
         )
 
       // Return a context with the previous and new todo
@@ -56,6 +67,7 @@ export const useAddToWatchList = (movie: Imovie, userId?: string | null) => {
     // Always refetch after error or success:
     onSettled: () => {
       void queryClient.invalidateQueries(['on-watch-list', movie.id, userId])
+      void queryClient.invalidateQueries(['watch-list', userId])
     },
   })
 
