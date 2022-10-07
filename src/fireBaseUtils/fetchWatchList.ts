@@ -9,8 +9,7 @@ interface WatchListMovie {
 
 export const fetchWatchList = async (userId: string | null) => {
   if (userId === null) return userId
-  const docRef = doc(db, 'watch-list', userId)
-  const watchListDoc = await getDoc(docRef)
+  const watchListDoc = await getDoc(doc(db, 'watch-list', userId))
   const watchListData = watchListDoc.data() as { watchList: WatchListMovie[] }
 
   return watchListData.watchList ?? null

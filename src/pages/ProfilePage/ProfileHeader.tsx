@@ -1,17 +1,42 @@
+import { useQuery } from '@tanstack/react-query'
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase'
+import { fetchFollowing } from '../../fireBaseUtils/fetchFollowing'
 import { Iuser } from '../../typescript/interfaces/user'
 import profileImage from '/Images/profileImage.png'
 
+import { useFollow } from '../../hooks/useFollow'
+import { useUnFollow } from '../../hooks/useUnfollow'
+import { useNavigate } from 'react-router-dom'
+
 interface Props {
-  user: Iuser
-  userId: string
+  user?: Iuser | null
+  userId?: string | null
+  profileId: string
 }
 
-function ProfileHeader({ user, userId }: Props) {
+function ProfileHeader({ user, userId, profileId }: Props) {
+  const { data: following, isLoading: isLoadingFollowing } = useQuery(
+    ['following', userId],
+    () => fetchFollowing(userId)
+  )
+  const mutationFollow = useFollow(userId)
+  const mutationUnFollow = useUnFollow(userId)
+  const navigate = useNavigate()
   const handleLogOut = () => {
+    navigate('/')
     void signOut(auth)
   }
+  const handleClick = () => {
+    if (userId == null) return
+    if (isLoadingFollowing) return
+    if (following?.includes(profileId)) {
+      mutationUnFollow.mutate(profileId)
+      return
+    }
+    mutationFollow.mutate(profileId)
+  }
+
   return (
     <header className="flex justify-between p-4">
       <div className="w-fit grid gap-2">
@@ -23,19 +48,23 @@ function ProfileHeader({ user, userId }: Props) {
           />
         </div>
         <div>
-          <h3 className="font-bold">{user.name}</h3>
-          <p className="text-font-secondary">@{user.userName}</p>
+          <h3 className="font-bold">{user?.name}</h3>
+          <p className="text-font-secondary">@{user?.userName}</p>
         </div>
-        <p className="text-font-secondary">{user.joinDate}</p>
+        <p className="text-font-secondary">{user?.joinDate}</p>
       </div>
-      {userId === user.uid ? (
+      {profileId === userId ? (
         <div className="flex flex-col justify-center">
           <button className="movie-info__button" onClick={handleLogOut}>
             Logout
           </button>
         </div>
       ) : (
-        <></>
+        <div className="flex flex-col justify-center">
+          <button className="movie-info__button" onClick={handleClick}>
+            {following?.includes(profileId) ? 'UnFollow' : 'Follow'}
+          </button>
+        </div>
       )}
     </header>
   )

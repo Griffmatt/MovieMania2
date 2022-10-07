@@ -36,8 +36,8 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/:movieId" element={<SingleMoviePage />} />
-          <Route path="/profile-page/:userId" element={<ProfilePage />} />
-          <Route path="/profile-page" element={<ProfilePage />} />
+          <Route path="/profile/:profileId/:page" element={<ProfilePage />} />
+          <Route path="/profile/:profileId" element={<ProfilePage />} />
         </Route>
         <Route
           path="/search/q=:value"

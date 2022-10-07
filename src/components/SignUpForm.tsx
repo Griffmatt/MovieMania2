@@ -121,10 +121,7 @@ function SignUpForm() {
           onChange={(event) => setPassword2(event.target.value)}
         />
       </div>
-      <button
-        className="rounded-2xl w-full text-white font-semibold bg-primary hover:bg-primary/90 mx-auto py-2"
-        type="submit"
-      >
+      <button className="modal__button" type="submit">
         {isLoading ? 'Creating Account...' : 'Create Account'}
       </button>
     </form>

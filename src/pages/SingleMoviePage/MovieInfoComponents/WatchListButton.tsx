@@ -20,8 +20,7 @@ function WatchListButton({ movie }: Props) {
   const mutationAdd = useAddToWatchList(movie, userId)
   const mutationRemove = useRemoveFromWatchList(movie, userId)
 
-  const handleClick = (event: React.SyntheticEvent) => {
-    event.preventDefault()
+  const handleClick = () => {
     if (userId == null) return
     if (isOnWatchList) {
       mutationRemove.mutate(false)

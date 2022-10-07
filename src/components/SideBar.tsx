@@ -61,7 +61,7 @@ function SideBar() {
             <h2 className="hidden lg:block">Login</h2>
           </button>
         ) : (
-          <Link to={`/profile-page`} className="side-nav__link">
+          <Link to={`/profile/${userData.uid}`} className="side-nav__link">
             <img className="w-6 h-6" src={profileImage} alt="Profile" />
             <h2 className="hidden lg:block">Profile</h2>
           </Link>

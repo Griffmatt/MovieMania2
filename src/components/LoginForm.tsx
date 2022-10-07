@@ -51,20 +51,14 @@ function LoginForm({ setTitle }: Props) {
         />
       </div>
       <div className="grid gap-3">
-        <button
-          className="rounded-2xl w-full text-white font-semibold bg-primary hover:bg-primary/90 mx-auto py-2"
-          type="submit"
-        >
+        <button className="modal__button" type="submit">
           Login
         </button>
-        <button
-          className="rounded-2xl w-full text-white font-semibold bg-primary hover:bg-primary/90 mx-auto py-2"
-          onClick={() => setTitle('Sign Up')}
-        >
+        <button className="modal__button" onClick={() => setTitle('Sign Up')}>
           Sign Up
         </button>
         <button
-          className="rounded-2xl w-full text-white font-semibold bg-primary hover:bg-primary/90 mx-auto py-2"
+          className="modal__button rounded-2xl w-full text-white font-semibold bg-primary hover:bg-primary/90 mx-auto py-2"
           onClick={loginTestUser}
         >
           Test User Login

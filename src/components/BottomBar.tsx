@@ -54,7 +54,7 @@ function BottomBar() {
           </button>
         ) : (
           <Link
-            to={`/profile-page`}
+            to={`/profile/${userData.uid}`}
             className="rounded-3xl w-full cursor-pointer"
           >
             <img
