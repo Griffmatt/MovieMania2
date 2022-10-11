@@ -1,6 +1,6 @@
 import { useQueries } from '@tanstack/react-query'
 import Review from '../../components/Review'
-import { fetchUserReviews } from '../../fireBaseUtils/fetchUserReviews'
+import { getDocument } from '../../fireBaseUtils/getDocument'
 import { Ireview } from '../../typescript/interfaces/review'
 
 interface Props {
@@ -13,18 +13,17 @@ function UserFeed({ following }: Props) {
     queries: following.map((followingId) => {
       return {
         queryKey: ['reviews', followingId],
-        queryFn: () => fetchUserReviews(followingId),
+        queryFn: () =>
+          getDocument<{ reviews: Ireview[] }>('reviews', followingId),
       }
     }),
   })
-
   const sortReviews = () => {
     const reviewsArr = [] as Ireview[]
     reviews?.forEach((review) => {
-      if (review.data == null) return
-      reviewsArr.push(...review.data)
+      if (review.data?.reviews == null) return
+      reviewsArr.push(...review.data.reviews)
     })
-    console.log(reviewsArr)
     return reviewsArr.sort((a, b) => b.time - a.time)
   }
 

@@ -6,8 +6,9 @@ import ProfileReviews from './ProfileReviews'
 import ProfileWatchList from './ProfileWatchList'
 import { useUserContext } from '../../context/userContext'
 import { profileOptions } from '../../shared/navBarOptions'
-import { fetchUser } from '../../fireBaseUtils/fetchUser'
 import { useQuery } from '@tanstack/react-query'
+import { getDocument } from '../../fireBaseUtils/getDocument'
+import { Iuser } from '../../typescript/interfaces/user'
 
 interface Option {
   name: string
@@ -20,7 +21,7 @@ function ProfilePage() {
   const { userId } = useUserContext()
 
   const { data: userData } = useQuery(['user', profileId], () =>
-    fetchUser(profileId)
+    getDocument<Iuser>('user', profileId)
   )
 
   useEffect(() => {

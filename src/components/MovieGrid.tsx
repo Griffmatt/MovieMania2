@@ -1,17 +1,12 @@
 import { Link } from 'react-router-dom'
+import { Poster } from '../typescript/interfaces/movie'
 
 import MoviePoster from './MoviePoster'
 
-interface WatchListMovie {
-  id: number
-  title: string
-  poster_path: string
-}
-
-function MovieGrid({ movies }: { movies: WatchListMovie[] }) {
+function MovieGrid({ movies }: { movies: Poster[] }) {
   return (
     <div className="grid grid-cols-3 gap-1 p-2 md:gap-2 lg:grid-cols-4 lg:p-3 lg:gap-3">
-      {movies.map((movie: WatchListMovie) => {
+      {movies.map((movie: Poster) => {
         return (
           <Link
             to={`/${movie.id}`}

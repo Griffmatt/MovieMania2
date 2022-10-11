@@ -49,6 +49,7 @@ function ReviewModal({ movie, userReview }: Props) {
       rating: rating,
       review: review,
       id: uuidv4(),
+      uid: userId,
     }
 
     mutation.mutate(reviewObj)

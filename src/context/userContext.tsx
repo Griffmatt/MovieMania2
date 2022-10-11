@@ -42,7 +42,7 @@ export function UserContextProvider({ children }: Props) {
       setUserData(null)
       return
     }
-    console.log('e')
+
     const getUserData = async () => {
       const userDoc = await getDoc(doc(db, 'user', userId))
       setUserData(userDoc.data() as unknown as Iuser)

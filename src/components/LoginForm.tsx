@@ -1,6 +1,6 @@
 import { signUserIn } from '../fireBaseUtils/signUserIn'
 import { useUserContext } from '../context/userContext'
-import { SyntheticEvent, useState } from 'react'
+import { SyntheticEvent, useRef } from 'react'
 import { useModalContext } from '../context/modalContext'
 
 interface Props {
@@ -8,23 +8,28 @@ interface Props {
 }
 
 function LoginForm({ setTitle }: Props) {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const emailRef = useRef<HTMLInputElement>(null)
+  const passwordRef = useRef<HTMLInputElement>(null)
   const { handleSetUser } = useUserContext()
 
   const { closeModal } = useModalContext()
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault()
-    void signUserIn(email, password, handleSetUser, closeModal)
+    void signUserIn(
+      handleSetUser,
+      closeModal,
+      emailRef.current?.value,
+      passwordRef.current?.value
+    )
   }
   const loginTestUser = (event: SyntheticEvent) => {
     event.preventDefault()
     void signUserIn(
-      'testuser@testuser.com',
-      'testuser',
       handleSetUser,
-      closeModal
+      closeModal,
+      'testuser@testuser.com',
+      'testuser'
     )
   }
   return (
@@ -38,16 +43,14 @@ function LoginForm({ setTitle }: Props) {
           className="p-2 bg-bg-secondary dark:bg-bg-secondary-dark rounded resize-none overflow-hidden w-full"
           placeholder="Enter Email"
           autoComplete="Email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
+          ref={emailRef}
         />
         <input
           type="password"
           className="p-2 bg-bg-secondary dark:bg-bg-secondary-dark rounded resize-none overflow-hidden w-full"
           placeholder="Enter Password"
           autoComplete="current-password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          ref={passwordRef}
         />
       </div>
       <div className="grid gap-3">

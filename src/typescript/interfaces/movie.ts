@@ -37,3 +37,9 @@ export interface Iimages {
 export interface Iimage {
   file_path: string
 }
+
+export interface Poster {
+  id: number
+  title: string
+  poster_path: string
+}

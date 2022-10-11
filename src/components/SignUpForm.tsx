@@ -48,7 +48,7 @@ function SignUpForm() {
       await setDoc(doc(db, 'watch-list', user.uid), {
         watchList: [],
       })
-      void signUserIn(email, password, handleSetUser, closeModal)
+      void signUserIn(handleSetUser, closeModal, email, password)
     }
 
     const validateSignUp = async () => {
