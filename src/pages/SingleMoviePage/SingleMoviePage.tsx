@@ -97,7 +97,7 @@ function SingleMoviePage() {
               movie={movie}
               videos={movie.videos.results}
             />
-            <div className="border-t-2 py-2 border-bg-secondary dark:border-bg-secondary-dark">
+            {/*<div className="border-t-2 py-2 border-bg-secondary dark:border-bg-secondary-dark">
               <h2>Recent Reviews</h2>
               <div className="grid gap-5 w-full xl:grid-cols-2 py-4">
                 {reviews.map((review: Ireview) => {
@@ -111,7 +111,7 @@ function SingleMoviePage() {
                   )
                 })}
               </div>
-            </div>
+            </div>*/}
           </div>
         )
       )}
