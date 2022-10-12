@@ -9,7 +9,7 @@ export const signUserIn = async (
   email?: string | null,
   password?: string | null
 ) => {
-  if (email == null || password == null) return
+  if (email == null || password == null) return null
   const user = await signInWithEmailAndPassword(auth, email, password)
   const userDoc = await getDoc(doc(db, 'user', user.user.uid))
   handleSetUser(

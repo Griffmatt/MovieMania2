@@ -60,7 +60,7 @@ function App() {
         {isOpenLogin && <LoginModal />}
         <div className="flex">
           <SideBar />
-          <div className="md:border-l-2 md:border-bg-secondary dark:border-bg-secondary-dark md:w-[90%] lg::w-5/6 md:min-h-screen">
+          <div className="md:border-l-2 md:border-bg-secondary dark:border-bg-secondary-dark w-screen md:w-[90%] lg::w-5/6 md:min-h-screen">
             <AppRoutes />
           </div>
         </div>

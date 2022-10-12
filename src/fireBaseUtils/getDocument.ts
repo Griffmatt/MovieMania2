@@ -5,10 +5,9 @@ export const getDocument = async <T>(
   collectionName: string,
   documentName?: string | null
 ) => {
-  if (documentName == null) return documentName
+  if (documentName == null) return null
   const docRef = doc(db, collectionName, documentName)
   const docValue = await getDoc(docRef)
   const docData = docValue.data() as T
-  console.log(docData)
   return docData ?? null
 }

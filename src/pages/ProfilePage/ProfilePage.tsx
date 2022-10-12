@@ -31,7 +31,7 @@ function ProfilePage() {
     <>
       {profileId && (
         <div className="flex">
-          <div className=" md:w-3/4 xl:w-2/3 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark min-h-[calc(100vh-5.125rem)]">
+          <div className=" w-full md:w-3/4 xl:w-2/3 md:border-r-2 md:border-bg-secondary md:dark:border-bg-secondary-dark min-h-[calc(100vh-5.125rem)]">
             <ProfileHeader
               user={userData}
               userId={userId}

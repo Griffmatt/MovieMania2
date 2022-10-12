@@ -22,6 +22,7 @@ function ProfileHeader({ user, userId, profileId }: Props) {
   )
   const mutationFollow = useFollow(userId)
   const mutationUnFollow = useUnFollow(userId)
+
   const navigate = useNavigate()
   const handleLogOut = () => {
     navigate('/')

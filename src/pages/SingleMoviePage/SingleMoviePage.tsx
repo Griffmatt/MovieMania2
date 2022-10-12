@@ -47,7 +47,7 @@ function SingleMoviePage() {
         <LoadingComponent />
       ) : (
         movie && (
-          <div className="p-5 grid gap-3">
+          <div className="p-3 md:p-5 grid gap-3">
             <div className="items-start">
               <BackButton />
             </div>
