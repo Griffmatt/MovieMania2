@@ -15,7 +15,6 @@ function ReviewMovie({ movie }: Props) {
     ['review', movie.id, userId],
     () => fetchReview(userId, movie.id)
   )
-
   return (
     <>
       <ReviewButton review={review} isLoading={isLoading} />

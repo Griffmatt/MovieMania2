@@ -15,7 +15,7 @@ function BottomBar() {
   }
 
   return (
-    <nav className="w-screen border-t-2 border-bg-secondary dark:border-bg-secondary-dark bg-bg-primary dark:bg-bg-primary-dark fixed bottom-0 md:hidden">
+    <nav className="w-screen border-t-2 border-bg-secondary dark:border-bg-secondary-dark bg-bg-primary dark:bg-bg-primary-dark fixed bottom-0 md:hidden p-1">
       <div className="flex justify-around">
         <Link to={`/`} className="rounded-3xl w-full cursor-pointer">
           <svg

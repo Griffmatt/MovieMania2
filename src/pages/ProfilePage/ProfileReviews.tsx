@@ -10,9 +10,8 @@ interface Props {
 }
 
 function ProfileReviews({ profileId }: Props) {
-  const { data: reviews, isLoading } = useQuery(
-    ['userReviews', profileId],
-    () => getDocument<{ reviews: Ireview[] }>('reviews', profileId)
+  const { data: reviews, isLoading } = useQuery(['reviews', profileId], () =>
+    getDocument<{ reviews: Ireview[] }>('reviews', profileId)
   )
 
   if (isLoading) return <LoadingComponent />

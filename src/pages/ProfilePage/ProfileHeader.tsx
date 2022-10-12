@@ -39,7 +39,7 @@ function ProfileHeader({ user, userId, profileId }: Props) {
   }
 
   return (
-    <header className="flex justify-between p-4">
+    <header className="flex justify-between p-4 h-36 md:h-48">
       <div className="w-fit grid gap-2">
         <div className="relative w-[4rem] h-[4rem] md:w-[6rem] md:h-[6rem]">
           <img

@@ -31,10 +31,9 @@ export const useAddReview = (
       await queryClient.cancelQueries(['review', movie.id, userId])
 
       // Snapshot the previous value
-      const previousReviews = queryClient.getQueryData([
-        'reviews',
-        userId,
-      ]) as Ireview[]
+      const previousReviews = queryClient.getQueryData(['reviews', userId]) as {
+        reviews: Ireview[]
+      }
 
       const previousReview = queryClient.getQueryData([
         'review',
@@ -45,21 +44,24 @@ export const useAddReview = (
       // Optimistically update to the new value
       queryClient.setQueryData(['review', movie.id, userId], review)
 
+      console.log(previousReview)
+      console.log(previousReviews)
+
       previousReviews &&
         userReview &&
-        queryClient.setQueryData(
-          ['reviews', userId],
-          [
-            ...previousReviews.filter((review) => review.id !== userReview.id),
+        queryClient.setQueryData(['reviews', userId], {
+          reviews: [
+            ...previousReviews.reviews.filter(
+              (review) => review.id !== userReview.id
+            ),
             review,
-          ]
-        )
+          ],
+        })
       previousReviews &&
-        !userReview &&
-        queryClient.setQueryData(
-          ['reviews', userId],
-          [...previousReviews, review]
-        )
+        queryClient.setQueryData(['reviews', userId], {
+          reviews: [...previousReviews.reviews, review],
+        })
+
       // Return a context with the previous and new todo
       return { previousReviews, previousReview }
     },

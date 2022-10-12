@@ -34,16 +34,17 @@ export const useRemoveFromWatchList = (
       const previousWatchList = queryClient.getQueryData([
         'watch-list',
         userId,
-      ]) as Imovie[]
+      ]) as { watchList: Imovie[] }
+      console.log(previousWatchList)
 
       queryClient.setQueryData(['on-watch-list', movie.id, userId], value)
+
       previousWatchList &&
-        queryClient.setQueryData(
-          ['watch-list', userId],
-          previousWatchList.filter(
+        queryClient.setQueryData(['watch-list', userId], {
+          watchList: previousWatchList.watchList.filter(
             (watchListMovie) => watchListMovie.id !== movie.id
-          )
-        )
+          ),
+        })
 
       return { previousOnWatchList, previousWatchList }
     },

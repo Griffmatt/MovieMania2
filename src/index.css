@@ -51,7 +51,7 @@ p {
 }
 
 .search-bar {
-  @apply bg-bg-secondary text-sm rounded-3xl w-full h-6 md:h-8 lg:h-10 p-2 indent-2 outline-none outline-1 focus:outline-primary dark:bg-bg-secondary-dark;
+  @apply bg-bg-secondary text-sm rounded-3xl w-full h-8 lg:h-10 p-2 indent-2 outline-none outline-1 focus:outline-primary dark:bg-bg-secondary-dark;
 }
 
 

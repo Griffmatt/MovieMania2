@@ -33,23 +33,22 @@ export const useAddToWatchList = (movie: Imovie, userId?: string | null) => {
       const previousWatchList = queryClient.getQueryData([
         'watch-list',
         userId,
-      ]) as Imovie[]
+      ]) as { watchList: Imovie[] }
 
       // Optimistically update to the new value
       queryClient.setQueryData(['on-watch-list', movie.id, userId], value)
 
       previousWatchList &&
-        queryClient.setQueryData(
-          ['watch-list', userId],
-          [
-            ...previousWatchList,
+        queryClient.setQueryData(['watch-list', userId], {
+          watchList: [
+            ...previousWatchList.watchList,
             {
               id: movie.id,
               poster_path: movie.poster_path,
               title: movie.title,
             },
-          ]
-        )
+          ],
+        })
 
       // Return a context with the previous and new todo
       return { previousOnWatchList, previousWatchList }
