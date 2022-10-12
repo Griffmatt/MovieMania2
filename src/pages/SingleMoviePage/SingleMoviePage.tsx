@@ -1,9 +1,6 @@
 import { useParams } from 'react-router-dom'
 
-import { Ireview } from '../../typescript/interfaces/review'
-
 import BackButton from '../../components/ui/BackButton'
-import Review from '../../components/Review'
 import MoviePoster from '../../components/MoviePoster'
 import Genres from '../../components/Genres'
 
@@ -32,8 +29,6 @@ function SingleMoviePage() {
   )
 
   const isLoading = isLoadingMovies
-
-  const reviews = [] as Ireview[]
 
   const runTime = (runtime: number) =>
     runtime < 60

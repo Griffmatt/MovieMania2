@@ -53,13 +53,13 @@ export const useRemoveFromWatchList = (
         ['on-watch-list', movie.id, userId],
         context?.previousOnWatchList
       )
-      console.log('yes')
       queryClient.setQueryData(
         ['watch-list', userId],
         context?.previousWatchList
       )
     },
     onSettled: () => {
+      console.log('e')
       void queryClient.invalidateQueries(['on-watch-list', movie.id, userId])
       void queryClient.invalidateQueries(['watch-list', userId])
     },

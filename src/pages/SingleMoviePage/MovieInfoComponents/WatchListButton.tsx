@@ -22,6 +22,7 @@ function WatchListButton({ movie }: Props) {
 
   const handleClick = () => {
     if (userId == null) return
+    console.log(isOnWatchList)
     if (isOnWatchList) {
       mutationRemove.mutate(false)
       return
