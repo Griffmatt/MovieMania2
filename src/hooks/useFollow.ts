@@ -24,15 +24,14 @@ export const useFollow = (userId?: string | null) => {
       const previousFollowing = queryClient.getQueryData([
         'following',
         userId,
-      ]) as string[]
+      ]) as { following: string[] }
 
       // Optimistically update to the new value
 
       previousFollowing &&
-        queryClient.setQueryData(
-          ['following', userId],
-          [...previousFollowing, profileId]
-        )
+        queryClient.setQueryData(['following', userId], {
+          following: [...previousFollowing.following, profileId],
+        })
 
       // Return a context with the previous and new todo
       return { previousFollowing }

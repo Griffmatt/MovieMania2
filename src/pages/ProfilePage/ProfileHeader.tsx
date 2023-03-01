@@ -38,6 +38,8 @@ function ProfileHeader({ user, userId, profileId }: Props) {
     mutationFollow.mutate(profileId)
   }
 
+  console.log(following)
+
   return (
     <header className="flex justify-between p-4 h-36 md:h-48">
       <div className="w-fit grid gap-2">
@@ -63,7 +65,9 @@ function ProfileHeader({ user, userId, profileId }: Props) {
       ) : (
         <div className="flex flex-col justify-center">
           <button className="movie-info__button" onClick={handleClick}>
-            {following?.following.includes(profileId) ? 'UnFollow' : 'Follow'}
+            {following && following.following.includes(profileId)
+              ? 'UnFollow'
+              : 'Follow'}
           </button>
         </div>
       )}

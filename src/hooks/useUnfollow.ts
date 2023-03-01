@@ -24,15 +24,15 @@ export const useUnFollow = (userId?: string | null) => {
       const previousFollowing = queryClient.getQueryData([
         'following',
         userId,
-      ]) as string[]
+      ]) as { following: string[] }
 
       // Optimistically update to the new value
-
       previousFollowing &&
-        queryClient.setQueryData(
-          ['following', userId],
-          previousFollowing.filter((following) => profileId === following)
-        )
+        queryClient.setQueryData(['following', userId], {
+          following: previousFollowing.following.filter(
+            (following) => profileId === following
+          ),
+        })
 
       // Return a context with the previous and new todo
       return { previousFollowing }
